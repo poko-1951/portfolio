@@ -1,24 +1,39 @@
-# README
+# Converce
+Conversation piece（話の種、話題）の略語
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+誰しも、うまく会話が弾まず気まずい空気になったことがあるはずだ。何を話そうかと考えれば考えるほど、話題がでてこない。そもそも、その人の好きなことってなんだっけ。こんなときに、何かいい話題が出てくれば…そんな世の中の悩みを解決するための話題提供サービス。
 
-Things you may want to cover:
+### テーマを選んだ理由
+自分自身が口下手であり、人と話すときに話題が思い付かず、気まずい体験をすることが少なくない。改めて考えると、このような機会は誰にでも当てはまるし、多くの人が困っているのではないかと思ったため。
 
-* Ruby version
+### ターゲットユーザ
+- 会話が見つからずに困っている人
+- 相手の性格や好きなことを書き記しておきたい人
+- 年齢層は問わない
 
-* System dependencies
+### 主な利用シーン
+- ビジネスシーン
+  - ミーティングの空き時間
+  - クライアントとの食事会
+- プライベート
+  - 仲良くなりきれていない友人との会話
+  - 大切な人とのデート
 
-* Configuration
+## 設計書
+<...>
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## ご利用方法
+- ToDo
