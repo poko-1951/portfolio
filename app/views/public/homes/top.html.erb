@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 text-center">
       <h1>Converce</h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
-      <%= link_to "今すぐ登録", new_user_registration_path, class:"btn btn-primary" %>
-      <%= link_to "ログイン", new_user_session_path, class:"btn btn-success" %>
-      <%= link_to "ゲストログイン", new_user_session_path, class:"btn btn-secondary" %>
+    <div class="col-8 offset-2 text-center">
+      <div><%= link_to "今すぐ登録", new_user_registration_path, class:"btn btn-primary btn-lg mb-2 w-25" %></div>
+      <div><%= link_to "ログイン", new_user_session_path, class:"btn btn-success btn-lg mb-2 w-25" %></div>
+      <div><%= link_to "ゲストログイン", new_user_session_path, class:"btn btn-secondary btn-lg mb-5 w-25" %></div>
     </div>
   </div>
-  <div>
-    about
+  <div class="row">
+    <span class="text-center">About</span>
   </div>
 </div>

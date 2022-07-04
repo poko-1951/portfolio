@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
 
-    resource :users, only: [:show, :edit, :update] do
-      get "confirm" => "users#confirm"
-      patch "withdrawal" => "users#withdrawal"
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        get "confirm" => "users#confirm"
+        patch "withdrawal" => "users#withdrawal"
+      end
     end
 
     resources :topics, only: [:index, :create, :show, :edit, :update, :destroy] do
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
         get "tag_search" => "topics#tag_search"
         get "word_search" => "topics#word_search"
       end
+      resources :stocks, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
 
     resources :tags, only: [:index] do
@@ -22,12 +26,14 @@ Rails.application.routes.draw do
 
     resources :acquaintances, only: [:index, :create, :edit, :update, :destroy] do
       member do
-        get "stocks" => "acquaintances#stocks_index"
+        # get "stocks" => "acquaintances#stocks_index"
+        # get ":user_id" => "acquaintances#stocks_index"
       end
     end
+    # get "/acquaintances/:id/:user_id/stocks" => "acquaintances#stocks_index"
 
-    resources :stocks, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy]
+    resources :events, only: [:new, :create, :index, :update, :edit, :destroy]
+
   end
 
   namespace :admin do
