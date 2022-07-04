@@ -5,12 +5,38 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!--Bootstrap5をCDNで導入（yarnは本番環境で動作しにくいため）-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? || admin_signed_in? %>
+      <header>
+        <%= render "layouts/header" %>
+      </header>
+      <main>
+        <div class="container">
+          <div class="row">
+            <div class="col-2">
+              <%= render "layouts/sidebar"%>
+              
+            </div>
+            <div class="col-10">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </main>
+    <% else %>
+      <main>
+        <%= yield %>
+      </main>
+    <% end %>
+    <footer>
+      <%= render "layouts/footer" %>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>

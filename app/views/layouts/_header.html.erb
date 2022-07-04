@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <% if admin_signed_in? %>
+      <%= link_to "ロゴ", admin_path, class: "navbar-brand p-3" %>
+    <% else %>
+      <%= link_to "ロゴ", topics_path, class: "navbar-brand p-3" %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to "みんなのトピック", topics_path, class: 'nav-link text-light' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "トピックタグ", tags_path, class: 'nav-link text-light' %>
+        </li>
+        <li class="nav-item text-light">
+          <span class="nav-link text-light">検索フォームをいれる</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

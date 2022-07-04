@@ -1,0 +1,24 @@
+<div class="sidebar_profile">
+  <span class="border">プロフィール画像</span>
+</div>
+<div class="mt-5">
+  <ul class="list-group">
+    <li class="sidebar-list mt-5">
+      <%= link_to "カレンダー", events_path %>
+    </li>
+    <li class="sidebar-list">
+      <%= link_to "知人", acquaintances_path %>
+    </li>
+    <li class="sidebar-list">
+      <%= link_to "プロフィール", user_path(current_user) %>
+    </li>
+    <li class="sidebar-list">
+      <%= link_to "お気に入りトピック", events_path %>
+    </li>
+    <li class="sidebar-list">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-warning rounded-pill" %>
+    </li>
+
+  </ul>
+
+</div>

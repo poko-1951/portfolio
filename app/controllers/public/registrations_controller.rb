@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
+
+
+  protected
+  # サインアップ後のパスを変更
+  def after_sign_up_path_for(resource)
+    topics_path
+  end
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
