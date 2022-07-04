@@ -1,42 +1,60 @@
 Rails.application.routes.draw do
+  scope module: :public do
+    root to: "homes#top"
+
+    resource :users, only: [:show, :edit, :update] do
+      get "confirm" => "users#confirm"
+      patch "withdrawal" => "users#withdrawal"
+    end
+
+    resources :topics, only: [:index, :create, :edit, :update, :destroy] do
+      collection do
+        get "tag_search" => "topics#tag_search"
+        get "word_search" => "topics#word_search"
+      end
+    end
+
+    resources :tags, only: [:index] do
+      collection do
+        get "word_search" => "tags#word_search" #実装しないのであれば削除する
+      end
+    end
+
+    resources :acquaintances, only: [:index, :create, :edit, :update, :destroy] do
+      member do
+        get "stocks" => "acquaintances#stocks_index"
+      end
+    end
+
+    resources :stocks, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+  end
+
   namespace :admin do
-    get 'tags/index'
+    get '/' => "homes#top"
+
+    resources :users, only: [:index, :show, :edit, :update] do
+      member do
+        get "topics" => "users#topic_index"
+      end
+    end
+
+    resources :topics, only: [:index, :show, :edit, :update, :destroy] do
+      collection do
+        get "tag_search" => "topics#tag_search"
+        get "word_search" => "topics#word_search"
+      end
+    end
+
+    resources :tags, only: [:index] do
+      collection do
+        get "word_search" => "tags#word_search" #実装しないのであれば削除する
+      end
+    end
+
+    resources :comments, only: [:destroy]
   end
-  namespace :admin do
-    get 'topics/index'
-    get 'topics/show'
-    get 'topics/edit'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'events/new'
-    get 'events/index'
-  end
-  namespace :public do
-    get 'acquaintances/index'
-    get 'acquaintances/edit'
-  end
-  namespace :public do
-    get 'tags/index'
-  end
-  namespace :public do
-    get 'topic/index'
-    get 'topic/edit'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :public do
-    get 'homes/top'
-  end
+
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
