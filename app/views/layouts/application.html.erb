@@ -11,6 +11,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? || admin_signed_in? %>
+      <header>
+        <%= render "layouts/header" %>
+      </header>
+      <main>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= yield %>
+      </main>
+    <% else %>
+      <main>
+        <%= yield %>
+      </main>
+    <% end %>
+    <footer>
+      <%= render "layouts/footer" %>
+    </footer>
   </body>
 </html>

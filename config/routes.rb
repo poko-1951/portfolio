@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       patch "withdrawal" => "users#withdrawal"
     end
 
-    resources :topics, only: [:index, :create, :edit, :update, :destroy] do
+    resources :topics, only: [:index, :create, :show, :edit, :update, :destroy] do
       collection do
         get "tag_search" => "topics#tag_search"
         get "word_search" => "topics#word_search"
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:destroy]
   end
 
-  devise_for :users,skip: [:passwords], controllers: {
+  devise_for :users, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
