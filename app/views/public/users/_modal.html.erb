@@ -1,0 +1,33 @@
+<!--モーダルボタン-->
+<button type="button" class="btn btn-success rounded-pill ms-4" data-bs-toggle="modal" data-bs-target="#edit_user_profile">
+  編集する
+</button>
+
+<!--モーダルの中身-->
+<div class="modal fade" id="edit_user_profile" tabindex="-1" aria-labelledby="edit_user_profile_Label" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <%= form_with model: user, url: user_path(user) do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :image, "プロフィール画像" %>
+            <%= f.file_field :image, accept: "image/*", class:"form-control" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+          <%= f.submit "登録", class:"btn btn-success rounded-pill"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

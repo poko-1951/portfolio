@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # devise関連
   devise_for :users, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-
+# user側のルーティング
   scope module: :public do
     root to: "homes#top"
 
@@ -43,7 +44,7 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :create, :index, :update, :edit, :destroy]
 
   end
-
+# admin側のルーティング
   namespace :admin do
     get '/' => "homes#top"
 
