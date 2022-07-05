@@ -21,7 +21,7 @@
           <div class="row">
             <% if user_signed_in? %>
               <div>
-                <%= image_tag current_user.get_profile_image(150,150), class:"top_profile_image shadow" %>
+                <%= image_tag current_user.get_profile_image, class:"top_profile_image" %>
               </div>
               <div class="col-2 mt-2">
                 <%= render "layouts/sidebar"%>

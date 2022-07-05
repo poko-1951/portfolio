@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    @user.update(params_user)
+    @user.update(user_params)
     redirect_to admin_user_path(@user)
   end
 
@@ -21,7 +21,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def params_user
+  def user_params
     params.require(:user).permit(:name, :profile_image)
   end
 end

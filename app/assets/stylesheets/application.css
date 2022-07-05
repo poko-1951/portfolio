@@ -52,10 +52,20 @@ footer{
 }
 
 .top_profile_image {
+  width: 150px;
+  height: 150px;
   position: absolute;
   top: 15px;
   left: 7%;
   border-radius: 40px;
+  border: solid;
+  border-color: #f8f5e3;
+  border-width: 5px;
+  object-fit: cover;
+}
+
+.form-group {
+  text-align: left;
 }
 
 /*card*/
@@ -91,9 +101,13 @@ footer{
 
 .profile_image {
   border-radius: 40px;
-
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
 }
 
-.user_topic {
-
+.topic_profile_image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }

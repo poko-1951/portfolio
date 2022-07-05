@@ -2,7 +2,7 @@
   <!--ユーザープロフィール-->
   <div class="row">
     <div class="col-4 text-center">
-      <%= image_tag @user.get_profile_image(250,250), class:"profile_image shadow" %>
+      <%= image_tag @user.get_profile_image, class:"profile_image shadow" %>
     </div>
     <div class="col-8">
       <div class="row mt-4">
@@ -22,7 +22,7 @@
     <% @topics.each do |topic| %>
       <div class="user_topic">
         <div class="col-4">
-          <%= image_tag @user.get_profile_image(100,100), class:"profile_image" %>
+          <%= image_tag @user.get_profile_image, class:"topic_profile_image" %>
         </div>
         <div class="col-8">
           <!--中身を入れられるようにする-->

@@ -19,7 +19,10 @@
 #
 class Topic < ApplicationRecord
   belongs_to :user
-  has_many   :stocks,   dependent: :destroy
-  has_many   :taggings, dependent: :destroy
-  has_many   :comments, dependent: :destroy
+  has_many   :stocks,        dependent: :destroy
+  has_many   :taggings,      dependent: :destroy
+  has_many   :comments,      dependent: :destroy
+  has_many   :tags,          through: :taggings
+  has_many   :events,        through: :schedules
+  has_many   :acquaintances, through: :stocks
 end
