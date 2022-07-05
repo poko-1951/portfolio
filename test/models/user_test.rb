@@ -5,6 +5,7 @@
 #  id                     :integer          not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  is_deleted             :boolean          default(FALSE), not null
 #  name                   :string           default(""), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime

@@ -5,6 +5,7 @@
 #  id                     :integer          not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  is_deleted             :boolean          default(FALSE), not null
 #  name                   :string           default(""), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -22,4 +23,20 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :topics,        dependent: :destroy
+  has_many :stocks,        dependent: :destroy
+  has_many :acquaintances, dependent: :destroy
+  has_many :events,        dependent: :destroy
+  has_many :comments,      dependent: :destroy
+
+  has_one_attached :profile_image
+
+  def get_profile_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join("app/assets/images/no_image.jpeg")
+      profile_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+    end
+    profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+
 end
