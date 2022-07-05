@@ -23,4 +23,7 @@ class Acquaintance < ApplicationRecord
   belongs_to :user
   has_many   :stocks,    dependent: :destroy
   has_many   :schedules, dependent: :destroy
+
+  has_one_attached :acquaintance_image
+
 end

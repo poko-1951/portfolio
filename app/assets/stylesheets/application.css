@@ -14,16 +14,22 @@
  *= require_self
  */
 
+/*body*/
+body {
+  background-color: #f8f5e3;
+}
+
 /*header*/
 header{
   height: 70px;
   background-color: #121724;
 }
 
-/*body*/
-body {
-  background-color: #f8f5e3;
+.navbar-brand {
+  margin-left: 200px;
 }
+
+
 
 /*footer*/
 footer{
@@ -32,6 +38,7 @@ footer{
 
 /*sidebar*/
 .list-group {
+  margin-top: 100px;
   list-style: none;
   border: solid;
   border-radius: 20px;
@@ -44,8 +51,49 @@ footer{
   text-align: center;
 }
 
-.sidebar_profile {
+.top_profile_image {
   position: absolute;
-  top: 105px;
-  left: 50px;
+  top: 15px;
+  left: 7%;
+  border-radius: 40px;
+}
+
+/*card*/
+.card {
+  padding: 0;
+  height:350px;
+  width: 200px;
+  text-decoration: none;
+}
+
+.card:hover {
+  background-color: #121724;
+}
+
+
+.card-img-top {
+  height:150px;
+  width:auto;
+  object-fit: cover;
+}
+
+.card-body {
+  color:#121724;
+  background-color:#F5F2EC;
+}
+
+.card-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width:160px
+}
+
+.profile_image {
+  border-radius: 40px;
+
+}
+
+.user_topic {
+
 }
