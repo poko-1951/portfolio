@@ -22,4 +22,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :topics,        dependent: :destroy
+  has_many :stocks,        dependent: :destroy
+  has_many :acquaintances, dependent: :destroy
+  has_many :events,        dependent: :destroy
+  has_many :comments,      dependent: :destroy
 end

@@ -21,4 +21,6 @@
 #
 class Acquaintance < ApplicationRecord
   belongs_to :user
+  has_many   :stocks,    dependent: :destroy
+  has_many   :schedules, dependent: :destroy
 end
