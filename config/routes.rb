@@ -54,7 +54,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :topics, only: [:index, :show, :edit, :update, :destroy] do
+    resources :topics, only: [:show, :edit, :update, :destroy] do
       collection do
         get "tag_search" => "topics#tag_search"
         get "word_search" => "topics#word_search"

@@ -120,3 +120,10 @@ footer{
   border-radius: 10px;
   background-color: #fcfaf5;
 }
+
+.topic_tag {
+  background-color: #cfe6f7;
+}
+.topic_tag:hover {
+  background-color: #cfe6f7;
+}

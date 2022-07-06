@@ -25,4 +25,9 @@ class Topic < ApplicationRecord
   has_many   :tags,          through: :taggings
   has_many   :events,        through: :schedules
   has_many   :acquaintances, through: :stocks
+  
+  def self.tag_search(search_tag)
+    Topic.where(tag_id: search_tag)
+  end
+  
 end

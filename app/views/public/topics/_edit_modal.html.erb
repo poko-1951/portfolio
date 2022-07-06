@@ -1,22 +1,22 @@
 <!--モーダルボタン-->
-<button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#new_topic">
-  トピック投稿
+<button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#edit_topic_<%= topic.id %>">
+  編集
 </button>
 
 <!--モーダルの中身-->
-<div class="modal fade" id="new_topic" tabindex="-1" aria-labelledby="new_topic_Label" aria-hidden="true" >
+<div class="modal fade" id="edit_topic_<%= topic.id %>" tabindex="-1" aria-labelledby="edit_topic_Label" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered" >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">トピック投稿</h5>
+        <h5 class="modal-title">トピック編集</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </button>
       </div>
-      <%= form_with model: Topic.new, url: topics_path do |f| %>
+      <%= form_with model: topic, url: topic_path(topic) do |f| %>
         <div class="modal-body">
           <div class="form-group mb-2">
             <%= f.label :title %>
-            <%= f.text_area :title, class:"form-control", row:"1" %>
+            <%= f.text_area :title, class:"form-control" %>
           </div>
           <div class="form-group mb-2">
             <%= f.label :content %>
@@ -24,7 +24,7 @@
           </div>
           <div class="form-group">
             <%= f.label :name, "タグ(半角スペースで複数個登録できます)" %>
-            <%= f.text_field :name, class:"form-control" %>
+            <%= f.text_field :name, value: topic.tags.pluck(:name).join(" "), class:"form-control" %>
           </div>
         </div>
         <div class="modal-footer">

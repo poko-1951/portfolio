@@ -9,15 +9,17 @@
               <div class="col-3 h2"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark" %></div>
               <div class="col-5">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
               <% if topic.user == current_user %>
-                <div class="col-2"><%= link_to "編集", edit_topic_path(topic), class:"btn btn-success rounded-pill" %></div>
+                <div class="col-2"><%= render "public/topics/edit_modal", topic: topic, tags: topic.tags %></div>
                 <div class="col-2"><%= link_to "削除", topic_path(topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger rounded-pill" %></div>
               <% end %>
             </div>
             <!--タグ一覧-->
             <div class="row ms-2">
-              <% topic.tags.each do |tag| %>
-                <%= tag.name %>
-              <% end %>
+              <div class="d-flex flex-wrap">
+                <% topic.tags.each do |tag| %>
+                  <div class="btn btn-info btn-sm rounded-pill me-2 topic_tag"><%= tag.name %></div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
