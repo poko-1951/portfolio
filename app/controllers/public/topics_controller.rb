@@ -1,6 +1,6 @@
 class Public::TopicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :update, :destroy]
 
 
   def index
@@ -22,10 +22,8 @@ class Public::TopicsController < ApplicationController
     @user = @topic.user
   end
 
-  def edit
-  end
-
   def update
+    @topic.update(topic_params)
     registered_tags = @topic.tags.pluck(:name)
     input_tags = tag_params[:name].split #入力タグを配列に変換する
     new_tags = input_tags - registered_tags #追加されたタグ
@@ -45,6 +43,11 @@ class Public::TopicsController < ApplicationController
   def destroy
     @topic.destroy
     redirect_to topics_path
+  end
+
+  def tag_search
+    @tag=Tag.find(params[:tag_id])
+    @topics = @tag.topics
   end
 
   private

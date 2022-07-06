@@ -11,12 +11,19 @@
     </div>
     <% if @user == current_user %>
       <div class="col-3">
-        <%= link_to "編集", edit_topic_path(@topic), class:"btn btn-success rounded-pill" %>
+        <%= render "public/topics/edit_modal", topic: @topic %>
         <%= link_to "削除", topic_path(@topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger rounded-pill" %>
       </div>
     <% end %>
   </div>
   <div class="col-10 mt-4 ms-4"><h1 class="fw-bold"><%= @topic.title %></h1></div>
   <div class="col-10 mt-3 ms-5"><%= @topic.content %></div>
+  <div class="d-flex flex-wrap mt-3">
+    <% @topic.tags.each do |tag| %>
+      <div class="btn btn-info btn-sm rounded-pill me-2 topic_tag">
+        <%= tag.name %>
+      </div>
+    <% end %>
+  </div>
   <div class="text-danger fw-bold h1">コメント欄</div>
 </div>

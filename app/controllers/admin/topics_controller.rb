@@ -1,12 +1,15 @@
 class Admin::TopicsController < ApplicationController
-  before_action :authenticate_admin!
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_!
+  before_action :set_topic, only: [:show, :update, :destroy]
 
   def show
   end
-
-  def edit
+  
+  def destroy
+  
   end
+
+  private
 
   def topic_params
     params.require(:topic).permit(:title, :content)
