@@ -23,6 +23,7 @@ body {
 header{
   height: 70px;
   background-color: #121724;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 }
 
 .navbar-brand {
@@ -109,5 +110,13 @@ footer{
 .topic_profile_image {
   width: 100px;
   height: 100px;
+  border-radius: 20px;
   object-fit: cover;
+}
+
+/*topic*/
+.topic {
+  border: solid;
+  border-radius: 10px;
+  background-color: #fcfaf5;
 }

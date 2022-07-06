@@ -12,7 +12,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </button>
       </div>
-      <%= form_with model: Topic.new do |f| %>
+      <%= form_with model: Topic.new, url: topics_path do |f| %>
         <div class="modal-body">
           <div class="form-group mb-2">
             <%= f.label :title %>
@@ -20,7 +20,7 @@
           </div>
           <div class="form-group mb-2">
             <%= f.label :content %>
-            <%= f.text_area :content, class:"form-control" %>
+            <%= f.text_area :content, class:"form-control", rows:"10" %>
           </div>
           <div class="form-group">
             <%= f.label :name, "タグ(半角スペースで複数個登録できます)" %>

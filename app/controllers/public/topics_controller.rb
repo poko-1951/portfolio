@@ -4,6 +4,7 @@ class Public::TopicsController < ApplicationController
 
 
   def index
+    @topics = Topic.all
   end
 
   def create
@@ -14,10 +15,11 @@ class Public::TopicsController < ApplicationController
       @topic.tags << registered_tag
     end
     @topic.save
-    binding.pry
+    redirect_to topics_path
   end
 
   def show
+    @user = @topic.user
   end
 
   def edit
@@ -27,7 +29,8 @@ class Public::TopicsController < ApplicationController
   end
 
   def destroy
-
+    @topic.destroy
+    redirect_to request.referer
   end
 
   private
@@ -38,5 +41,9 @@ class Public::TopicsController < ApplicationController
 
   def tag_params
     params.require(:topic).permit(:name)
+  end
+
+  def set_topic
+    @topic = Topic.find(params[:id])
   end
 end

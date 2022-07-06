@@ -1,2 +1,16 @@
-<h1>Public::Topics#show</h1>
-<p>Find me in app/views/public/topics/show.html.erb</p>
+<div class="container">
+  <!--ユーザープロフィール-->
+  <div class="row">
+    <div class="col-3 text-center">
+      <%= link_to image_tag(@user.get_profile_image, class:"topic_profile_image"), user_path(@user) %>
+    </div>
+    <div class="col-8">
+      <h3 class="fw-bold"><%= link_to @user.name, user_path(@user), class:"text-decoration-none text-dark" %></h3>
+      <div class="row mt-2"><h6>トピック作成日時：<%= @topic.created_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
+      <div class="row mt-2"><h6>トピック更新日時：<%= @topic.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
+    </div>
+  </div>
+  <div class="col-10 mt-4 ms-4"><h1 class="fw-bold"><%= @topic.title %></h1></div>
+  <div class="col-10 mt-3 ms-5"><%= @topic.content %></div>
+  <div class="text-danger fw-bold h1">コメント欄</div>
+</div>

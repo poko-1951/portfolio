@@ -13,7 +13,7 @@
 
   <body>
     <% if user_signed_in? || admin_signed_in? %>
-      <header class="shadow-lg">
+      <header class="fixed-top">
         <%= render "layouts/header" %>
       </header>
       <main>
@@ -26,7 +26,7 @@
               <div class="col-2 mt-2">
                 <%= render "layouts/sidebar"%>
               </div>
-              <div class="col-9 offset-1 my-5">
+              <div class="col-9 offset-1 my-5 py-5">
                 <%= yield %>
               </div>
             <% else %>
