@@ -23,6 +23,7 @@ body {
 header{
   height: 70px;
   background-color: #121724;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 }
 
 .navbar-brand {
@@ -52,10 +53,20 @@ footer{
 }
 
 .top_profile_image {
+  width: 150px;
+  height: 150px;
   position: absolute;
   top: 15px;
   left: 7%;
   border-radius: 40px;
+  border: solid;
+  border-color: #f8f5e3;
+  border-width: 5px;
+  object-fit: cover;
+}
+
+.form-group {
+  text-align: left;
 }
 
 /*card*/
@@ -91,9 +102,28 @@ footer{
 
 .profile_image {
   border-radius: 40px;
-
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
 }
 
-.user_topic {
+.topic_profile_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  object-fit: cover;
+}
 
+/*topic*/
+.topic {
+  border: solid;
+  border-radius: 10px;
+  background-color: #fcfaf5;
+}
+
+.topic_tag {
+  background-color: #cfe6f7;
+}
+.topic_tag:hover {
+  background-color: #cfe6f7;
 }

@@ -13,7 +13,7 @@
 
   <body>
     <% if user_signed_in? || admin_signed_in? %>
-      <header class="shadow-lg">
+      <header class="fixed-top">
         <%= render "layouts/header" %>
       </header>
       <main>
@@ -21,16 +21,16 @@
           <div class="row">
             <% if user_signed_in? %>
               <div>
-                <%= image_tag current_user.get_profile_image(150,150), class:"top_profile_image shadow" %>
+                <%= image_tag current_user.get_profile_image, class:"top_profile_image" %>
               </div>
               <div class="col-2 mt-2">
                 <%= render "layouts/sidebar"%>
               </div>
-              <div class="col-9 offset-1 my-5">
+              <div class="col-9 offset-1 my-5 py-5">
                 <%= yield %>
               </div>
             <% else %>
-              <div class="col-12 my-5">
+              <div class="col-12 my-5 py-5">
                 <%= yield %>
               </div>
             <% end %>

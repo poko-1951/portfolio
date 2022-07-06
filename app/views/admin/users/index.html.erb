@@ -3,7 +3,7 @@
     <div class="d-flex flex-wrap justify-content-around">
       <% @users.each do |user| %>
         <%= link_to admin_user_path(user), class:"card mb-3 shadow" do %>
-          <%= image_tag user.get_profile_image(500,500), class:"card-img-top", alt:"Card image cap" %>
+          <%= image_tag user.get_profile_image, class:"card-img-top", alt:"Card image cap" %>
           <div class="card-body">
             <h4 class="card-title"><%= user.name %></h4>
             <p>

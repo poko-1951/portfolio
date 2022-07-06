@@ -16,6 +16,9 @@
       <%= link_to "お気に入りトピック", events_path %>
     </li>
     <li class="sidebar-list">
+      <%= render "public/topics/new_modal" %>
+    </li>
+    <li class="sidebar-list">
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-warning rounded-pill" %>
     </li>
 
