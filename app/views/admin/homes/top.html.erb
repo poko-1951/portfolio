@@ -8,8 +8,7 @@
             <div class="row d-flex align-items-center">
               <div class="col-3 h2"><%= link_to topic.user.name, admin_user_path(topic.user), class:"text-decoration-none text-dark" %></div>
               <div class="col-5">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
-              <div class="col-2"><%= render "public/topics/edit_modal", topic: topic, tags: topic.tags.pluck(:name).join(" ") %></div>
-              <div class="col-2"><%#= link_to "編集", edit_topic_path(topic), class:"btn btn-success rounded-pill" %></div>
+              <div class="col-2"><%= render "admin/topics/edit_modal", topic: topic %></div>
               <div class="col-2"><%= link_to "削除", admin_topic_path(topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger rounded-pill" %></div>
             </div>
             <!--タグ一覧-->
