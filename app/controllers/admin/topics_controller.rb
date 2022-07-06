@@ -28,6 +28,11 @@ class Admin::TopicsController < ApplicationController
     @topic.destroy
     redirect_to admin_path
   end
+  
+  def tag_search
+    @tag=Tag.find(params[:tag_id])
+    @topics = @tag.topics
+  end
 
   private
 
