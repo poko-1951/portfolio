@@ -28,4 +28,12 @@ class Acquaintance < ApplicationRecord
 
   has_one_attached :acquaintance_image
 
+  def get_acquaintance_image
+    unless acquaintance_image.attached?
+      file_path = Rails.root.join("app/assets/images/no_image.jpeg")
+      acquaintance_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+    end
+    acquaintance_image
+  end
+
 end
