@@ -20,17 +20,10 @@ body {
 }
 
 /*header*/
-header{
-  height: 70px;
+.navbar {
+  height: 50px;
   background-color: #121724;
-  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 }
-
-.navbar-brand {
-  margin-left: 200px;
-}
-
-
 
 /*footer*/
 footer{
@@ -38,36 +31,38 @@ footer{
 }
 
 /*sidebar*/
-.list-group {
-  margin-top: 100px;
-  list-style: none;
-  border: solid;
-  border-radius: 20px;
-  background-color: #ffffff;
-  border-color: #121724;
-}
-
-.sidebar-list {
-  margin-bottom: 25px;
-  text-align: center;
+.nav-item {
+  margin-bottom: 20px;
+  margin-left: 30px;
+  text-decoration: none;
 }
 
 .top_profile_image {
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  top: 15px;
-  left: 7%;
-  border-radius: 40px;
-  border: solid;
-  border-color: #f8f5e3;
-  border-width: 5px;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
   object-fit: cover;
 }
 
-.form-group {
-  text-align: left;
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 50px 0 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
+
+.sidebar .nav-link {
+  color: #333;
+}
+
+.sidebar .nav-link:active {
+  color: #0d6efd;
+}
+
+
 
 /*card*/
 .card {

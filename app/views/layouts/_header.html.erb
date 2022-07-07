@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
     <% if admin_signed_in? %>
-      <%= link_to "ロゴ", admin_path, class: "navbar-brand p-3" %>
+      <%= link_to "ロゴ", admin_path, class: "navbar-brand" %>
     <% else %>
-      <%= link_to "ロゴ", topics_path, class: "navbar-brand p-3" %>
+      <%= link_to "ロゴ", topics_path, class: "navbar-brand" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
