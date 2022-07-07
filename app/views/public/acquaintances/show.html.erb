@@ -17,7 +17,7 @@
       <div class="row mt-2"><h6>更新日時：<%= @acquaintance.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
       <div class="row mt-2">
         <div class="col-6"><%= render "public/acquaintances/edit_modal" %></div>
-        <div class="col-6"><%= link_to "削除", acquaintance_path(@acquaintance), method: :delete, class:"btn btn-danger rounded-pill", data: {confirm: "削除しますか？"} %></div>
+        <div class="col-6"><%= link_to "削除", acquaintance_path(@acquaintance), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger rounded-pill" %></div>
       </div>
     </div>
     <div class="col-4">

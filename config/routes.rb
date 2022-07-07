@@ -61,8 +61,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :tags, only: [:index] do
+    resources :tags, only: [:index, :destroy] do
       collection do
+        get "destroy_index" => "tags#destroy_index"
         get "word_search" => "tags#word_search" #実装しないのであれば削除する
       end
     end
