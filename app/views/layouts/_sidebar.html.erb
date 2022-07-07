@@ -1,27 +1,39 @@
-<div class="mt-3">
-  <ul class="list-group shadow-lg">
-    <li class="sidebar-list mt-3">
-      <%= current_user.name %>
-    </li>
-    <li class="sidebar-list mt-2">
-      <%= link_to "カレンダー", events_path %>
-    </li>
-    <li class="sidebar-list">
-      <%= link_to "知人", acquaintances_path %>
-    </li>
-    <li class="sidebar-list">
-      <%= link_to "プロフィール", user_path(current_user) %>
-    </li>
-    <li class="sidebar-list">
-      <%= link_to "お気に入りトピック", events_path %>
-    </li>
-    <li class="sidebar-list">
-      <%= render "public/topics/new_modal" %>
-    </li>
-    <li class="sidebar-list">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-warning rounded-pill" %>
-    </li>
-
-  </ul>
-
+<div class="container-fluid">
+  <div class="row">
+      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="mt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <div><%= image_tag current_user.get_profile_image, class:"top_profile_image me-2" %></div>
+              <div class="text-break"><%= current_user.name %></div>
+            </li>
+            <li class="nav-item mt-2">
+              <%= link_to "みんなのトピック", topics_path %>
+            </li>
+            <li class="nav-item mt-2">
+              <%= link_to "トピックタグ", tags_path %>
+            </li>
+            <li class="nav-item mt-2">
+              <%= link_to "カレンダー", events_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "知人", acquaintances_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "プロフィール", user_path(current_user) %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "お気に入りトピック", events_path %>
+            </li>
+            <li class="nav-item">
+              <%= render "public/topics/new_modal" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-warning rounded-pill" %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  </div>
 </div>
+

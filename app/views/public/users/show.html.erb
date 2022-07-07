@@ -7,7 +7,7 @@
     <div class="col-8">
       <div class="row mt-4">
         <div class="d-flex align-items-center">
-          <h1><%= @user.name %></h1>
+          <h1 class="text-break"><%= @user.name %></h1>
           <% if @user == current_user %>
             <%= render "public/users/modal", user: @user %>
           <% end %>
