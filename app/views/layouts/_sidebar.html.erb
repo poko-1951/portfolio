@@ -1,15 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-      <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-        <div class="mt-3">
-          <ul class="nav flex-column">
+    <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+      <div class="mt-3">
+        <ul class="nav flex-column">
+          <% if user_signed_in? %>
             <li class="nav-item">
-              <% if user_signed_in? %>
-                <div><%= image_tag current_user.get_profile_image, class:"top_profile_image me-2" %></div>
-                <h5 class="text-break mt-1"><%= current_user.name %></h5>
-              <% else %>
-                <h5 class="fw-bold">管理者</h5>
-              <% end %>
+              <div><%= image_tag current_user.get_profile_image, class:"top_profile_image me-2" %></div>
+              <h5 class="text-break mt-1"><%= current_user.name %></h5>
             </li>
             <li class="nav-item">
               <%= link_to "みんなのトピック", topics_path %>
@@ -17,32 +14,44 @@
             <li class="nav-item mt-2">
               <%= link_to "トピックタグ", tags_path %>
             </li>
-            <% if user_signed_in? %>
-              <li class="nav-item mt-2">
-                <%= link_to "カレンダー", events_path %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "知人", acquaintances_path %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "プロフィール", user_path(current_user) %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "お気に入りトピック", events_path %>
-              </li>
-              <li class="nav-item">
-                <!--モーダルボタン-->
-                <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="text-light text-decoration-none">
-                  トピック投稿
-                </a>
-              </li>
-              <% end %>
+            <li class="nav-item mt-2">
+              <%= link_to "カレンダー", events_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "知人", acquaintances_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "プロフィール", user_path(current_user) %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "お気に入りトピック", events_path %>
+            </li>
+            <!--モーダルボタン-->
+            <li class="nav-item">
+              <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="text-light text-decoration-none">
+                トピック投稿
+              </a>
+            </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-light text-decoration-none" %>
             </li>
-          </ul>
-        </div>
-      </nav>
+          <% else %>
+            <li class="nav-item">
+              <h5 class="fw-bold">管理者</h5>
+            </li>
+            <li class="nav-item">
+              <%= link_to "みんなのトピック", admin_path %>
+            </li>
+            <li class="nav-item mt-2">
+              <%= link_to "トピックタグ", admin_tags_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-light text-decoration-none" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
   </div>
 </div>
 
