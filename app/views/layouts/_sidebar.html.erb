@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
         <div class="mt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -31,11 +31,14 @@
                 <%= link_to "お気に入りトピック", events_path %>
               </li>
               <li class="nav-item">
-                <%= render "public/topics/new_modal" %>
+                <!--モーダルボタン-->
+                <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="text-light text-decoration-none">
+                  トピック投稿
+                </a>
               </li>
               <% end %>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-warning rounded-pill" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-light text-decoration-none" %>
             </li>
           </ul>
         </div>

@@ -22,21 +22,17 @@ body {
 /*header*/
 .navbar {
   height: 50px;
-  background-color: #121724;
+  background-color: #343a40;
+  box-shadow: 1px 0px 20px black;
 }
 
 /*footer*/
 footer{
-  background-color: #121724;
+  background-color: #343a40;
+  box-shadow: 1px 0px 20px black;
 }
 
 /*sidebar*/
-.nav-item {
-  margin-bottom: 20px;
-  margin-left: 30px;
-  text-decoration: none;
-}
-
 .top_profile_image {
   width: 80px;
   height: 80px;
@@ -51,7 +47,8 @@ footer{
   left: 0;
   z-index: 100;
   padding: 50px 0 0;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  box-shadow: 1px 0px 20px black;
+  background-color: #343a40;
 }
 
 .sidebar .nav-link {
@@ -62,12 +59,15 @@ footer{
   color: #0d6efd;
 }
 
-
+.sidebar .nav-item {
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
 
 /*card*/
 .card {
   padding: 0;
-  height:350px;
+  height:300px;
   width: 200px;
   text-decoration: none;
 }

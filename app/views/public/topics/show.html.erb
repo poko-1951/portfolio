@@ -21,7 +21,7 @@
   <div class="d-flex flex-wrap mt-3">
     <% @topic.tags.each do |tag| %>
       <div class="btn btn-info btn-sm rounded-pill me-2 topic_tag">
-        <%= tag.name %>
+        <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"text-decoration-none text-dark" %>
       </div>
     <% end %>
   </div>

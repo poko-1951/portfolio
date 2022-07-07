@@ -1,18 +1,18 @@
 <!--モーダルボタン-->
-<button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#new_acquaintance">
-   新規登録
+<button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#edit_acquaintance">
+   編集
 </button>
 
 <!--モーダルの中身-->
-<div class="modal fade" id="new_acquaintance" tabindex="-1" aria-labelledby="new_acquaintance_Label" aria-hidden="true" >
+<div class="modal fade" id="edit_acquaintance" tabindex="-1" aria-labelledby="edit_acquaintance_Label" aria-hidden="true" >
   <div class="modal-dialog modal-lg modal-dialog-centered" >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">知人情報登録</h5>
+        <h5 class="modal-title">知人情報編集</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </button>
       </div>
-      <%= form_with model: Acquaintance.new, url: acquaintances_path do |f| %>
+      <%= form_with model: @acquaintance, url: acquaintance_path(@acquaintance) do |f| %>
         <div class="modal-body text-start">
           <div class="form-group mb-2">
             <%= f.label :name %>

@@ -1,5 +1,6 @@
 class Public::AcquaintancesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_acquaintance, only: [:show, :update, :destroy]
 
   def index
     @acquaintances = Acquaintance.all
@@ -11,12 +12,26 @@ class Public::AcquaintancesController < ApplicationController
     redirect_to acquaintances_path
   end
 
-  def edit
+  def show
+  end
+
+  def update
+    @acquaintance.update(acquaintance_params)
+    redirect_to acquaintance_path(@acquaintance)
+  end
+
+  def destroy
+    @acquaintance.destroy
+    redirect_to acquaintances_path
   end
 
   private
 
   def acquaintance_params
     params.require(:acquaintance).permit(:name, :relationship, :character, :like)
+  end
+
+  def set_acquaintance
+    @acquaintance = Acquaintance.find(params[:id])
   end
 end

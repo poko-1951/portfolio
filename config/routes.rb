@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :acquaintances, only: [:index, :create, :edit, :update, :destroy] do
+    resources :acquaintances, only: [:index, :create, :show, :update, :destroy] do
       member do
         # get "stocks" => "acquaintances#stocks_index"
         # get ":user_id" => "acquaintances#stocks_index"
