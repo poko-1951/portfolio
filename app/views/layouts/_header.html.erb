@@ -12,20 +12,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <%= link_to "みんなのトピック", topics_path, class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "トピックタグ", tags_path, class: 'nav-link text-light' %>
-        </li>
-        <% if admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "ユーザー", admin_users_path, class: 'nav-link text-light' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-warning rounded-pill" %>
-          </li>
-        <% end %>
         <li class="nav-item text-light">
           <span class="nav-link text-light">検索フォームをいれる</span>
         </li>

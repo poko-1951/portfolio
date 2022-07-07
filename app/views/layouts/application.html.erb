@@ -19,16 +19,10 @@
       <main>
         <div class="container">
           <div class="row">
-            <% if user_signed_in? %>
-                <%= render "layouts/sidebar"%>
-              <div class="col-9 offset-3 my-5 py-5">
-                <%= yield %>
-              </div>
-            <% else %>
-              <div class="col-12 my-5 py-5">
-                <%= yield %>
-              </div>
-            <% end %>
+            <%= render "layouts/sidebar"%>
+            <div class="col-9 offset-3 my-5 py-5">
+              <%= yield %>
+            </div>
           </div>
         </div>
       </main>
