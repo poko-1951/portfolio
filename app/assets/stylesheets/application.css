@@ -64,6 +64,11 @@ footer{
   margin-left: 30px;
 }
 
+.sidebar-li {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 /*card*/
 .card {
   padding: 0;
