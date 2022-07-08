@@ -1,6 +1,7 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import moment from "moment"
 
 document.addEventListener('turbolinks:load', function() {
   var calendarEl = document.getElementById('calendar');
@@ -65,12 +66,24 @@ document.addEventListener('turbolinks:load', function() {
           alert("failed");
       });
     },
-    eventClick: function(info){
-        //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
+
+    eventDrop: function (info) {
+      $.ajax({
+        //POST通信
+        type: "patch",
+        //ここでデータの送信先URLを指定します。
+        url: "events/" + info.event.id,
+        dataType: "json", //データ形式を指定
+        data: {
+          update_start: moment.utc(info.event.start).format("YYYY-MM-DDTHH:mm:ss"), //update_startをキーにして値を送信
+          update_end: moment.utc(info.event.end).format("YYYY-MM-DDTHH:mm:ss"),
+          id: info.event.id, //idをキーにして値を送信
+        },
+      }).then((res) => {
+        console.log(res);
+        calendar.render();
+      });
     },
-    eventClassNames: function(arg){
-        //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
-    }
   });
 
   calendar.render();

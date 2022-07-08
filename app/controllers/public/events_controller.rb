@@ -27,7 +27,10 @@ class Public::EventsController < ApplicationController
   end
 
   def show
+  end
 
+  def update
+    @event.update(start: params[:update_start], end: params[:update_end])
   end
 
   private
