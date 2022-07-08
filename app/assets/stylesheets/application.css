@@ -128,3 +128,11 @@ footer{
   display: inline-block;
   width: auto;
 }
+
+.acquaintance_name {
+  color: black;
+}
+
+.acquaintance_name:hover {
+  color: #0000ff;
+}

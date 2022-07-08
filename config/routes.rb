@@ -41,7 +41,11 @@ Rails.application.routes.draw do
     end
     # get "/acquaintances/:id/:user_id/stocks" => "acquaintances#stocks_index"
 
-    resources :events, only: [:new, :create, :index, :show, :update, :edit, :destroy]
+    resources :events, only: [:new, :create, :index, :show, :update, :destroy] do
+      member do
+        patch "move_update" => "events#move_update"
+      end
+    end
 
   end
 # admin側のルーティング

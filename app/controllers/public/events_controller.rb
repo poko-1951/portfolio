@@ -1,6 +1,6 @@
 class Public::EventsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :update, :move_update, :destroy]
 
   def new
     @event = Event.new
@@ -32,6 +32,12 @@ class Public::EventsController < ApplicationController
   end
 
   def update
+    @event.update(event_params)
+    # お相手も庚申できるようにする
+    redirect_to event_path(@event)
+  end
+
+  def move_update
     @event.update(start: params[:update_start], end: params[:update_end])
   end
 
@@ -43,9 +49,9 @@ class Public::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :start, :end)
+    params.require(:event).permit(:title, :start, :end, :content, :place, :acquaintance_id)
   end
-  
+
   def set_event
     @event = Event.find(params[:id])
   end

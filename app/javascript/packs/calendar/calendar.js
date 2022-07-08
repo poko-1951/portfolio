@@ -72,7 +72,7 @@ document.addEventListener('turbolinks:load', function() {
         //POST通信
         type: "patch",
         //ここでデータの送信先URLを指定します。
-        url: "events/" + info.event.id,
+        url: "events/" + info.event.id + "/move_update",
         dataType: "json", //データ形式を指定
         data: {
           update_start: moment.utc(info.event.start).format("YYYY-MM-DDTHH:mm:ss"), //update_startをキーにして値を送信
