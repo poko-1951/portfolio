@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h1 class="fw-bold mb-3"><%= @event.title %></h1>
+      <div class="mb-3">
+        開始日時 <br>
+        <h4><%= @event.start.strftime('%Y/%m/%d %H:%M')%></h4>
+      </div>
+      <div class="mb-3">
+        終了日時 <br>
+        <h4><%= @event.end.strftime('%Y/%m/%d %H:%M')%></h4>
+      </div>
+      <div class="mb-3">
+        内容 <br>
+        <h4><%= @event.content %></h4>
+      </div>
+      <div>
+        場所 <br>
+        <h4><%= @event.place %></h4>
+      </div>
+    </div>
+    <div class="col-4">
+      <table>
+        <tr>
+          <th><h5>お相手</h5></th>
+        </tr>
+        <% @event.acquaintances.each do |acquaintance| %>
+          <tr>
+            <td>
+              <%= link_to acquaintance.name, acquaintance_path(acquaintance), class:"text-decoration-none h4 fw-bold acquaintance_name" %> さん
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-3">
+      <%= render "public/events/edit_modal" %>
+      <%= link_to "削除", event_path(@event), method: :delete, data: {confirm: "削除しますか"}, class:"btn btn-outline-danger rounded-pill ms-3" %>
+    </div>
+  </div>
+</div>
