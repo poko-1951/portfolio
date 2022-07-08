@@ -9,6 +9,8 @@ class Public::EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
+    acquaintance = Acquaintance.find_by(id: params[:event][:acquaintance_id])
+    @event.acquaintances << acquaintance
     if @event.save
       respond_to do |format|
         format.html { redirect_to events_path }
@@ -33,12 +35,17 @@ class Public::EventsController < ApplicationController
     @event.update(start: params[:update_start], end: params[:update_end])
   end
 
+  def destroy
+    @event.destroy
+    redirect_to events_path
+  end
+
   private
 
   def event_params
     params.require(:event).permit(:title, :start, :end)
   end
-
+  
   def set_event
     @event = Event.find(params[:id])
   end

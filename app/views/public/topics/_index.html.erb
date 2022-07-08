@@ -10,7 +10,7 @@
               <div class="col-5">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
               <% if topic.user == current_user %>
                 <div class="col-2"><%= render "public/topics/edit_modal", topic: topic %></div>
-                <div class="col-2"><%= link_to "削除", topic_path(topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger rounded-pill" %></div>
+                <div class="col-2"><%= link_to "削除", topic_path(topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" %></div>
               <% end %>
             </div>
             <!--タグ一覧-->

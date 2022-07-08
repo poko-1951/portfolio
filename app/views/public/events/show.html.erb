@@ -1,4 +1,7 @@
 <%= @event.title %> <br></br>
 <%= @event.start %> <br></br>
 <%= @event.end %> <br></br>
-<%= link_to "削除", event_path(@event), method: :delete %>
+<% @event.acquaintances.each do |acquaintance| %>
+  <%= acquaintance.name %> さん
+<% end %>
+<%= link_to "削除", event_path(@event), method: :delete, data: {confirm: "削除しますか"}, class:"btn btn-outline-danger rounded-pill" %>
