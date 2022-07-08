@@ -122,3 +122,8 @@ footer{
 .topic_tag:hover {
   background-color: #cfe6f7;
 }
+
+.date_form {
+  display: inline-block;
+  width: auto;
+}

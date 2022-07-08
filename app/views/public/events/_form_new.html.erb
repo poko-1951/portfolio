@@ -1,0 +1,20 @@
+
+          <div class="row">
+            <%= form_with(model: @event, url: events_path, remote: true) do |f| %>
+
+              <%= f.label :title, "内容"%>
+              <%= f.text_field :title, class:'form-control mb-3', required: true %>
+
+              <div class="form-inline text-left">
+               <%= f.label :start,"開始時刻", {class:'control-label'}%>
+               <%= f.datetime_select :start, {default: Date.today + 0.hours + 00.minutes, minute_step: 30}, class: 'form-control date_form' %>
+              </div>
+               <br>
+              <div class="form-inline text-left">
+               <%= f.label :end,"終了時刻", {class:'control-label'}%>
+               <%= f.datetime_select :end, {default: Date.today + 0.hours + 00.minutes, minute_step: 30}, class: 'form-control date_form' %>
+              </div>
+
+              <%= f.submit "登録",   class: "btn btn-primary js-event-create-btn" %>
+            <% end %>
+          </div>
