@@ -9,7 +9,6 @@ class Public::EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
-    if 
     acquaintance = Acquaintance.find_by(id: params[:event][:acquaintance_id])
     @event.acquaintances << acquaintance
     if @event.save
