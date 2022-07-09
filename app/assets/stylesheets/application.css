@@ -141,3 +141,8 @@ footer{
 .acquaintance_name:hover {
   color: #0000ff;
 }
+
+#map {
+  height: 400px;
+  width: auto;
+}
