@@ -38,33 +38,13 @@ document.addEventListener('turbolinks:load', function() {
       const month = (info.date.getMonth() + 1);
       const day   = info.date.getDate();
 
-      //ajaxでevents/newを着火させ、htmlを受けとる
-      $.ajax({
-          type: 'GET',
-          url:  'events/new',
-      }).done(function (res) {
-          // 成功処理
-          // modalのbodyの中に挿入します
-          $('.modal-body').html(res);
+      // 本日の日付に書き換えている
+      $('#event_start_3i').val(day);
+      $('#event_end_3i').val(day);
 
-          //フォームの年、月、日を自動入力
-          $('#event_start_1i').val(year);
-          $('#event_start_2i').val(month);
-          $('#event_start_3i').val(day);
+      //Bootstrapでモーダルを表示させる
+      $('#modal_box').modal('show');
 
-          $('#event_end_1i').val(year);
-          $('#event_end_2i').val(month);
-          $('#event_end_3i').val(day);
-
-          //ここのidはevents/newのurlにアクセスするとhtmlがコードとして表示されるので、
-          //開始時間と終了時間のフォームを表しているところのidを確認してもらうことが確実です
-
-          $('#modal').fadeIn();
-
-      }).fail(function (result) {
-          // 失敗処理
-          alert("failed");
-      });
     },
 
     eventDrop: function (info) {

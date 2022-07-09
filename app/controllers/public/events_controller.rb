@@ -2,11 +2,6 @@ class Public::EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :update, :move_update, :destroy]
 
-  def new
-    @event = Event.new
-    render plain: render_to_string(partial: 'form_new', layout: false, locals: { event: @event })
-  end
-
   def create
     @event = current_user.events.new(event_params)
     acquaintance = Acquaintance.find_by(id: params[:event][:acquaintance_id])
@@ -25,6 +20,7 @@ class Public::EventsController < ApplicationController
   end
 
   def index
+    @event = Event.new
     @events = Event.all
   end
 
@@ -33,7 +29,7 @@ class Public::EventsController < ApplicationController
 
   def update
     @event.update(event_params)
-    # お相手も庚申できるようにする
+    # お相手も更新できるようにする
     redirect_to event_path(@event)
   end
 
@@ -49,7 +45,7 @@ class Public::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :start, :end, :content, :place, :acquaintance_id)
+    params.require(:event).permit(:title, :start, :end, :content, :place)
   end
 
   def set_event

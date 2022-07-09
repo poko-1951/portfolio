@@ -36,6 +36,35 @@
     <div class="col-3">
       <%= render "public/events/edit_modal" %>
       <%= link_to "削除", event_path(@event), method: :delete, data: {confirm: "削除しますか"}, class:"btn btn-outline-danger rounded-pill ms-3" %>
+      <div class="mt-3 ms-1"><%= link_to "カレンダーに戻る", events_path %></div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-12">
+      <div id='map'></div>
+      <!--hiddenで@event.placeデータを持ってくる-->
+      <input id="address" type="hidden" value=<%= @event.place %>>
     </div>
   </div>
 </div>
+<script> //Google Map表示
+  function initMap(){
+    const inputAddress = document.getElementById('address').value; // @event.placeを入れる
+    const geocoder = new google.maps.Geocoder()
+    const map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15, // 拡大
+    });
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        new google.maps.Marker({
+            map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('該当するマップが見つかりませんでした');
+      }
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
