@@ -146,3 +146,8 @@ footer{
   height: 400px;
   width: auto;
 }
+
+/*イベント登録モーダルでのお相手に関するもの*/
+input[id^="event_acquaintance_ids_"] {
+    margin-left: 20px;
+}

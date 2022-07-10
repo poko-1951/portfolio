@@ -4,9 +4,14 @@ class Public::EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
-    acquaintance = Acquaintance.find_by(id: params[:event][:acquaintance_id])
-    @event.acquaintances << acquaintance
-    if @event.save
+    # acquaintance = Acquaintance.find_by(id: params[:event][:acquaintance_id])
+    # @event.acquaintances << acquaintance
+    if @event.valid?
+      @event.save
+      params[:event][:acquaintance_ids].reject(&:blank?).each do |ac|
+        acquaintance = Acquaintance.find_by(id: ac)
+        @event.acquaintances << acquaintance
+      end
       respond_to do |format|
         format.html { redirect_to events_path }
         format.js  #create.js.erbを探してその中の処理を実行する
@@ -28,8 +33,21 @@ class Public::EventsController < ApplicationController
   end
 
   def update
-    @event.update(event_params)
-    # お相手も更新できるようにする
+    if @event.valid?
+      @event.update(event_params)
+      registered_acquaintances = @event.acquaintances.pluck(:id)
+      new_acquaintances = params[:event][:acquaintance_ids].reject(&:blank?) - registered_acquaintances
+      destroy_acquaintances = registered_acquaintances -  params[:event][:acquaintance_ids].reject(&:blank?)
+      new_acquaintances.each do |new|
+        acquaintance = Acquaintance.find_by(id: new)
+        @event.acquaintances << acquaintance
+      end
+      destroy_acquaintances.each do |destroy|
+        acquaintance_id = Acquaintance.find_by(id: destroy)
+        destroy_schedule = Schedule.find_by(acquaintance_id: acquaintance_id, event_id: @event.id)
+        destroy_schedule.destroy
+      end
+    end
     redirect_to event_path(@event)
   end
 
