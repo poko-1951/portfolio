@@ -26,11 +26,11 @@
           </div>
         </div>
         <!--投稿のタイトルと内容-->
-        <a class="mt-3 ms-4 text-decoration-none text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_<%= topic.id %>" aria-expanded="false" aria-controls="collapseExample">
+        <a onclick="$('#collapse_<%= topic.id %>').collapse('toggle')", class="mt-3 ms-4 text-decoration-none text-dark">
           <div class="h3 fw-bold"><%= topic.title %></div>
           <div class="h6">内容を見る▼</div>
         </a>
-        <div class="collapse mt-3 ms-4" id="collapseExample_<%= topic.id %>">
+        <div class="collapse mt-3 ms-4" id="collapse_<%= topic.id %>">
           <div><%= topic.content %></div>
           <div class="text-end"><%= link_to "コメントを見る", topic_path(topic) %></div>
         </div>
