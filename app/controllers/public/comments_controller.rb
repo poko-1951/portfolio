@@ -6,12 +6,10 @@ class Public::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.topic_id = @topic.id
     comment.save
-    redirect_to topic_path(@topic)
   end
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to topic_path(@topic)
   end
 
   private
