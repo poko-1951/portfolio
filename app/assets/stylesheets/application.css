@@ -151,3 +151,11 @@ footer{
 input[id^="event_acquaintance_ids_"] {
     margin-left: 20px;
 }
+
+イベント詳細におけるお相手の写真
+.event_profile_image {
+  border-radius: 15px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
