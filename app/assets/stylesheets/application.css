@@ -134,7 +134,7 @@ footer{
   width: auto;
 }
 
-.acquaintance_name {
+.acquaintance_name, .user_name {
   color: black;
 }
 
@@ -150,4 +150,12 @@ footer{
 /*イベント登録モーダルでのお相手に関するもの*/
 input[id^="event_acquaintance_ids_"] {
     margin-left: 20px;
+}
+
+/*イベント詳細におけるお相手の写真*/
+.event_profile_image, .comment_profile_image {
+  border-radius: 15px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 }

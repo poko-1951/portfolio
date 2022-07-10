@@ -40,10 +40,10 @@ document.addEventListener('turbolinks:load', function() {
 
       // 本日の日付に書き換えている
       $('#event_start_3i').val(day);
-      $('#event_end_3i').val(day);
+      $('#event_end_3i').val(day + 1);
 
       //Bootstrapでモーダルを表示させる
-      $('#modal_box').modal('show');
+      $('#modal_event').modal('show');
 
     },
 

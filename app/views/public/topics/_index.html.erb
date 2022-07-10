@@ -32,7 +32,7 @@
         </a>
         <div class="collapse mt-3 ms-4" id="collapse_<%= topic.id %>">
           <div><%= topic.content %></div>
-          <div class="text-end"><%= link_to "コメントを見る", topic_path(topic) %></div>
+          <div class="text-end"><%= link_to "コメントを見る", topic_path(topic), class:"text-decoration-none" %></div>
         </div>
       </div>
     <% end %>
