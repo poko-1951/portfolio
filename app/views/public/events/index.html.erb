@@ -1,7 +1,7 @@
 <div id='calendar'></div>
 
 <div id="modal_box" tabindex="-1" role="dialog" class="modal fade">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -15,24 +15,24 @@
               <%= f.text_field :title, class:'form-control mb-3', required: true %>
             </div>
             <div class="form-group">
-             <%= f.label :start,"開始時刻" %>
-             <%= f.datetime_select :start, {default: Date.today + 0.hours + 00.minutes, minute_step: 30}, class: 'form-control date_form' %>
+              <%= f.label :start,"開始時刻" %>
+              <%= f.datetime_select :start, {default: Date.today + 0.hours + 00.minutes, minute_step: 30, use_month_numbers: true}, class: 'form-control date_form' %>
             </div>
             <div class="form-group mb-2">
-             <%= f.label :end,"終了時刻" %>
-             <%= f.datetime_select :end, {default: Date.today + 0.hours + 00.minutes, minute_step: 30}, class: 'form-control date_form' %>
+              <%= f.label :end,"終了時刻" %>
+              <%= f.datetime_select :end, {default: Date.today + 0.hours + 00.minutes, minute_step: 30, use_month_numbers: true}, class: 'form-control date_form' %>
             </div>
             <div class="form-group mb-2">
-             <%= f.label :content,"内容" %>
-             <%= f.text_field :content, class: 'form-control' %>
+              <%= f.label :content,"内容" %>
+              <%= f.text_field :content, class: 'form-control' %>
             </div>
             <div class="form-group mb-2">
-             <%= f.label :place,"場所" %>
-             <%= f.text_field :place, class: 'form-control' %>
+              <%= f.label :place,"場所" %>
+              <%= f.text_field :place, class: 'form-control' %>
             </div>
             <div class="form-group mb-2">
-             <%= f.label :acquaintance_id, "お相手" %>
-             <%= f.select :acquaintance_id, options_from_collection_for_select(current_user.acquaintances, :id, :name), multiple: true %>
+              <%= f.label :acquaintance_id, "お相手" %> <br>
+              <%= f.collection_check_boxes :acquaintance_ids, current_user.acquaintances, :id, :name %>
             </div>
             <div class="form-group text-end">
               <%= f.submit "登録", class: "btn btn-outline-success rounded-pill" %>
