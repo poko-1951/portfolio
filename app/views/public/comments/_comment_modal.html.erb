@@ -1,0 +1,28 @@
+<!--モーダルボタン-->
+<button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#comment">
+  コメントする
+</button>
+
+<!--モーダルの中身-->
+<div class="modal fade" id="comment" tabindex="-1" aria-labelledby="comment_Label" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">コメント</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <%= form_with model: [@topic, @comment] do |f| %>
+        <div class="modal-body">
+          <div class="form-group mb-2">
+            <%= f.text_area :comment, autofocus: true, class:"form-control", rows: "8" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+          <%= f.submit "コメントする", class:"btn btn-outline-success rounded-pill"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

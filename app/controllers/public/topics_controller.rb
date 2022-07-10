@@ -20,6 +20,7 @@ class Public::TopicsController < ApplicationController
 
   def show
     @user = @topic.user
+    @comment = Comment.new
   end
 
   def update

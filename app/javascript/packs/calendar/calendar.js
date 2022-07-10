@@ -43,7 +43,7 @@ document.addEventListener('turbolinks:load', function() {
       $('#event_end_3i').val(day + 1);
 
       //Bootstrapでモーダルを表示させる
-      $('#modal_box').modal('show');
+      $('#modal_event').modal('show');
 
     },
 
