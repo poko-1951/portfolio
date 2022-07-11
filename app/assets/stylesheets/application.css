@@ -148,7 +148,7 @@ footer{
 }
 
 /*イベント登録モーダルでのお相手に関するもの*/
-input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_id_"] {
+input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
     margin-left: 20px;
 }
 

@@ -5,15 +5,15 @@ class Public::StocksController < ApplicationController
   # 特定せずにストックする（お気に入り登録）
   def create
     stock = current_user.stocks.new(topic_id: @topic.id, acquaintance_id: nil)
-    stock.saved
-    redirect_to topic_path(@topic)
+    stock.save
+    # redirect_to topic_path(@topic)
   end
 
   # 特定せずにストックしたものを外す
   def destroy
     stock = current_user.stocks.find_by(topic_id: @topic.id, acquaintance_id: nil)
     stock.destroy
-    redirect_to topic_path(@topic)
+    # redirect_to topic_path(@topic)
   end
 
   # 特定のお相手にストックする（外すことも可能）
