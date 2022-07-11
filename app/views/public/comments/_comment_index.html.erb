@@ -1,7 +1,6 @@
   <% topic.comments.each do |comment| %>
     <hr>
     <div class="col-1 text-center">
-      <%= image_tag comment.user.get_profile_image, class:"comment_profile_image" %>
       <%= link_to image_tag(comment.user.get_profile_image, class:"comment_profile_image"), user_path(comment.user) %>
     </div>
     <div class="col-4">
