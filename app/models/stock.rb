@@ -22,7 +22,7 @@
 #  user_id          (user_id => users.id)
 #
 class Stock < ApplicationRecord
-  belongs_to :acquaintance
+  belongs_to :acquaintance, optional: true
   belongs_to :user
   belongs_to :topic
 end

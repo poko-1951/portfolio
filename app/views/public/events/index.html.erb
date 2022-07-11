@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <%= form_with(model: @event, url: events_path, remote: true) do |f| %>
+          <%= form_with model: @event, url: events_path, remote: true do |f| %>
             <div class="form-group">
               <%= f.label :title, "予定"%>
               <%= f.text_field :title, class:'form-control mb-3', required: true %>

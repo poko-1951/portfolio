@@ -23,7 +23,7 @@ Rails.application.routes.draw do
         get "tag_search" => "topics#tag_search"
         get "word_search" => "topics#word_search"
       end
-      resources :stocks, only: [:create, :destroy]
+      resource :stocks, only: [:create, :update, :destroy]
       resources :comments, only: [:create, :destroy]
     end
 

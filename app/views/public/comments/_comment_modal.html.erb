@@ -1,5 +1,6 @@
 <!--モーダルボタン-->
-<button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#comment_modal">
+<!--turbolinksにより最初の投稿では画面の暗転が戻らないことがあるため、JSで制御する-->
+<button type="button" class="btn btn-outline-secondary rounded-pill" onclick="$('#comment_modal').modal('show')" >
   コメントする
 </button>
 

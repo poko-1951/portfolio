@@ -25,9 +25,16 @@
       </div>
     <% end %>
   </div>
+  <!--コメント・ストック機能-->
   <div class="row mt-5">
     <div class="d-flex">
-      <%= render "public/comments/comment_modal", topic: @topic, comment: @comment %>
+      <div><%= render "public/comments/comment_modal", topic: @topic, comment: @comment %></div>
+      <div class="ms-5"><%= render "public/stocks/stock_modal", topic: @topic, stock: @stock %></div>
+      <div>
+        <%= link_to topic_stocks_path(@topic), method: :post do %>
+        ♡
+        <% end %>
+      </div>
     </div>
   </div>
 
