@@ -159,3 +159,7 @@ input[id^="event_acquaintance_ids_"] {
   height: 50px;
   object-fit: cover;
 }
+
+.event_profile_image:hover, .comment_profile_image:hover {
+  filter: brightness(70%);
+}

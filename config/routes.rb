@@ -63,6 +63,7 @@ Rails.application.routes.draw do
         get "tag_search" => "topics#tag_search"
         get "word_search" => "topics#word_search"
       end
+      resources :comments, only: [:destroy]
     end
 
     resources :tags, only: [:index, :destroy] do
@@ -72,7 +73,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :comments, only: [:destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
