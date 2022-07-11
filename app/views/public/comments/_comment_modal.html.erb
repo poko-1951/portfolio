@@ -12,7 +12,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </button>
       </div>
-      <%= form_with model: [@topic, @comment], local: false do |f| %>
+      <%= form_with model: [topic, comment], local: false do |f| %>
         <div class="modal-body">
           <div class="form-group mb-2">
             <%= f.text_area :comment, class:"form-control comment_text_area", rows: "8" %>

@@ -10,18 +10,23 @@
       <div class="row mt-2"><h6>トピック更新日時：<%= @topic.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
     </div>
     <div class="col-3">
-      <%= render "public/topics/edit_modal", topic: @topic %>
-      <%= link_to "削除", admin_topic_path(@topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger rounded-pill" %>
+      <%= render "admin/topics/edit_modal", topic: @topic %>
+      <%= link_to "削除", admin_topic_path(@topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" %>
     </div>
   </div>
   <div class="col-10 mt-4 ms-4"><h1 class="fw-bold"><%= @topic.title %></h1></div>
   <div class="col-10 mt-3 ms-5"><%= @topic.content %></div>
   <div class="d-flex flex-wrap mt-3">
     <% @topic.tags.each do |tag| %>
-      <div class="btn btn-info btn-sm rounded-pill me-2 topic_tag">
+      <div class="btn btn-outline-info btn-sm rounded-pill me-2 topic_tag">
         <%= link_to tag.name, tag_search_admin_topics_path(tag_id: tag.id), class:"text-decoration-none text-dark" %>
       </div>
     <% end %>
   </div>
-  <div class="text-danger fw-bold h1">コメント欄</div>
+
+  <!--コメント-->
+  <div class="row mt-4 topic_comment_index">
+  <!--非同期通信のため部分テンプレート化-->
+  <%= render "admin/comments/comment_index", topic: @topic %>
+  </div>
 </div>
