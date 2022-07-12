@@ -21,11 +21,12 @@ class Public::TopicsController < ApplicationController
   def show
     @user = @topic.user
     @comment = Comment.new
+    @stock = Stock.new
   end
 
   def update
     @topic.update(topic_params)
-    registered_tags = @topic.tags.pluck(:name)
+    registered_tags = @topic.tags.pluck(:name).map!(&:to_s)
     input_tags = tag_params[:name].split #入力タグを配列に変換する
     new_tags = input_tags - registered_tags #追加されたタグ
     destroy_tags = registered_tags - input_tags #削除されたタグ
@@ -46,10 +47,20 @@ class Public::TopicsController < ApplicationController
     redirect_to topics_path
   end
 
+  def favorite_topics
+    @stocks = current_user.stocks.where(acquaintance_id: nil)
+    @topics = []
+    @stocks.each do |stock|
+      topic = Topic.find(stock.topic_id)
+      @topics << topic
+    end
+  end
+
   def tag_search
     @tag=Tag.find(params[:tag_id])
     @topics = @tag.topics
   end
+
 
   private
 
