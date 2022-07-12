@@ -1,10 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <% if admin_signed_in? %>
-      <%= link_to "ロゴ", admin_path, class: "navbar-brand" %>
-    <% else %>
-      <%= link_to "ロゴ", topics_path, class: "navbar-brand" %>
-    <% end %>
+    <div class="row">
+      <div class="col-3 text-center">
+        <% if admin_signed_in? %>
+          <%= link_to "ロゴ", admin_path, class: "navbar-brand" %>
+        <% else %>
+          <%= link_to "ロゴ", topics_path, class: "navbar-brand" %>
+        <% end %>
+      </div>
+      <div class="col-9 text-center">
+        <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
+          <div class="input-group">
+            <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+            <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+            <%= f.submit '検索', class:"btn btn-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +27,9 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item text-light">
-          <span class="nav-link text-light">検索フォームをいれる</span>
+          <span class="nav-link text-light">
+
+          </span>
         </li>
       </ul>
     </div>

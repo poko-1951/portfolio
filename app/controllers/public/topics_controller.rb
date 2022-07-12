@@ -61,6 +61,10 @@ class Public::TopicsController < ApplicationController
     @topics = @tag.topics
   end
 
+  def word_search
+    search = Topic.ransack(params[:q])
+    @results = search.result
+  end
 
   private
 

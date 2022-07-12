@@ -20,7 +20,7 @@
       <!--ユーザーの投稿トピック-->
   <div class="row mt-5">
     <div class="col-12">
-      <h5 class="fw-bold">投稿したトピック</h5>
+      <h5 class="fw-bold">【投稿したトピック】</h5>
       <% if @user.topics.present? %>
         <%= render "public/topics/index", topics: @user.topics %>
       <% else %>
