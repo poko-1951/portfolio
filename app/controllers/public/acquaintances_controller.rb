@@ -13,6 +13,7 @@ class Public::AcquaintancesController < ApplicationController
   end
 
   def show
+    @topics = @acquaintance.topics
   end
 
   def update

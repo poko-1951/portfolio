@@ -47,10 +47,20 @@ class Public::TopicsController < ApplicationController
     redirect_to topics_path
   end
 
+  def favorite_topics
+    @stocks = current_user.stocks.where(acquaintance_id: nil)
+    @topics = []
+    @stocks.each do |stock|
+      topic = Topic.find(stock.topic_id)
+      @topics << topic
+    end
+  end
+
   def tag_search
     @tag=Tag.find(params[:tag_id])
     @topics = @tag.topics
   end
+
 
   private
 

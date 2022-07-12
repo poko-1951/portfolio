@@ -15,7 +15,7 @@ class Public::StocksController < ApplicationController
     stock.destroy
     # redirect_to topic_path(@topic)
   end
-
+  
   # 特定のお相手にストックする（外すことも可能）
   def update
     registered_acquaintances = @topic.acquaintances.pluck(:id).map!(&:to_s)

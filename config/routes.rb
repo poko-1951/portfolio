@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # devise関連
   devise_for :users, controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions:      "public/sessions"
 }
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
@@ -13,17 +13,18 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :edit, :update] do
       member do
-        get "confirm" => "users#confirm"
+        get   "confirm"    => "users#confirm"
         patch "withdrawal" => "users#withdrawal"
       end
     end
 
     resources :topics, only: [:index, :create, :show, :update, :destroy] do
       collection do
-        get "tag_search" => "topics#tag_search"
+        get "favorite_topics" => "topics#favorite_topics"
+        get "tag_search"  => "topics#tag_search"
         get "word_search" => "topics#word_search"
       end
-      resource :stocks, only: [:create, :update, :destroy]
+      resource  :stocks,   only: [:create, :update, :destroy]
       resources :comments, only: [:create, :destroy]
     end
 
@@ -60,7 +61,7 @@ Rails.application.routes.draw do
 
     resources :topics, only: [:show, :update, :destroy] do
       collection do
-        get "tag_search" => "topics#tag_search"
+        get "tag_search"  => "topics#tag_search"
         get "word_search" => "topics#word_search"
       end
       resources :comments, only: [:destroy]
@@ -69,7 +70,7 @@ Rails.application.routes.draw do
     resources :tags, only: [:index, :destroy] do
       collection do
         get "destroy_index" => "tags#destroy_index"
-        get "word_search" => "tags#word_search" #実装しないのであれば削除する
+        get "word_search"   => "tags#word_search" #実装しないのであれば削除する
       end
     end
 
