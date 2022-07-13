@@ -46,6 +46,9 @@
               <%= link_to "トピックタグ", admin_tags_path, class:"sidebar-li" %>
             </li>
             <li class="nav-item">
+              <%= link_to "ユーザー一覧", admin_users_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"sidebar-li" %>
             </li>
           <% end %>

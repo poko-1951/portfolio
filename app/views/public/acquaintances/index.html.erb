@@ -11,9 +11,9 @@
           <%= image_tag acquaintance.get_acquaintance_image, class:"card-img-top", alt:"Card image cap" %>
           <div class="card-body">
             <h5 class="card-title"><%= acquaintance.name %> さん</h5>
-             <p>
-              <span>好きなこと</span> <br>
-              <span class="card-text"><%= acquaintance.like %></span>
+             <p class="card-text">
+              好きなこと <br>
+              <%= acquaintance.like %>
             </p>
           </div>
         <% end %>
