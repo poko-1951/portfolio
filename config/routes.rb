@@ -28,11 +28,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :tags, only: [:index] do
-      collection do
-        get "word_search" => "tags#word_search" #実装しないのであれば削除する
-      end
-    end
+    resources :tags, only: [:index]
 
     resources :acquaintances, only: [:index, :create, :show, :update, :destroy] do
       member do
@@ -70,7 +66,6 @@ Rails.application.routes.draw do
     resources :tags, only: [:index, :destroy] do
       collection do
         get "destroy_index" => "tags#destroy_index"
-        get "word_search"   => "tags#word_search" #実装しないのであれば削除する
       end
     end
 

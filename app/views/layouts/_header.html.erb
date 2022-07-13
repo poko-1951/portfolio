@@ -1,22 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <div class="row">
-      <div class="col-3 text-center">
-        <% if admin_signed_in? %>
+    <div class="row text-center">
+      <% if admin_signed_in? %>
+        <div class="col-3">
           <%= link_to "ロゴ", admin_path, class: "navbar-brand" %>
-        <% else %>
+        </div>
+        <div class="col-9">
+          <%= search_form_for(@q, url: word_search_admin_topics_path) do |f| %>
+            <div class="input-group">
+              <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+              <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+              <%= f.submit '検索', class:"btn btn-secondary" %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="col-3">
           <%= link_to "ロゴ", topics_path, class: "navbar-brand" %>
-        <% end %>
-      </div>
-      <div class="col-9 text-center">
-        <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
-          <div class="input-group">
-            <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
-            <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
-            <%= f.submit '検索', class:"btn btn-secondary" %>
-          </div>
-        <% end %>
-      </div>
+        </div>
+        <div class="col-9">
+          <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
+            <div class="input-group">
+              <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+              <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+              <%= f.submit '検索', class:"btn btn-secondary" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
 

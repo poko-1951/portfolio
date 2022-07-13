@@ -34,6 +34,12 @@ class Admin::TopicsController < ApplicationController
     @tag=Tag.find(params[:tag_id])
     @topics = @tag.topics
   end
+  
+  def word_search
+    search = Topic.ransack(params[:q])
+    @results = search.result
+  end
+
 
   private
 
