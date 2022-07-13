@@ -8,8 +8,8 @@
       <div class="row mt-4">
         <div class="d-flex align-items-center">
           <h1 class="text-break"><%= @user.name %></h1>
-          <% if @user == current_user %>
-            <%= render "public/users/modal", user: @user %>
+          <% if @user == current_user && @user.email != "guest@example.com" %>
+            <%= render "public/users/modal", user: @user, url: user_path(@user) %>
             <%= link_to "退会する", confirm_user_path, class:"btn btn-outline-danger rounded-pill ms-5"%>
           <% end %>
         </div>
