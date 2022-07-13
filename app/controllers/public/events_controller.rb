@@ -26,7 +26,7 @@ class Public::EventsController < ApplicationController
 
   def index
     @event = Event.new
-    @events = Event.all
+    @events = current_user.events
   end
 
   def show
