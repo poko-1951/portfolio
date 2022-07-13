@@ -3,7 +3,7 @@ class Public::AcquaintancesController < ApplicationController
   before_action :set_acquaintance, only: [:show, :update, :destroy]
 
   def index
-    @acquaintances = Acquaintance.all
+    @acquaintances = current_user.acquaintances
   end
 
   def create

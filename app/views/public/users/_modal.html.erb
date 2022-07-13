@@ -8,20 +8,29 @@
   <div class="modal-dialog modal-dialog-centered" >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">編集</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </button>
       </div>
-      <%= form_with model: user, url: user_path(user) do |f| %>
+      <%= form_with model: user, url: url do |f| %>
         <div class="modal-body">
           <div class="form-group">
-            <%= f.label :name %>
+            <%= f.label :name, "アカウント名" %>
             <%= f.text_field :name, class:"form-control" %>
           </div>
-          <div class="form-group">
+          <div class="form-group mt-3">
             <%= f.label :profile_image, "プロフィール画像" %>
             <%= f.file_field :profile_image, accept: "image/*", class:"form-control" %>
           </div>
+          <% if admin_signed_in? %>
+            <div class="form-group mt-3">
+              <%= f.label :is_deleted, "アカウントの状態" %> <br>
+              <%= f.radio_button :is_deleted, "true", class:"form-input" %>
+              <%= f.label :is_deleted, '無効', value: "true", class:"me-3" %>
+              <%= f.radio_button :is_deleted, "false", class:"form-input" %>
+              <%= f.label :is_deleted, '有効', value: "false" %>
+            </div>
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Close</button>

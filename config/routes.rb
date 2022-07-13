@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
+  end
+
 # user側のルーティング
   scope module: :public do
     root to: "homes#top"
@@ -30,13 +35,7 @@ Rails.application.routes.draw do
 
     resources :tags, only: [:index]
 
-    resources :acquaintances, only: [:index, :create, :show, :update, :destroy] do
-      member do
-        # get "stocks" => "acquaintances#stocks_index"
-        # get ":user_id" => "acquaintances#stocks_index"
-      end
-    end
-    # get "/acquaintances/:id/:user_id/stocks" => "acquaintances#stocks_index"
+    resources :acquaintances, only: [:index, :create, :show, :update, :destroy]
 
     resources :events, only: [:create, :index, :show, :update, :destroy] do
       member do

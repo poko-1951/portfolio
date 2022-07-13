@@ -38,5 +38,17 @@ class User < ApplicationRecord
     end
     profile_image
   end
+  
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
+  def self.guest
+    find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー"
+    end
+  end
 
 end

@@ -6,14 +6,13 @@
           <%= image_tag user.get_profile_image, class:"card-img-top", alt:"Card image cap" %>
           <div class="card-body">
             <h4 class="card-title"><%= user.name %></h4>
-            <p>
-              <span>作成日時</span> <br>
-              <span class="card-text"><%= user.created_at.strftime('%Y/%m/%d %H:%M') %></span>
-            </p>
-            <p>
-              <span>更新日時</span> <br>
-              <span class="card-text"><%= user.updated_at.strftime('%Y/%m/%d %H:%M') %></span>
-            </p>
+            <% if user.is_deleted == false %>
+              <span class="card-text text-success fw-bold">アカウント有効</span>
+            <% else %>
+              <span class="card-text text-danger fw-bold">アカウント無効</span>
+            <% end %>
+            <span>最終更新日時</span> <br>
+            <span class="card-text"><%= user.updated_at.strftime('%Y/%m/%d %H:%M') %></span>
           </div>
         <% end %>
       <% end %>
