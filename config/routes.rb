@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-
+  # ゲストログイン
   devise_scope :user do
     post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
   end
 
-# user側のルーティング
+  # user側のルーティング
   scope module: :public do
     root to: "homes#top"
 
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     end
 
   end
-# admin側のルーティング
+  # admin側のルーティング
   namespace :admin do
     get '/' => "homes#top"
 

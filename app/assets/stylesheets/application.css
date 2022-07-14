@@ -21,7 +21,7 @@ body {
 
 /*header*/
 .navbar {
-  height: 50px;
+  /*height: 80px;*/
   background-color: #343a40;
   box-shadow: 1px 0px 20px black;
 }
@@ -169,4 +169,8 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
 
 .event_profile_image:hover, .comment_profile_image:hover {
   filter: brightness(70%);
+}
+
+.navbar-nav {
+  background-color: #343a40;
 }

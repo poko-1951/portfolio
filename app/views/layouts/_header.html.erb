@@ -1,48 +1,54 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <div class="row text-center">
-      <% if admin_signed_in? %>
-        <div class="col-3">
-          <%= link_to "ロゴ", admin_path, class: "navbar-brand" %>
-        </div>
-        <div class="col-9">
-          <%= search_form_for(@q, url: word_search_admin_topics_path) do |f| %>
-            <div class="input-group">
-              <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
-              <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
-              <%= f.submit '検索', class:"btn btn-secondary" %>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="col-3">
-          <%= link_to "ロゴ", topics_path, class: "navbar-brand" %>
-        </div>
-        <div class="col-9">
-          <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
-            <div class="input-group">
-              <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
-              <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
-              <%= f.submit '検索', class:"btn btn-secondary" %>
-            </div>
-          <% end %>
+  <!--ハンバーガーメニュー-->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!--ヘッダー-->
+  <% if admin_signed_in? %>
+    <div class="col-3">
+      <%= link_to "ロゴ", admin_path, class: "navbar-brand" %>
+    </div>
+    <div class="col-9">
+      <%= search_form_for(@q, url: word_search_admin_topics_path) do |f| %>
+        <div class="input-group">
+          <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+          <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+          <%= f.submit '検索', class:"btn btn-secondary" %>
         </div>
       <% end %>
     </div>
-
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item text-light">
-          <span class="nav-link text-light">
-
-          </span>
-        </li>
-      </ul>
+  <% else %>
+      <%= link_to "ロゴ", topics_path, class: "navbar-brand ms-4" %>
+    <div class="col-12">
+      <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
+        <div class="input-group">
+          <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+          <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+          <%= f.submit '検索', class:"btn btn-secondary" %>
+        </div>
+      <% end %>
     </div>
+  <% end %>
+
+
+  <!--ハンバーガーメニューで表示-->
+  <div class="collapse navbar-collapse mt-1" id="navbarNav">
+    <ul class="navbar-nav d-lg-none">
+      <li class="nav-item">
+        <a class="nav-link text-danger" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">リンク１</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">リンク２</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">リンク３</a>
+      </li>
+    </ul>
   </div>
+</div>
 </nav>
