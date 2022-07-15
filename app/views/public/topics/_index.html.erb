@@ -6,7 +6,7 @@
       </div>
       <div class="col-lg-10 col-8">
         <div class="row d-flex align-items-center">
-          <div class="col-lg-3 col-8 h2"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark" %></div>
+          <div class="col-lg-3 col-8 h2 text-break"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark" %></div>
           <div class="col-lg-5 col-10">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
           <% if topic.user == current_user %>
             <div class="col-lg-2 col-5 mb-2"><%= render "public/topics/edit_modal", topic: topic, url: topic_path(topic) %></div>

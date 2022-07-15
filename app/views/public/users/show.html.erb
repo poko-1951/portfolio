@@ -1,16 +1,18 @@
 <div class="container">
   <!--ユーザープロフィール-->
   <div class="row">
-    <div class="col-4 text-center">
+    <div class="col-sm-4 col-12 text-center">
       <%= image_tag @user.get_profile_image, class:"profile_image shadow" %>
     </div>
-    <div class="col-8">
+    <div class="col-sm-8">
       <div class="row mt-4">
-        <div class="d-flex align-items-center">
+        <div class="col-6 align-items-center">
           <h1 class="text-break"><%= @user.name %></h1>
+        </div>
+        <div class="col-6 text-center">
           <% if @user == current_user && @user.email != "guest@example.com" %>
             <%= render "public/users/modal", user: @user, url: user_path(@user) %>
-            <%= link_to "退会する", confirm_user_path, class:"btn btn-outline-danger rounded-pill ms-5"%>
+            <%= link_to "退会する", confirm_user_path, class:"btn btn-outline-danger rounded-pill ms-lg-5 mt-sm-0 mt-2"%>
           <% end %>
         </div>
       </div>
@@ -18,15 +20,11 @@
       <div class="row mt-2"><h6>更新日時：<%= @user.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
     </div>
   </div>
-      <!--ユーザーの投稿トピック-->
-  <div class="row mt-5">
-    <div class="col-12">
-      <h5 class="fw-bold">【投稿したトピック】</h5>
-      <% if @user.topics.present? %>
-        <%= render "public/topics/index", topics: @user.topics %>
-      <% else %>
-        投稿したトピックはありません
-      <% end %>
-    </div>
-  </div>
 </div>
+<!--ユーザーの投稿トピック-->
+<h5 class="fw-bold mt-4">【投稿したトピック】</h5>
+<% if @user.topics.present? %>
+  <%= render "public/topics/index", topics: @user.topics %>
+<% else %>
+  投稿したトピックはありません
+<% end %>
