@@ -125,6 +125,10 @@ footer{
   object-fit: cover;
 }
 
+.top_profile_image:hover, .topic_profile_image:hover {
+  filter: brightness(80%);
+}
+
 /*topic*/
 .topic {
   border: solid;
