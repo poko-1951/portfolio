@@ -28,6 +28,11 @@ class Acquaintance < ApplicationRecord
 
   has_one_attached :acquaintance_image
 
+  validates :name,          presence: true
+  validates :relationshiip, presence: true
+  validates :character,     presence: true
+  validates :like,          presence: true
+
   def get_acquaintance_image
     unless acquaintance_image.attached?
       file_path = Rails.root.join("app/assets/images/no_image.jpeg")
