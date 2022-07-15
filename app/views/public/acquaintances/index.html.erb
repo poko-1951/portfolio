@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-3 offset-9 mb-2 text-end">
+    <div class="col-sm-3 offset-sm-9 col-12 text-end mb-2 text-end">
       <%= render "public/acquaintances/new_modal" %>
     </div>
   </div>
   <div class="row">
     <% if @acquaintances.present? %>
-      <div class="d-flex flex-wrap col-12">
+      <div class="d-flex flex-wrap justify-content-around col-12">
         <% @acquaintances.each do |acquaintance| %>
           <%= link_to acquaintance_path(acquaintance), class:"card mb-3 ms-3 shadow" do %>
             <%= image_tag acquaintance.get_acquaintance_image, class:"card-img-top", alt:"Card image cap" %>

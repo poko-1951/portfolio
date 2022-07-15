@@ -8,31 +8,31 @@
   <div class="modal-dialog modal-lg modal-dialog-centered" >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">知人情報登録</h5>
+        <h5 class="modal-title">お知り合い情報登録</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </button>
       </div>
       <%= form_with model: Acquaintance.new, url: acquaintances_path do |f| %>
         <div class="modal-body text-start">
           <div class="form-group mb-2">
-            <%= f.label :name %>
+            <%= f.label :name, "お名前" %>
             <%= f.text_field :name, class:"form-control" %>
           </div>
           <div class="form-group mb-2">
-            <%= f.label :relationship %>
+            <%= f.label :relationship, "関係性" %>
             <%= f.text_field :relationship, class:"form-control" %>
           </div>
           <div class="form-group mb-2">
-            <%= f.label :character %>
+            <%= f.label :character, "性格" %>
             <%= f.text_field :character, class:"form-control" %>
           </div>
           <div class="form-group mb-2">
-            <%= f.label :like %>
+            <%= f.label :like, "好きなこと" %>
             <%= f.text_field :like, class:"form-control" %>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
           <%= f.submit "登録", class:"btn btn-outline-success rounded-pill"%>
         </div>
       <% end %>
