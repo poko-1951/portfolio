@@ -1,3 +1,9 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "お知り合い", acquaintances_path, class:"text-decoration-none" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @acquaintance.name%>さん</li>
+  </ol>
+</nav>
 <div class="container">
   <!--ユーザープロフィール-->
   <div class="row align-items-center">

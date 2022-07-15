@@ -143,6 +143,14 @@ footer{
   background-color: #cfe6f7;
 }
 
+.topic_content, .topic_comment {
+  color: #000000;
+}
+
+.topic_content:hover, .topic_comment:hover {
+  color: #0d6efd;
+}
+
 /*カレンダー*/
 .date_form {
   display: inline-block;
@@ -154,7 +162,7 @@ footer{
 }
 
 .acquaintance_name:hover {
-  color: #0000ff;
+  color: #0d6efd;
 }
 
 #map {
@@ -176,6 +184,6 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
 }
 
 .event_profile_image:hover, .comment_profile_image:hover {
-  filter: brightness(70%);
+  filter: brightness(80%);
 }
 

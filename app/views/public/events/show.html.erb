@@ -1,28 +1,35 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "カレンダー", events_path, class:"text-decoration-none" %></li>
+    <li class="breadcrumb-item active" aria-current="page">イベント詳細</li>
+  </ol>
+</nav>
+
 <div class="container">
   <div class="row">
-    <div class="col-5">
-      <h1 class="fw-bold mb-3"><%= @event.title %></h1>
-      <div class="mb-3">
-        開始日時 <br>
+    <div class="col-sm-5 col-12">
+      <h1 class="fw-bold mb-sm-3"><%= @event.title %></h1>
+      <div class="mb-sm-3">
+        <span class="fw-bold">●開始日時</span> <br>
         <h4><%= @event.start.strftime('%Y/%m/%d %H:%M')%></h4>
       </div>
-      <div class="mb-3">
-        終了日時 <br>
+      <div class="mb-sm-3">
+        <span class="fw-bold">●終了日時</span> <br>
         <h4><%= @event.end.strftime('%Y/%m/%d %H:%M')%></h4>
       </div>
-      <div class="mb-3">
-        内容 <br>
+      <div class="mb-sm-3">
+        <span class="fw-bold">●内容</span> <br>
         <h4><%= @event.content %></h4>
       </div>
       <div>
-        場所 <br>
+        <span class="fw-bold">●場所</span> <br>
         <h4><%= @event.place %></h4>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-sm-4 col-12 mt-sm-0 mt-4">
       <table>
         <tr>
-          <th><h5>お相手</h5></th>
+          <th><h5 class="fw-bold">【お相手】</h5></th>
         </tr>
         <% @event.acquaintances.each do |acquaintance| %>
           <tr>
@@ -34,7 +41,7 @@
         <% end %>
       </table>
     </div>
-    <div class="col-3">
+    <div class="col-sm-3 col-12 mt-sm-0 mt-3">
       <%= render "public/events/edit_modal" %>
       <%= link_to "削除", event_path(@event), method: :delete, data: {confirm: "削除しますか"}, class:"btn btn-outline-danger rounded-pill ms-3" %>
       <div class="mt-3 ms-1"><%= link_to "カレンダーに戻る", events_path, class:"text-decoration-none" %></div>
