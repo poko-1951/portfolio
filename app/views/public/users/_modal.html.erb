@@ -1,5 +1,5 @@
 <!--モーダルボタン-->
-<button type="button" class="btn btn-outline-success rounded-pill ms-4" data-bs-toggle="modal" data-bs-target="#edit_user_profile">
+<button type="button" class="btn btn-outline-success rounded-pill ms-lg-4" data-bs-toggle="modal" data-bs-target="#edit_user_profile">
   編集
 </button>
 
@@ -13,10 +13,10 @@
         </button>
       </div>
       <%= form_with model: user, url: url do |f| %>
-        <div class="modal-body">
+        <div class="modal-body text-start">
           <div class="form-group">
             <%= f.label :name, "アカウント名" %>
-            <%= f.text_field :name, class:"form-control" %>
+            <%= f.text_field :name, class:"form-control", required: true %>
           </div>
           <div class="form-group mt-3">
             <%= f.label :profile_image, "プロフィール画像" %>
@@ -33,7 +33,7 @@
           <% end %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
           <%= f.submit "更新", class:"btn btn-outline-success rounded-pill"%>
         </div>
       <% end %>

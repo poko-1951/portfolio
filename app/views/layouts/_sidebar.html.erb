@@ -5,8 +5,10 @@
         <ul class="nav flex-column">
           <% if user_signed_in? %>
             <li class="nav-item mt-3">
-              <div><%= image_tag current_user.get_profile_image, class:"top_profile_image" %></div>
-              <h5 class="text-break mt-2 sidebar-li"><%= current_user.name %></h5>
+              <%= link_to user_path(current_user), class:"text-decoration-none" do %>
+                <div><%= image_tag current_user.get_profile_image, class:"top_profile_image" %></div>
+                <h5 class="text-break mt-2 sidebar-li"><%= current_user.name %></h5>
+              <% end %>
             </li>
             <li class="nav-item">
               <%= link_to "みんなのトピック", topics_path, class:"sidebar-li" %>

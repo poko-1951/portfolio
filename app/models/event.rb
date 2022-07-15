@@ -25,6 +25,9 @@ class Event < ApplicationRecord
   has_many   :schedules,     dependent: :destroy
   has_many   :acquaintances, through: :schedules
 
+  validates :title,   presence: true
+  validates :content, presence: true
+  validates :place,   presence: true
   validate  :start_end_check
 
   #時間の矛盾を防ぐ

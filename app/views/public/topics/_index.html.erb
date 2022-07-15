@@ -6,7 +6,7 @@
       </div>
       <div class="col-lg-10 col-8">
         <div class="row d-flex align-items-center">
-          <div class="col-lg-3 col-8 h2"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark" %></div>
+          <div class="col-lg-3 col-8 h2 text-break"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark" %></div>
           <div class="col-lg-5 col-10">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
           <% if topic.user == current_user %>
             <div class="col-lg-2 col-5 mb-2"><%= render "public/topics/edit_modal", topic: topic, url: topic_path(topic) %></div>
@@ -31,8 +31,19 @@
       <div class="h6">内容を見る▼</div>
     </a>
     <div class="collapse mt-sm-3 ms-sm-4" id="collapse_<%= topic.id %>">
-      <div><%= topic.content %></div>
-      <div class="text-end"><%= link_to "コメントを見る", topic_path(topic), class:"text-decoration-none" %></div>
+      <div><%= link_to topic.content, topic_path(topic), class:"text-decoration-none topic_content" %></div>
+      <div class="d-flex flex-row-reverse">
+        <div class="ms-3">
+          <%= link_to topic_path(topic), class:"text-decoration-none topic_comment" do %>
+            コメント(<%= topic.comments.count %>)
+          <% end %>
+        </div>
+        <div>
+          <%= link_to topic_path(topic), class:"text-decoration-none topic_comment" do %>
+            ストック(<%= topic.stocks.count %>)
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

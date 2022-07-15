@@ -105,19 +105,19 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか"}, class:"sidebar-li" %>
             </li>
           <% else %>
-            <li class="nav-item">
+            <li class="nav-item my-2">
               <h3 class="fw-bold text-light">管理者</h3>
             </li>
-            <li class="nav-item">
+            <li class="nav-item my-2">
               <%= link_to "みんなのトピック", admin_path, class:"sidebar-li" %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item my-2">
               <%= link_to "トピックタグ", admin_tags_path, class:"sidebar-li" %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item my-2">
               <%= link_to "ユーザー一覧", admin_users_path, class:"sidebar-li" %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item my-2">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"sidebar-li" %>
             </li>
           <% end %>
