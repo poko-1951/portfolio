@@ -21,9 +21,13 @@ body {
 
 /*header*/
 .navbar {
-  height: 50px;
+  /*height: 80px;*/
   background-color: #343a40;
   box-shadow: 1px 0px 20px black;
+}
+
+.navbar-nav {
+  background-color: #343a40;
 }
 
 /*footer*/
@@ -162,11 +166,12 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
 /*イベント詳細におけるお相手の写真*/
 .event_profile_image, .comment_profile_image {
   border-radius: 15px;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
 }
 
 .event_profile_image:hover, .comment_profile_image:hover {
   filter: brightness(70%);
 }
+

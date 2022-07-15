@@ -1,23 +1,23 @@
 <% topics.each do |topic| %>
   <div class="container topic shadow py-3 my-2">
     <div class="row">
-      <div class="col-2 text-center">
+      <div class="col-lg-2 col-4 text-center">
         <%= link_to image_tag(topic.user.get_profile_image, class:"topic_profile_image"), user_path(topic.user) %>
       </div>
-      <div class="col-10">
+      <div class="col-lg-10 col-8">
         <div class="row d-flex align-items-center">
-          <div class="col-3 h2"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark" %></div>
-          <div class="col-5">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
+          <div class="col-lg-3 col-8 h2"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark" %></div>
+          <div class="col-lg-5 col-10">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
           <% if topic.user == current_user %>
-            <div class="col-2"><%= render "public/topics/edit_modal", topic: topic %></div>
-            <div class="col-2"><%= link_to "削除", topic_path(topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" %></div>
+            <div class="col-lg-2 col-5 mb-2"><%= render "public/topics/edit_modal", topic: topic, url: topic_path(topic) %></div>
+            <div class="col-lg-2 col-5"><%= link_to "削除", topic_path(topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" %></div>
           <% end %>
         </div>
         <!--タグ一覧-->
-        <div class="row ms-2">
-          <div class="d-flex flex-wrap">
+        <div class="row ms-lg-2">
+          <div class="d-flex flex-wrap col-12">
             <% topic.tags.each do |tag| %>
-              <div class="btn btn-info btn-sm rounded-pill me-2 topic_tag">
+              <div class="btn btn-info btn-sm rounded-pill me-2 mb-1 topic_tag">
                 <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"text-decoration-none text-dark" %>
               </div>
             <% end %>
@@ -26,11 +26,11 @@
       </div>
     </div>
     <!--投稿のタイトルと内容-->
-    <a onclick="$('#collapse_<%= topic.id %>').collapse('toggle')", class="mt-3 ms-4 text-decoration-none text-dark">
+    <a onclick="$('#collapse_<%= topic.id %>').collapse('toggle')" class="mt-3 ms-4 text-decoration-none text-dark">
       <div class="h3 fw-bold"><%= topic.title %></div>
       <div class="h6">内容を見る▼</div>
     </a>
-    <div class="collapse mt-3 ms-4" id="collapse_<%= topic.id %>">
+    <div class="collapse mt-sm-3 ms-sm-4" id="collapse_<%= topic.id %>">
       <div><%= topic.content %></div>
       <div class="text-end"><%= link_to "コメントを見る", topic_path(topic), class:"text-decoration-none" %></div>
     </div>

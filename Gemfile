@@ -63,3 +63,4 @@ gem "devise"
 gem "kaminari"
 gem 'dotenv-rails'
 gem "ransack"
+gem "devise-i18n"

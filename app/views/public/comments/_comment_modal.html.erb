@@ -1,7 +1,7 @@
 <!--モーダルボタン-->
 <!--turbolinksにより最初の投稿では画面の暗転が戻らないことがあるため、JSで制御する-->
 <button type="button" class="btn btn-outline-secondary rounded-pill" onclick="$('#comment_modal').modal('show')" >
-  コメントする
+  コメント
 </button>
 
 <!--モーダルの中身-->
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
           <!--onclickにより、クリックした時にモーダルを閉じるようにして、非同期通信に対応させている（そのままだとモーダルが閉じないため）-->
           <%= f.submit "コメントする", class:"btn btn-outline-success rounded-pill", onclick:"$('#comment_modal').modal('hide')"%>
         </div>

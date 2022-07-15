@@ -2,6 +2,12 @@
 
 class Public::SessionsController < Devise::SessionsController
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to topics_path, notice: 'guestuserでログインしました。'
+  end
+
   protected
 
   def after_sign_in_path_for(resource)
@@ -26,13 +32,6 @@ class Public::SessionsController < Devise::SessionsController
       flash[:notice] = "項目を入力してください"
     end
   end
-
-  def guest_sign_in
-    user = User.guest
-    sign_in user
-    redirect_to topics_path, notice: 'guestuserでログインしました。'
-  end
-
 
   # before_action :configure_sign_in_params, only: [:create]
 

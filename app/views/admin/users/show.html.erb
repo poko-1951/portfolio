@@ -17,19 +17,15 @@
       </div>
       <div class="row mt-2"><h6>作成日時：<%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
       <div class="row mt-2"><h6>更新日時：<%= @user.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
-      <div class="row">
-        <% @topics.each do |topic| %>
-          <div class="user_topic">
-            <div class="col-4">
-              <%= image_tag @user.get_profile_image, class:"topic_profile_image" %>
-            </div>
-            <div class="col-8">
-              <!--中身を入れられるようにする-->
-            </div>
-            </div>
-        <% end %>
-      </div>
     </div>
+  </div>
+  <div class="row mt-5">
+    <h5 class="fw-bold">【投稿したトピック】</h5>
+    <% if @user.topics.present? %>
+      <%= render "admin/topics/index", topics: @user.topics %>
+    <% else %>
+      投稿したトピックはありません
+    <% end %>
   </div>
 </div>
 
