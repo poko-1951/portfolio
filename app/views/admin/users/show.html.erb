@@ -1,0 +1,30 @@
+<div class="container">
+  <!--ユーザープロフィール-->
+  <div class="row">
+    <div class="col-sm-4 col-12 text-center">
+      <%= image_tag @user.get_profile_image, class:"profile_image shadow" %>
+    </div>
+    <div class="col-sm-8">
+      <div class="row mt-4">
+        <h1 class="col-12 text-break"><%= @user.name %></h1>
+      </div>
+      <div class="row">
+        <% if @user.is_deleted == false %>
+          <div class="col-5 text-success align-self-center fw-bold">アカウント有効</div>
+        <% else %>
+          <div class="col-5 text-danger align-self-center fw-bold">アカウント無効</div>
+        <% end %>
+        <div class="col-4"><%= render "public/users/modal", user: @user, url: admin_user_path(@user)%></div>
+      </div>
+      <div class="row mt-2"><h6>作成日時：<%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
+      <div class="row mt-2"><h6>更新日時：<%= @user.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
+    </div>
+  </div>
+</div>
+<!--ユーザーの投稿トピック-->
+<h5 class="fw-bold mt-4">【投稿したトピック】</h5>
+<% if @user.topics.present? %>
+  <%= render "admin/topics/index", topics: @user.topics %>
+<% else %>
+  投稿したトピックはありません
+<% end %>

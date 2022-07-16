@@ -1,0 +1,31 @@
+<!--モーダルボタン-->
+<button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#new_stock">
+  ストック
+</button>
+
+<!--モーダルの中身-->
+<div class="modal fade" id="new_stock" tabindex="-1" aria-labelledby="new_stock_Label" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">ストック</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <%= form_with model: [topic, stock], method: :patch do |f| %>
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group mb-2">
+              <%= f.label :acquaintance_id, "お知り合い" %> <br>
+              <%= f.collection_check_boxes :acquaintance_ids, current_user.acquaintances, :id, :name, checked: @topic.stocks.pluck(:acquaintance_id) %>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
+          <%= f.submit "登録", class:"btn btn-outline-success rounded-pill"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

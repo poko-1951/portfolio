@@ -1,0 +1,79 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "カレンダー", events_path, class:"text-decoration-none" %></li>
+    <li class="breadcrumb-item active" aria-current="page">イベント詳細</li>
+  </ol>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5 col-12">
+      <h1 class="fw-bold mb-sm-3"><%= @event.title %></h1>
+      <div class="mb-sm-3">
+        <span class="fw-bold">●開始日時</span> <br>
+        <h4><%= @event.start.strftime('%Y/%m/%d %H:%M')%></h4>
+      </div>
+      <div class="mb-sm-3">
+        <span class="fw-bold">●終了日時</span> <br>
+        <h4><%= @event.end.strftime('%Y/%m/%d %H:%M')%></h4>
+      </div>
+      <div class="mb-sm-3">
+        <span class="fw-bold">●内容</span> <br>
+        <h4><%= @event.content %></h4>
+      </div>
+      <div>
+        <span class="fw-bold">●場所</span> <br>
+        <h4><%= @event.place %></h4>
+      </div>
+    </div>
+    <div class="col-sm-4 col-12 mt-sm-0 mt-4">
+      <table>
+        <tr>
+          <th><h5 class="fw-bold">【お相手】</h5></th>
+        </tr>
+        <% @event.acquaintances.each do |acquaintance| %>
+          <tr>
+            <td class="mb-3">
+              <%= image_tag acquaintance.get_acquaintance_image, class:"event_profile_image" %>
+              <%= link_to acquaintance.name, acquaintance_path(acquaintance), class:"text-decoration-none h4 fw-bold acquaintance_name" %> さん
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-sm-3 col-12 mt-sm-0 mt-3">
+      <%= render "public/events/edit_modal" %>
+      <%= link_to "削除", event_path(@event), method: :delete, data: {confirm: "削除しますか"}, class:"btn btn-outline-danger rounded-pill ms-3" %>
+      <div class="mt-3 ms-1"><%= link_to "カレンダーに戻る", events_path, class:"text-decoration-none" %></div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-12">
+      <div id='map'></div>
+      <!--hiddenで@event.placeデータを持ってくる-->
+      <input id="address" type="hidden" value=<%= @event.place %>>
+    </div>
+  </div>
+</div>
+
+<script> //Google Map表示
+  function initMap(){
+    const inputAddress = document.getElementById('address').value; // @event.placeを入れる
+    const geocoder = new google.maps.Geocoder()
+    const map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15, // 拡大
+    });
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        new google.maps.Marker({
+            map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('該当するマップが見つかりませんでした');
+      }
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>

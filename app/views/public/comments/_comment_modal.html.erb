@@ -1,0 +1,30 @@
+<!--モーダルボタン-->
+<!--turbolinksにより最初の投稿では画面の暗転が戻らないことがあるため、JSで制御する-->
+<button type="button" class="btn btn-outline-secondary rounded-pill" onclick="$('#comment_modal').modal('show')" >
+  コメント
+</button>
+
+<!--モーダルの中身-->
+<div class="modal fade" id="comment_modal" tabindex="-1" aria-labelledby="comment_Label" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">コメント</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <%= form_with model: [topic, comment], local: false do |f| %>
+        <div class="modal-body">
+          <div class="form-group mb-2">
+            <%= f.text_area :comment, class:"form-control comment_text_area", rows: "8", required: true %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
+          <!--onclickにより、クリックした時にモーダルを閉じるようにして、非同期通信に対応させている（そのままだとモーダルが閉じないため）-->
+          <%= f.submit "コメントする", class:"btn btn-outline-success rounded-pill", onclick:"$('#comment_modal').modal('hide')"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

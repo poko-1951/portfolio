@@ -1,0 +1,62 @@
+<div class="container-fluid" id="navbarNavDropdown">
+  <div class="row">
+    <nav class="col-lg-2 d-lg-block sidebar collapse">
+      <div class="mt-3">
+        <ul class="nav flex-column">
+          <% if user_signed_in? %>
+            <li class="nav-item mt-3">
+              <%= link_to user_path(current_user), class:"text-decoration-none" do %>
+                <div><%= image_tag current_user.get_profile_image, class:"top_profile_image" %></div>
+                <h5 class="text-break mt-2 sidebar-li"><%= current_user.name %></h5>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "みんなのトピック", topics_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "トピックタグ", tags_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "カレンダー", events_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "お知り合い", acquaintances_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "プロフィール", user_path(current_user), class:"sidebar-li" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "お気に入りトピック", favorite_topics_topics_path, class:"sidebar-li" %>
+            </li>
+            <!--モーダルボタン-->
+            <li class="nav-item">
+              <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="sidebar-li">
+                トピック投稿
+              </a>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか"}, class:"sidebar-li" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <h5 class="fw-bold text-light">管理者</h5>
+            </li>
+            <li class="nav-item">
+              <%= link_to "みんなのトピック", admin_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "トピックタグ", admin_tags_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ユーザー一覧", admin_users_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"sidebar-li" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+

@@ -1,0 +1,16 @@
+  <% topic.comments.each do |comment| %>
+    <hr>
+    <div class="col-sm-2 col-3 text-center align-self-center">
+      <%= link_to image_tag(comment.user.get_profile_image, class:"comment_profile_image"), user_path(comment.user) %>
+    </div>
+    <div class="col-sm-4 col-5 text-break">
+      <div><%= link_to comment.user.name, user_path(comment.user), class:"text-decoration-none h4 fw-bold user_name" %> さん</div>
+      <div><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+    </div>
+    <% if comment.user.id == current_user.id %>
+      <div class="col-sm-2 col-4">
+        <%= link_to "削除", topic_comment_path(comment.topic.id, comment), method: :delete, remote: :true, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" %>
+      </div>
+    <% end %>
+    <div class="h5 mt-2 ms-3 text-break"><%= comment.comment %></div>
+  <% end %>

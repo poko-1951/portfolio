@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 offset-sm-9 col-12 text-end mb-2 text-end">
+      <%= render "public/acquaintances/new_modal" %>
+    </div>
+  </div>
+  <div class="row">
+    <% if @acquaintances.present? %>
+      <div class="d-flex flex-wrap justify-content-around col-12">
+        <% @acquaintances.each do |acquaintance| %>
+          <%= link_to acquaintance_path(acquaintance), class:"card mb-3 ms-3 shadow" do %>
+            <%= image_tag acquaintance.get_acquaintance_image, class:"card-img-top", alt:"Card image cap" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= acquaintance.name %> さん</h5>
+               <p class="card-text">
+                好きなこと <br>
+                <%= acquaintance.like %>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+       <h3 class="fw-bold">【お知り合いが登録されておりません】</h3>
+      <% end %>
+    </div>
+  </div>
+</div>
+

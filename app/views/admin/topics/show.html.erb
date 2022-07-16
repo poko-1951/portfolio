@@ -1,0 +1,34 @@
+<div class="container">
+  <!--ユーザープロフィール-->
+  <div class="row">
+    <div class="col-lg-3 col-4 text-center">
+      <%= link_to image_tag(@user.get_profile_image, class:"topic_profile_image"), admin_user_path(@user) %>
+    </div>
+    <div class="col-lg-6 col-sm-4 col-8">
+      <h3 class="fw-bold"><%= link_to @user.name, admin_user_path(@user), class:"text-decoration-none text-dark" %></h3>
+      <div class="row mt-2"><h6>トピック作成日時：<%= @topic.created_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
+      <div class="row mt-2"><h6>トピック更新日時：<%= @topic.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
+    </div>
+    <div class="col-lg-3 col-sm-3 col-12 text-end">
+      <%= render "public/topics/edit_modal", topic: @topic, url:  admin_topic_path(@topic) %>
+      <%= link_to "削除", admin_topic_path(@topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" %>
+    </div>
+  </div>
+  <div class="col-lg-10 col-12 mt-sm-4 ms-sm-4"><h1 class="fw-bold"><%= @topic.title %></h1></div>
+  <div class="col-lg-10 col-12 mt-sm-3 ms-sm-5"><%= @topic.content %></div>
+  <div class="d-flex flex-wrap mt-3">
+    <% @topic.tags.each do |tag| %>
+      <div class="btn btn-outline-info btn-sm rounded-pill me-2 topic_tag">
+        <%= link_to tag.name, tag_search_admin_topics_path(tag_id: tag.id), class:"text-decoration-none text-dark" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!--コメント-->
+  <div class="container">
+    <div class="row mt-4 topic_comment_index">
+      <!--非同期通信のため部分テンプレート化-->
+      <%= render "admin/comments/comment_index", topic: @topic %>
+    </div>
+  </div>
+</div>

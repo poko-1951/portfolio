@@ -13,3 +13,177 @@
  *= require_tree .
  *= require_self
  */
+
+/*body*/
+body {
+  background-color: #f8f5e3;
+}
+
+/*header*/
+.navbar {
+  /*height: 80px;*/
+  background-color: #343a40;
+  box-shadow: 1px 0px 20px black;
+}
+
+.navbar-nav {
+  background-color: #343a40;
+}
+
+/*footer*/
+footer{
+  background-color: #343a40;
+  box-shadow: 1px 0px 20px black;
+}
+
+/*sidebar*/
+.top_profile_image {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 50px 0 0;
+  box-shadow: 1px 0px 20px black;
+  background-color: #343a40;
+}
+
+.sidebar .nav-link {
+  color: #333;
+}
+
+.sidebar .nav-link:active {
+  color: #0d6efd;
+}
+
+.sidebar .nav-item {
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.sidebar-li {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/*card*/
+.card {
+  padding: 0;
+  height:300px;
+  width: 200px;
+  text-decoration: none;
+}
+
+.card:hover {
+  background-color: #121724;
+}
+
+
+.card-img-top {
+  height:150px;
+  width:auto;
+  object-fit: cover;
+}
+
+.card-body {
+  color:#121724;
+  background-color:#F5F2EC;
+}
+
+.card-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width:160px
+}
+
+.card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.profile_image {
+  border-radius: 40px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.topic_profile_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.top_profile_image:hover, .topic_profile_image:hover {
+  filter: brightness(80%);
+}
+
+/*topic*/
+.topic {
+  border: solid;
+  border-radius: 10px;
+  background-color: #fcfaf5;
+}
+
+.topic_tag {
+  background-color: #cfe6f7;
+}
+.topic_tag:hover {
+  background-color: #cfe6f7;
+}
+
+.topic_content, .topic_comment {
+  color: #000000;
+}
+
+.topic_content:hover, .topic_comment:hover {
+  color: #0d6efd;
+}
+
+/*カレンダー*/
+.date_form {
+  display: inline-block;
+  width: auto;
+}
+
+.acquaintance_name, .user_name {
+  color: black;
+}
+
+.acquaintance_name:hover {
+  color: #0d6efd;
+}
+
+#map {
+  height: 400px;
+  width: auto;
+}
+
+/*イベント登録モーダルでのお相手に関するもの*/
+input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
+    margin-left: 20px;
+}
+
+/*イベント詳細におけるお相手の写真*/
+.event_profile_image, .comment_profile_image {
+  border-radius: 15px;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.event_profile_image:hover, .comment_profile_image:hover {
+  filter: brightness(80%);
+}
+

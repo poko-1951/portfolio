@@ -1,0 +1,130 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+
+    <!--ヘッダー-->
+    <% if admin_signed_in? %>
+      <%= link_to "ロゴ", admin_path, class: "navbar-brand" %>
+      <!--ハンバーガーメニュー-->
+      <button class="navbar-toggler" type="button" onclick="$('#search_form').collapse('toggle')">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <button class="navbar-toggler" type="button" onclick="$('#sidebar').collapse('toggle')">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="col-lg-4 col-12 mt-1 d-none d-lg-block">
+        <%= search_form_for(@q, url: word_search_admin_topics_path) do |f| %>
+          <div class="input-group">
+            <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+            <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+            <%= f.submit '検索', class:"btn btn-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <%= link_to "ロゴ", topics_path, class: "navbar-brand ms-4" %>
+      <!--ハンバーガーメニュー-->
+      <button class="navbar-toggler" type="button" onclick="$('#search_form').collapse('toggle')">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <button class="navbar-toggler" type="button" onclick="$('#sidebar').collapse('toggle')">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="col-lg-7 offset-lg-2 col-12 mt-1 d-none d-lg-block">
+        <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
+          <div class="input-group">
+            <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+            <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+            <%= f.submit '検索', class:"btn btn-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <!--ハンバーガーメニュー（検索フォーム）-->
+    <div class="collapse navbar-collapse mt-1" id="search_form">
+      <ul class="navbar-nav d-lg-none text-light">
+        <li class="nav-item">
+          <% if admin_signed_in? %>
+            <%= search_form_for(@q, url: word_search_admin_topics_path) do |f| %>
+              <div class="input-group">
+                <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+                <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+                <%= f.submit '検索', class:"btn btn-secondary" %>
+              </div>
+            <% end %>
+          <% else %>
+            <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
+              <div class="input-group">
+                <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+                <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+                <%= f.submit '検索', class:"btn btn-secondary" %>
+              </div>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <!--ハンバーガーメニュー（サイドバー）-->
+    <div class="collapse navbar-collapse mt-1" id="sidebar">
+      <ul class="navbar-nav d-lg-none text-light">
+        <% if user_signed_in? %>
+            <li class="nav-item mt-2">
+              <div>
+                <%= image_tag current_user.get_profile_image, class:"top_profile_image me-3" %>
+                <span class="h4 text-break sidebar-li"><%= current_user.name %></span>
+              </div>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "みんなのトピック", topics_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "トピックタグ", tags_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "カレンダー", events_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "お知り合い", acquaintances_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "プロフィール", user_path(current_user), class:"sidebar-li" %>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "お気に入りトピック", favorite_topics_topics_path, class:"sidebar-li" %>
+            </li>
+            <!--モーダルボタン-->
+            <li class="nav-item my-2">
+              <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="sidebar-li">
+                トピック投稿
+              </a>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか"}, class:"sidebar-li" %>
+            </li>
+          <% else %>
+            <li class="nav-item my-2">
+              <h3 class="fw-bold text-light">管理者</h3>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "みんなのトピック", admin_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "トピックタグ", admin_tags_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "ユーザー一覧", admin_users_path, class:"sidebar-li" %>
+            </li>
+            <li class="nav-item my-2">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"sidebar-li" %>
+            </li>
+          <% end %>
+      </ul>
+    </div>
+
+
+
+  </div>
+</nav>

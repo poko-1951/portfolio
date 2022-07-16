@@ -1,0 +1,53 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "お知り合い", acquaintances_path, class:"text-decoration-none" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @acquaintance.name%>さん</li>
+  </ol>
+</nav>
+<div class="container">
+  <!--ユーザープロフィール-->
+  <div class="row align-items-center">
+    <div class="col-sm-4 col-12 text-center">
+      <%= image_tag @acquaintance.get_acquaintance_image, class:"profile_image shadow" %>
+    </div>
+    <div class="col-sm-4 col-12">
+      <div class="row mt-4">
+        <div class="d-flex align-items-center">
+          <h1 class="text-break"><%= @acquaintance.name %> さん</h1>
+          <% if @acquaintance == current_user %>
+            <%= render "public/users/modal", user: @acquaintance %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row mt-2"><h6>作成日時：<%= @acquaintance.created_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
+      <div class="row mt-2"><h6>更新日時：<%= @acquaintance.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
+      <div class="row mt-2">
+        <div class="col-6"><%= render "public/acquaintances/edit_modal" %></div>
+        <div class="col-6"><%= link_to "削除", acquaintance_path(@acquaintance), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" %></div>
+      </div>
+    </div>
+    <div class="col-sm-4 col-12 mt-sm-0 mt-4">
+      <table class="table">
+        <tr>
+          <th scope="row">関係性</th>
+          <td><%= @acquaintance.relationship %></td>
+        </tr>
+        <tr>
+          <th scope="row">性格</th>
+          <td><%= @acquaintance.character %></td>
+        </tr>
+        <tr>
+          <th scope="row">好きなこと</th>
+          <td><%= @acquaintance.like %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!--ユーザーの投稿トピック-->
+<h5 class="fw-bold mt-4">【ストックしたトピック】</h5>
+<% if @acquaintance.topics.present? %>
+  <%= render "public/topics/index", topics: @topics %>
+<% else %>
+  投稿したトピックはありません
+<% end %>

@@ -1,0 +1,31 @@
+<div class="modal fade" id="new_topic" tabindex="-1" aria-labelledby="new_topic_Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">トピック投稿</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <%= form_with model: Topic.new, url: topics_path do |f| %>
+        <div class="modal-body">
+          <div class="form-group mb-2">
+            <%= f.label :title, "タイトル" %>
+            <%= f.text_field :title, class:"form-control", required: true %>
+          </div>
+          <div class="form-group mb-2">
+            <%= f.label :content, "内容" %>
+            <%= f.text_area :content, class:"form-control", rows:"10", required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, "タグ(半角スペースで複数個登録できます)" %>
+            <%= f.text_field :name, class:"form-control" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
+          <%= f.submit "登録", class:"btn btn-success rounded-pill"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
