@@ -1,14 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-
     <!--ヘッダー-->
     <% if admin_signed_in? %>
       <%= link_to "ロゴ", admin_path, class: "navbar-brand" %>
       <!--ハンバーガーメニュー-->
-      <button class="navbar-toggler" type="button" onclick="$('#search_form').collapse('toggle')">
-        <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler border-0" type="button" onclick="$('#search_form').collapse('toggle')">
+        <i class="fa-solid fa-magnifying-glass"></i>
       </button>
-      <button class="navbar-toggler" type="button" onclick="$('#sidebar').collapse('toggle')">
+      <button class="navbar-toggler border-0" type="button" onclick="$('#sidebar').collapse('toggle')">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="col-lg-4 col-12 mt-1 d-none d-lg-block">
@@ -16,17 +15,19 @@
           <div class="input-group">
             <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
             <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
-            <%= f.submit '検索', class:"btn btn-secondary" %>
+            <%= button_tag type: "submit", class:"btn btn-secondary" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
           </div>
         <% end %>
       </div>
     <% else %>
       <%= link_to "ロゴ", topics_path, class: "navbar-brand ms-4" %>
       <!--ハンバーガーメニュー-->
-      <button class="navbar-toggler" type="button" onclick="$('#search_form').collapse('toggle')">
-        <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler border-0" type="button" onclick="$('#search_form').collapse('toggle')">
+        <i class="fa-solid fa-magnifying-glass"></i>
       </button>
-      <button class="navbar-toggler" type="button" onclick="$('#sidebar').collapse('toggle')">
+      <button class="navbar-toggler border-0" type="button" onclick="$('#sidebar').collapse('toggle')">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="col-lg-7 offset-lg-2 col-12 mt-1 d-none d-lg-block">
@@ -34,14 +35,16 @@
           <div class="input-group">
             <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
             <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
-            <%= f.submit '検索', class:"btn btn-secondary" %>
+            <%= button_tag type: "submit", class:"btn btn-secondary" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
           </div>
         <% end %>
       </div>
     <% end %>
 
     <!--ハンバーガーメニュー（検索フォーム）-->
-    <div class="collapse navbar-collapse mt-1" id="search_form">
+    <div class="collapse navbar-collapse mt-2" id="search_form">
       <ul class="navbar-nav d-lg-none text-light">
         <li class="nav-item">
           <% if admin_signed_in? %>
@@ -49,7 +52,9 @@
               <div class="input-group">
                 <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
                 <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
-                <%= f.submit '検索', class:"btn btn-secondary" %>
+                <%= button_tag type: "submit", class:"btn btn-secondary" do %>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                <% end %>
               </div>
             <% end %>
           <% else %>
@@ -57,15 +62,15 @@
               <div class="input-group">
                 <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
                 <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
-                <%= f.submit '検索', class:"btn btn-secondary" %>
+                <%= button_tag type: "submit", class:"btn btn-secondary" do %>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                <% end %>
               </div>
             <% end %>
           <% end %>
         </li>
       </ul>
     </div>
-
-
 
     <!--ハンバーガーメニュー（サイドバー）-->
     <div class="collapse navbar-collapse mt-1" id="sidebar">
@@ -123,8 +128,5 @@
           <% end %>
       </ul>
     </div>
-
-
-
   </div>
 </nav>
