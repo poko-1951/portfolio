@@ -22,8 +22,12 @@
       <div class="row mt-2"><h6>作成日時：<%= @acquaintance.created_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
       <div class="row mt-2"><h6>更新日時：<%= @acquaintance.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
       <div class="row mt-2">
-        <div class="col-6"><%= render "public/acquaintances/edit_modal" %></div>
-        <div class="col-6"><%= link_to "削除", acquaintance_path(@acquaintance), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" %></div>
+        <div class="col-3"><%= render "public/acquaintances/edit_modal" %></div>
+        <div class="col-3">
+          <%= link_to acquaintance_path(@acquaintance), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-sm-4 col-12 mt-sm-0 mt-4">

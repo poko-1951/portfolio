@@ -36,6 +36,10 @@ footer{
   box-shadow: 1px 0px 20px black;
 }
 
+.footer_icon_text {
+  font-size: 4px;
+}
+
 /*sidebar*/
 .top_profile_image {
   width: 80px;

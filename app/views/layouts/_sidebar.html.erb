@@ -12,49 +12,80 @@
             </li>
             <li class="nav-item">
               <%= link_to topics_path, class:"sidebar-li" do %>
-                <i class="fa-solid fa-right-to-bracket me-2"></i>
+                <i class="fa-solid fa-comments me-1"></i>
                 みんなのトピック
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "トピックタグ", tags_path, class:"sidebar-li" %>
+              <%= link_to tags_path, class:"sidebar-li" do %>
+                <i class="fa-solid fa-tags me-1"></i>
+                トピックタグ
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "カレンダー", events_path, class:"sidebar-li" %>
+              <%= link_to events_path, class:"sidebar-li" do %>
+                <i class="fa-solid fa-calendar-days me-1"></i>
+                カレンダー
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "お知り合い", acquaintances_path, class:"sidebar-li" %>
+              <%= link_to acquaintances_path, class:"sidebar-li" do %>
+                <i class="fa-solid fa-people-group me-1"></i>
+                お知り合い
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "プロフィール", user_path(current_user), class:"sidebar-li" %>
+              <%= link_to user_path(current_user), class:"sidebar-li" do %>
+                <i class="fa-solid fa-address-card me-1"></i>
+                プロフィール
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "お気に入りトピック", favorite_topics_topics_path, class:"sidebar-li" %>
+              <%= link_to favorite_topics_topics_path, class:"sidebar-li" do %>
+                <i class="fa-solid fa-heart-circle-check me-1"></i>
+                お気に入りトピック
+              <% end %>
             </li>
             <!--モーダルボタン-->
             <li class="nav-item">
               <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="sidebar-li">
+                <i class="fa-solid fa-comment-dots me-1"></i>
                 トピック投稿
               </a>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか"}, class:"sidebar-li" %>
+              <%= link_to destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか"}, class:"sidebar-li" do %>
+                <i class="fa-solid fa-door-open me-1"></i>
+                ログアウト
+              <% end %>
             </li>
           <% else %>
             <li class="nav-item">
               <h5 class="fw-bold text-light">管理者</h5>
             </li>
             <li class="nav-item">
-              <%= link_to "みんなのトピック", admin_path, class:"sidebar-li" %>
+              <%= link_to admin_path, class:"sidebar-li" do %>
+                <i class="fa-solid fa-comments me-1"></i>
+                みんなのトピック
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "トピックタグ", admin_tags_path, class:"sidebar-li" %>
+              <%= link_to admin_tags_path, class:"sidebar-li" do %>
+                <i class="fa-solid fa-tags me-1"></i>
+                トピックタグ
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ユーザー一覧", admin_users_path, class:"sidebar-li" %>
+              <%= link_to admin_users_path, class:"sidebar-li" do %>
+                <i class="fa-solid fa-users me-1"></i>
+                ユーザー一覧
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"sidebar-li" %>
+              <%= link_to destroy_admin_session_path, method: :delete, class:"sidebar-li" do %>
+                <i class="fa-solid fa-door-open me-1"></i>
+                ログアウト
+              <% end %>
             </li>
           <% end %>
         </ul>
