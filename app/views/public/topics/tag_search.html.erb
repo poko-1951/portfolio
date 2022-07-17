@@ -1,2 +1,11 @@
 <h5 class="fw-bold">タグ：<%= @tag.name %></h5>
+<div class="text-end text-dark">
+  <%= link_to tag_search_topics_path(tag_id: @tag.id), class:"me-2 text-decoration-none topic_sort" do %>
+    <i class="fa-solid fa-list-ul"></i> 新着順
+  <% end %>
+  |
+  <%= link_to tag_search_topics_path(tag_id: @tag.id, sort: "shuffle"), class:"ms-2 text-decoration-none topic_sort" do %>
+    <i class="fa-solid fa-shuffle"></i> シャッフル
+  <% end %>
+</div>
 <%= render "public/topics/index", topics: @topics %>

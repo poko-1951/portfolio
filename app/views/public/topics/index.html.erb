@@ -1,5 +1,10 @@
 <div class="text-end text-dark">
-  <%= link_to "新着順", topics_path(sort: "new_arrival"), class:"me-3 text-decoration-none topic_sort" %>|
-  <%= link_to "シャッフル", topics_path(sort: "shuffle"), class:"ms-2 text-decoration-none topic_sort" %>
+  <%= link_to topics_path, class:"me-2 text-decoration-none topic_sort" do %>
+    <i class="fa-solid fa-list-ul"></i> 新着順
+  <% end %>
+  |
+  <%= link_to topics_path(sort: "shuffle"), class:"ms-2 text-decoration-none topic_sort" do %>
+    <i class="fa-solid fa-shuffle"></i> シャッフル
+  <% end %>
 </div>
 <%= render "public/topics/index", topics: @topics %>
