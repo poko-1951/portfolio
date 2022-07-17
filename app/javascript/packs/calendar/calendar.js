@@ -31,6 +31,10 @@ document.addEventListener('turbolinks:load', function() {
     allDayText: '終日',
     height: "auto",
     editable: true, //イベントのドラッグ＆ドロップを許可
+    navLinks: true,
+    eventColor: '#1a73e8',
+    eventDisplay: "block", // 日を跨がない場合でもイベントをセルで表示
+
 
     dateClick: function(info){
       //クリックした日付の情報を取得

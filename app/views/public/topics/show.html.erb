@@ -16,9 +16,11 @@
       <div class="row mt-2"><h6>トピック更新日時：<%= @topic.updated_at.strftime('%Y/%m/%d %H:%M') %></h6></div>
     </div>
     <% if @user == current_user %>
-      <div class="col-lg-3 col-sm-3 col-12 text-end">
+      <div class="col-lg-3 col-sm-3 col-12 text-end mb-2">
         <%= render "public/topics/edit_modal", topic: @topic, url: topic_path(@topic) %>
-        <%= link_to "削除", topic_path(@topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill ms-3" %>
+        <%= link_to topic_path(@topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill ms-3" do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -34,8 +36,8 @@
   <!--コメント・ストック機能-->
   <div class="row mt-sm-5 mt-sm-2 mt-4">
     <div class="d-flex align-items-center">
-      <div class="col-sm-2 col-4"><%= render "public/comments/comment_modal", topic: @topic, comment: @comment %></div>
-      <div class="col-sm-2 col-4"><%= render "public/stocks/stock_modal", topic: @topic, stock: @stock %></div>
+      <div class="col-lg-2 col-5"><%= render "public/comments/comment_modal", topic: @topic, comment: @comment %></div>
+      <div class="col-lg-2 col-5"><%= render "public/stocks/stock_modal", topic: @topic, stock: @stock %></div>
       <div id="stock_heart" class="ms-2">
         <%= render "public/stocks/stock_heart", topic: @topic %>
       </div>

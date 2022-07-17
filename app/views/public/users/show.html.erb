@@ -12,7 +12,9 @@
         <div class="col-6 text-center">
           <% if @user == current_user && @user.email != "guest@example.com" %>
             <%= render "public/users/modal", user: @user, url: user_path(@user) %>
-            <%= link_to "退会する", confirm_user_path, class:"btn btn-outline-danger rounded-pill ms-lg-5 mt-sm-0 mt-2"%>
+            <%= link_to confirm_user_path, class:"btn btn-outline-danger rounded-pill ms-lg-5 mt-sm-0 mt-2" do %>
+              <i class="fa-solid fa-user-large-slash"></i> 退会する
+            <% end %>
           <% end %>
         </div>
       </div>
