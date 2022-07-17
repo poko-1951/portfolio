@@ -143,11 +143,11 @@ footer{
   background-color: #cfe6f7;
 }
 
-.topic_content, .topic_comment {
+.topic_content, .topic_comment, .topic_sort {
   color: #000000;
 }
 
-.topic_content:hover, .topic_comment:hover {
+.topic_content:hover, .topic_comment:hover, .topic_sort:hover {
   color: #0d6efd;
 }
 
@@ -187,3 +187,21 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
   filter: brightness(80%);
 }
 
+.fc-scrollgrid {
+  /*background-color: #343a40;*/
+  text-decoration: none;
+}
+
+.fc-col-header-cell-cushion, .fc-daygrid-day-number {
+  color: grey;
+  text-decoration: none;
+}
+
+.fc-col-header-cell-cushion:hover {
+  color: grey;
+}
+
+#calendar {
+  padding: 20px;
+  background-color: white;
+}

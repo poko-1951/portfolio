@@ -5,6 +5,9 @@ class Public::TopicsController < ApplicationController
 
   def index
     @topics = Topic.all
+    if params[:sort] == "shuffle"
+      @topics = @topics.shuffle
+    end
   end
 
   def create
