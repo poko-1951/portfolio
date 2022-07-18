@@ -35,7 +35,7 @@
             <span class="badge bg-danger me-1">必須</span>
             <%= f.label :password, "パスワード（6桁以上）" %>
           </div>
-          <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1 #{'devise_error' if @user.password < 6  }", required: true %> 
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1 #{'devise_error' if @user.valid_password?(@user) == false&&resource.errors.any?}", required: true %>
           <!--↑ここがうまくいかない-->
         </div>
 
