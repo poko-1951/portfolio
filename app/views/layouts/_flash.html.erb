@@ -1,0 +1,11 @@
+<div class="notifications">
+  <%  flash.each do |key, value| %>
+   <div class="flash"><%= content_tag(:div, value, class: key) %></div>
+  <% end %>
+</div>
+
+<script>
+  $(function() {
+    setTimeout("$('.flash').fadeOut('slow')", 5000);
+  });
+</script>

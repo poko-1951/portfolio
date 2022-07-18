@@ -12,27 +12,29 @@
   </head>
 
   <body>
-    <% if user_signed_in? || admin_signed_in? %>
+
       <header class="fixed-top">
         <%= render "layouts/header" %>
+        <%= render "layouts/flash" %>
       </header>
       <main>
         <div class="container">
           <div class="row">
-            <%= render "layouts/sidebar"%>
-            <div class="col-lg-10 offset-lg-2 col-12 my-5 py-5">
-              <!--モーダルの中身-->
-              <%= render "public/topics/new_modal" %>
-              <%= yield %>
-            </div>
+            <% if user_signed_in? || admin_signed_in? %>
+              <%= render "layouts/sidebar"%>
+              <div class="col-lg-10 offset-lg-2 col-12 my-5 py-5">
+                <!--モーダルの中身-->
+                <%= render "public/topics/new_modal" %>
+                <%= yield %>
+              </div>
+            <% else %>
+              <div class="col-12 my-5 py-5">
+                <%= yield %>
+              </div>
+            <% end %>
           </div>
         </div>
       </main>
-    <% else %>
-      <main>
-        <%= yield %>
-      </main>
-    <% end %>
     <!--footerは画面最下部に固定-->
     <footer class="fixed-bottom">
       <%= render "layouts/footer" %>

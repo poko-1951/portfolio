@@ -1,16 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div></div>
+    <h2 class="text-center fw-bold">新規登録 <i class="fa-solid fa-user-plus"></i></h2>
+    <div class="col-lg-4 offset-lg-4 col-ms-8 offset-sm-2 col-12 mt-2">
+      <%= form_with model: @user, url: user_registration_path do |f| %>
+        <div class="form-group">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-danger">必須</span>
+            <%= f.label :name, "名前（30文字以下）" %>
+          </div>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control mt-1 #{'devise_error' if @user.name.length > 30  }", required: true %>
+          <% if @user.name.length > 30 %>
+            <span class="text-danger">文字数を30文字以内にしてください</span>
+          <% else %>
+            <div class="mb-4"></div>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-danger">必須</span>
+            <%= f.label :email %>
+          </div>
+          <%= f.email_field :email, autocomplete: "email", class:"form-control mt-1 #{"devise_error" if User.where(is_deleted: false, email: @user.email).present?}", required: true %>
+          <% if User.where(is_deleted: false, email: @user.email).present? %>
+            <span class="text-danger">このメールアドレスは既に使用されています</span>
+          <% else %>
+            <div class="mb-4"></div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-danger me-1">必須</span>
+            <%= f.label :password, "パスワード（6桁以上）" %>
+          </div>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1 #{'devise_error' if @user.password < 6  }", required: true %> 
+          <!--↑ここがうまくいかない-->
+        </div>
+
+        <div class="field">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-danger">必須</span>
+            <%= f.label :password_confirmation %>
+          </div>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-1 mb-3", required: true %>
+        </div>
+
+        <div class="actions text-center">
+          <%= f.submit "登録する", class:"btn btn-success rounded shadow" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 <h2>Sign up</h2>
 
 <%= form_with model: @user, url: user_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="field <%= 'title_error' if resource.errors.any? %>">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "email" %>
+    <div class="shadow title_error">
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control mb-3 title_error", required: true %>
+    </div>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", class:"form-control shadow mb-3", required: true %>
   </div>
 
   <div class="field">
@@ -18,16 +83,16 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control shadow mb-3", required: true %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control shadow mb-3", required: true %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions text-center">
+    <%= f.submit "新規登録", class:"btn btn-success rounded shadow" %>
   </div>
 <% end %>
 

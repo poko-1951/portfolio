@@ -30,6 +30,20 @@ body {
   background-color: #343a40;
 }
 
+.notifications {
+  color: #fff;
+  text-align: center;
+  position :absolute;
+  top: 56px;
+  width: 100%;
+  z-index: 3;
+}
+
+.alert {
+  padding: 0;
+  background-color:  #F35500;
+}
+
 /*footer*/
 footer{
   background-color: #343a40;
@@ -218,4 +232,9 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
 
 .word_search_button:hover {
   color: #0d6efd;
+}
+
+.devise_error {
+  border-color: red;
+  border-width: 1px;
 }
