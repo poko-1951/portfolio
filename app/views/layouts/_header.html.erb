@@ -1,7 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
     <!--ヘッダー-->
-    <% if admin_signed_in? %>
+    <% if user_signed_in? %>
+      <!--userがサインイン状態-->
+      <%= link_to "ロゴ", topics_path, class: "navbar-brand ms-4" %>
+      <!--ハンバーガーメニュー-->
+      <nav>
+        <button class="navbar-toggler border-0 align-middle" type="button" onclick="$('#search_form').collapse('toggle')">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button class="navbar-toggler border-0" type="button" onclick="$('#sidebar').collapse('toggle')">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+      <div class="col-lg-7 offset-lg-2 col-12 mt-1 d-none d-lg-block">
+        <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
+          <div class="input-group">
+            <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
+            <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
+            <%= button_tag type: "submit", class:"btn btn-secondary" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% elsif admin_signed_in? %>
+      <!--管理者がサインイン状態-->
       <%= link_to "ロゴ", admin_path, class: "navbar-brand" %>
       <!--ハンバーガーメニュー-->
       <nav>
@@ -24,26 +48,23 @@
         <% end %>
       </div>
     <% else %>
-      <%= link_to "ロゴ", topics_path, class: "navbar-brand ms-4" %>
-      <!--ハンバーガーメニュー-->
-      <nav>
-        <button class="navbar-toggler border-0 align-middle" type="button" onclick="$('#search_form').collapse('toggle')">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-        <button class="navbar-toggler border-0" type="button" onclick="$('#sidebar').collapse('toggle')">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </nav>
-      <div class="col-lg-7 offset-lg-2 col-12 mt-1 d-none d-lg-block">
-        <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
-          <div class="input-group">
-            <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
-            <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
-            <%= button_tag type: "submit", class:"btn btn-secondary" do %>
-              <i class="fa-solid fa-magnifying-glass"></i>
-            <% end %>
-          </div>
-        <% end %>
+      <!--サインインしていない状態-->
+      <%= link_to "ロゴ", root_path, class: "navbar-brand ms-4" %>
+      <button class="navbar-toggler border-0 align-middle" type="button" onclick="$('#sidebar').collapse('toggle')">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse col-5 offset-8" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, class:"btn btn-primary me-3" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class:"btn btn-success me-3" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-secondary" %>
+          </li>
+        </ul>
       </div>
     <% end %>
 
@@ -51,8 +72,8 @@
     <div class="collapse navbar-collapse mt-2" id="search_form">
       <ul class="navbar-nav d-lg-none text-light">
         <li class="nav-item">
-          <% if admin_signed_in? %>
-            <%= search_form_for(@q, url: word_search_admin_topics_path) do |f| %>
+          <% if user_signed_in? %>
+            <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
               <div class="input-group">
                 <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
                 <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
@@ -62,7 +83,7 @@
               </div>
             <% end %>
           <% else %>
-            <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
+            <%= search_form_for(@q, url: word_search_admin_topics_path) do |f| %>
               <div class="input-group">
                 <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
                 <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
@@ -143,7 +164,7 @@
               <i class="fa-solid fa-user-lock me-2"></i>
               プライバシーポリシー
             </li>
-          <% else %>
+          <% elsif admin_signed_in? %>
             <li class="nav-item my-2">
               <h3 class="fw-bold text-light">管理者</h3>
             </li>
@@ -179,6 +200,13 @@
               <i class="fa-solid fa-user-lock me-2"></i>
               プライバシーポリシー
             </li>
+          <% else %>
+          <!--サインインしていない状態-->
+            <div class="mx-auto">
+              <%= link_to "新規登録", new_user_registration_path, class:"btn btn-primary me-3" %>
+              <%= link_to "ログイン", new_user_session_path, class:"btn btn-success me-3" %>
+              <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-secondary" %>
+            </div>
           <% end %>
       </ul>
     </div>
