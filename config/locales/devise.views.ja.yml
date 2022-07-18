@@ -86,8 +86,8 @@ ja:
       new:
         sign_up: "アカウント登録"
     sessions:
-      signed_in: 'ログインしました。'
-      signed_out: 'ログアウトしました。'
+      signed_in: 'ログインしました'
+      signed_out: 'ログアウトしました'
       new:
         sign_in: "ログイン"
     shared:

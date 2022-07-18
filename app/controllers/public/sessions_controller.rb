@@ -5,7 +5,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to topics_path, notice: 'guestuserでログインしました。'
+    redirect_to topics_path, notice: 'ゲストユーザーでログインしました'
   end
 
   protected
@@ -28,8 +28,6 @@ class Public::SessionsController < Devise::SessionsController
     if @customer.valid_password?(params[:customer][:password])
       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
       redirect_to new_user_registration_path
-    else
-      flash[:notice] = "項目を入力してください"
     end
   end
 
