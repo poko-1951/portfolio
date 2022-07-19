@@ -6,9 +6,11 @@
     <div class="col-md-7 col-12 text-center">
       <%= image_tag "top_logo.png", class:"img-fluid" %>
       <h2 class="fw-bold mb-3">ー いつまでも、<br class="d-lg-none">絶え間ない会話を ー</h2>
-      <div><%= link_to "今すぐ登録", new_user_registration_path, class:"btn btn-outline-primary btn-lg mb-2" %></div>
-      <div><%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-success btn-lg mb-2" %></div>
-      <div><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-outline-secondary btn-lg mb-5" %></div>
+      <div class="col-xl-8 offset-xl-2 col-12">
+      <div><%= link_to "今すぐ登録", new_user_registration_path, class:"btn btn-outline-primary mb-2 w-50" %></div>
+      <div><%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-success mb-2 w-50" %></div>
+      <div><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-outline-secondary mb-4 w-50" %></div>
+      </div>
     </div>
   </div>
   <hr style="height:4px"></hr>
