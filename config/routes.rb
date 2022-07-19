@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
 
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:index, :show, :edit, :update] do
       member do
         get   "confirm"    => "users#confirm"
         patch "withdrawal" => "users#withdrawal"

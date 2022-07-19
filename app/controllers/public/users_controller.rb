@@ -1,6 +1,10 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except:[:index]
   before_action :set_user, only: [:show, :update, :confirm, :withdrawal]
+
+  def index
+    redirect_to new_user_registration_path
+  end
 
   def show
     @topics = Topic.where(user_id: @user.id)
