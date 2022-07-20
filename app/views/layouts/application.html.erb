@@ -13,29 +13,30 @@
   </head>
 
   <body>
-
-      <header class="fixed-top">
-        <%= render "layouts/header" %>
-        <%= render "layouts/flash" %>
-      </header>
-      <main>
-        <div class="container">
-          <div class="row">
-            <% if user_signed_in? || admin_signed_in? %>
-              <%= render "layouts/sidebar"%>
-              <div class="col-lg-10 offset-lg-2 col-12 my-5 py-5">
-                <!--モーダルの中身-->
-                <%= render "public/topics/new_modal" %>
-                <%= yield %>
-              </div>
-            <% else %>
-              <div class="col-12 my-5 py-5">
-                <%= yield %>
-              </div>
-            <% end %>
-          </div>
+    <header class="fixed-top">
+      <%= render "layouts/header" %>
+      <%= render "layouts/flash" %>
+    </header>
+    <main>
+      <div class="container">
+        <div class="row">
+          <% if user_signed_in? || admin_signed_in? %>
+            <%= render "layouts/sidebar"%>
+            <div class="col-lg-10 offset-lg-2 col-12 my-5 py-5">
+              <%= yield %>
+            </div>
+          <% else %>
+            <div class="col-12 my-5 py-5">
+              <%= yield %>
+            </div>
+          <% end %>
+          <!--モーダルの中身-->
+          <%= render "public/topics/new_modal" %>
+          <%= render "public/homes/terms_of_use" %>
+          <%= render "public/homes/user_policy" %>
         </div>
-      </main>
+      </div>
+    </main>
     <!--footerは画面最下部に固定-->
     <footer class="fixed-bottom">
       <%= render "layouts/footer" %>
