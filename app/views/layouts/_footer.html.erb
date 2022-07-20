@@ -1,50 +1,60 @@
 <div class="container align-self-center my-1">
   <div class="row">
     <div class="col-12 text-end text-light d-none d-lg-block">
-      <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="text-decoration-none">
-        利用規約
+      <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="footer_text me-5">
+        <i class="fa-solid fa-file-lines me-1"></i>利用規約
       </a>
-      <a data-bs-toggle="modal" data-bs-target="#user_policy" class="text-decoration-none">
-        プライバシーポリシー
+      <a data-bs-toggle="modal" data-bs-target="#user_policy" class="footer_text me-5">
+        <i class="fa-solid fa-user-lock"></i>プライバシーポリシー
       </a>
-      <span>Copyright © 2022.Converce</span>
+      <span>Copyright © 2022 Converce</span>
     </div>
     <!--レスポンシブ対応-->
     <div class="col-12 text-light d-lg-none footer-nav d-flex justify-content-around text-center">
       <% if user_signed_in? %>
-        <%= link_to topics_path, class:"sidebar-li" do %>
+        <%= link_to topics_path, class:"footer_text" do %>
           <i class="fa-solid fa-comments"></i>
           <p class="mb-0 footer_icon_text">トピック</p>
         <% end %>
-        <%= link_to events_path, class:"sidebar-li" do %>
+        <%= link_to events_path, class:"footer_text" do %>
           <i class="fa-solid fa-calendar-days"></i>
           <p class="mb-0 footer_icon_text">カレンダー</p>
         <% end %>
-        <%= link_to acquaintances_path, class:"sidebar-li" do %>
+        <%= link_to acquaintances_path, class:"footer_text" do %>
           <i class="fa-solid fa-people-group"></i>
           <p class="mb-0 footer_icon_text">お知り合い</p>
         <% end %>
-        <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="sidebar-li">
+        <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="footer_text">
           <i class="fa-solid fa-comment-dots"></i>
           <p class="mb-0 footer_icon_text">投稿</p>
         </a>
-      <% else %>
-        <%= link_to admin_path, class:"sidebar-li" do %>
+      <% elsif admin_signed_in? %>
+        <%= link_to admin_path, class:"footer_text" do %>
           <i class="fa-solid fa-comments"></i>
           <p class="mb-0 footer_icon_text">トピック</p>
         <% end %>
-        <%= link_to admin_tags_path, class:"sidebar-li" do %>
+        <%= link_to admin_tags_path, class:"footer_text" do %>
           <i class="fa-solid fa-tags"></i>
           <p class="mb-0 footer_icon_text">トピックタグ</p>
         <% end %>
-        <%= link_to admin_users_path, class:"sidebar-li" do %>
+        <%= link_to admin_users_path, class:"footer_text" do %>
           <i class="fa-solid fa-users"></i>
           <p class="mb-0 footer_icon_text">ユーザー一覧</p>
         <% end %>
-        <%= link_to destroy_admin_session_path, method: :delete, class:"sidebar-li" do %>
+        <%= link_to destroy_admin_session_path, method: :delete, class:"footer_text" do %>
           <i class="fa-solid fa-door-open"></i>
           <p class="mb-0 footer_icon_text">ログアウト</p>
         <% end %>
+      <% else %>
+        <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="footer_text">
+          <i class="fa-solid fa-file-lines"></i>
+          <p class="mb-0 footer_icon_text">利用規約</p>
+        </a>
+        <a data-bs-toggle="modal" data-bs-target="#user_policy" class="footer_text">
+          <i class="fa-solid fa-user-lock"></i>
+          <p class="mb-0 footer_icon_text">プライバシーポリシー</p>
+        </a>
+        <p class="mb-0 align-self-center" style="font-size: 15px;">Copyright © 2022 Converce</p>
       <% end %>
     </div>
   </div>
