@@ -150,9 +150,9 @@
               <% end %>
             </li>
             <!--モーダルボタン-->
-            <li class="nav-item my-2">
+            <li class="nav-item">
               <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="sidebar-li">
-                <i class="fa-solid fa-comments me-2"></i>
+                <i class="bi bi-chat-left-text-fill me-1"></i>
                 トピック投稿
               </a>
             </li>
@@ -163,12 +163,14 @@
               <% end %>
             </li>
             <li class="nav-item my-2">
-              <i class="fa-solid fa-file-lines me-3"></i>
-              利用規約
+              <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="sidebar-li">
+                <i class="fa-solid fa-file-lines me-3"></i>利用規約
+              </a>
             </li>
             <li class="nav-item my-2">
-              <i class="fa-solid fa-user-lock me-2"></i>
-              プライバシーポリシー
+              <a data-bs-toggle="modal" data-bs-target="#user_policy" class="sidebar-li">
+                <i class="fa-solid fa-user-lock me-2"></i>プライバシーポリシー
+              </a>
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item my-2">
@@ -199,18 +201,20 @@
               <% end %>
             </li>
             <li class="nav-item my-2">
-              <i class="fa-solid fa-file-lines me-3"></i>
-              利用規約
+              <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="sidebar-li">
+                <i class="fa-solid fa-file-lines me-3"></i>利用規約
+              </a>
             </li>
             <li class="nav-item my-2">
-              <i class="fa-solid fa-user-lock me-2"></i>
-              プライバシーポリシー
+              <a data-bs-toggle="modal" data-bs-target="#user_policy" class="sidebar-li">
+                <i class="fa-solid fa-user-lock me-2"></i>プライバシーポリシー
+              </a>
             </li>
           <% else %>
           <!--サインインしていない状態-->
-            <div class="mx-auto">
-              <%= link_to "新規登録", new_user_registration_path, class:"btn btn-primary me-3" %>
-              <%= link_to "ログイン", new_user_session_path, class:"btn btn-success me-3" %>
+            <div class="d-flex justify-content-around">
+              <%= link_to "新規登録", new_user_registration_path, class:"btn btn-primary" %>
+              <%= link_to "ログイン", new_user_session_path, class:"btn btn-success" %>
               <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-secondary" %>
             </div>
           <% end %>
