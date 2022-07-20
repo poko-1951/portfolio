@@ -40,7 +40,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </nav>
-      <div class="col-lg-4 col-12 mt-1 d-none d-lg-block">
+      <div class="col-lg-7 offset-lg-2 col-12 mt-1 d-none d-lg-block">
         <%= search_form_for(@q, url: word_search_admin_topics_path) do |f| %>
           <div class="input-group">
             <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>

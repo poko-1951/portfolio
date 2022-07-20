@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
-  before_action :user_signed_in
-  before_action :admin_signed_in
+  before_action :user_signed_in, only:[:top]
+  before_action :admin_signed_in, only:[:top]
 
   def top
   end

@@ -1,10 +1,15 @@
 <div class="container align-self-center my-1">
   <div class="row">
     <div class="col-12 text-end text-light d-none d-lg-block">
-      <span>利用規約</span>
-      <span>プライバシーポリシー</span>
+      <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="text-decoration-none">
+        利用規約
+      </a>
+      <a data-bs-toggle="modal" data-bs-target="#user_policy" class="text-decoration-none">
+        プライバシーポリシー
+      </a>
       <span>Copyright © 2022.Converce</span>
     </div>
+    <!--レスポンシブ対応-->
     <div class="col-12 text-light d-lg-none footer-nav d-flex justify-content-around text-center">
       <% if user_signed_in? %>
         <%= link_to topics_path, class:"sidebar-li" do %>
