@@ -150,9 +150,9 @@
               <% end %>
             </li>
             <!--モーダルボタン-->
-            <li class="nav-item my-2">
+            <li class="nav-item">
               <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="sidebar-li">
-                <i class="fa-solid fa-comments me-2"></i>
+                <i class="bi bi-chat-left-text-fill me-1"></i>
                 トピック投稿
               </a>
             </li>
@@ -163,12 +163,14 @@
               <% end %>
             </li>
             <li class="nav-item my-2">
-              <i class="fa-solid fa-file-lines me-3"></i>
-              利用規約
+              <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="text-decoration-none sidebar-li">
+                <i class="fa-solid fa-file-lines me-3"></i>利用規約
+              </a>
             </li>
             <li class="nav-item my-2">
-              <i class="fa-solid fa-user-lock me-2"></i>
-              プライバシーポリシー
+              <a data-bs-toggle="modal" data-bs-target="#user_policy" class="text-decoration-none sidebar-li">
+                <i class="fa-solid fa-user-lock me-2"></i>プライバシーポリシー
+              </a>
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item my-2">
@@ -199,12 +201,14 @@
               <% end %>
             </li>
             <li class="nav-item my-2">
-              <i class="fa-solid fa-file-lines me-3"></i>
-              利用規約
+              <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="text-decoration-none sidebar-li">
+                <i class="fa-solid fa-file-lines me-3"></i>利用規約
+              </a>
             </li>
             <li class="nav-item my-2">
-              <i class="fa-solid fa-user-lock me-2"></i>
-              プライバシーポリシー
+              <a data-bs-toggle="modal" data-bs-target="#user_policy" class="text-decoration-none sidebar-li">
+                <i class="fa-solid fa-user-lock me-2"></i>プライバシーポリシー
+              </a>
             </li>
           <% else %>
           <!--サインインしていない状態-->
