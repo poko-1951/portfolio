@@ -30,6 +30,10 @@ body {
   background-color: #343a40;
 }
 
+.navbar-brand:hover {
+  filter: brightness(80%);
+}
+
 .notifications {
   color: #fff;
   text-align: center;
