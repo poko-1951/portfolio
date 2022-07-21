@@ -21,8 +21,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
-          <!--onclickにより、クリックした時にモーダルを閉じるようにして、非同期通信に対応させている（そのままだとモーダルが閉じないため）-->
-          <%= f.submit "コメントする", class:"btn btn-outline-success rounded-pill", onclick:"$('#comment_modal').modal('hide')"%>
+          <!--onclickにより、クリックした時にモーダルを閉じるようにして、非同期通信に対応させている（そのままだとモーダルが閉じないため）。さらに、if文で空かどうかをチェックしている-->
+          <%= f.submit "コメントする", class:"btn btn-outline-success rounded-pill", onclick:"if ($('.comment_text_area').val()!==''){$('#comment_modal').modal('hide')}" %>
         </div>
       <% end %>
     </div>
