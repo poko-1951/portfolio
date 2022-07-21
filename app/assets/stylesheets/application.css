@@ -103,6 +103,10 @@ footer{
   border-radius: 10px;
 }
 
+.sidebar-name:hover {
+  filter: brightness(80%);
+}
+
 /*card*/
 .card {
   padding: 0;
