@@ -41,10 +41,16 @@
         <% end %>
       </table>
     </div>
-    <div class="col-sm-3 col-12 mt-sm-0 mt-3">
+    <div class="col-sm-3 col-12 mt-sm-0 mt-3 text-end text-sm-start">
       <%= render "public/events/edit_modal" %>
-      <%= link_to "削除", event_path(@event), method: :delete, data: {confirm: "削除しますか"}, class:"btn btn-outline-danger rounded-pill ms-3" %>
-      <div class="mt-3 ms-1"><%= link_to "カレンダーに戻る", events_path, class:"text-decoration-none" %></div>
+      <%= link_to event_path(@event), method: :delete, data: {confirm: "削除しますか"}, class:"btn btn-outline-danger rounded-pill ms-3" do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+      <div class="mt-3">
+        <%= link_to events_path, class:"text-decoration-none" do %>
+          <i class="bi bi-calendar-week-fill"></i> カレンダーに戻る
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="row mt-5">

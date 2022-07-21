@@ -1,57 +1,91 @@
 <div class="container-fluid" id="navbarNavDropdown">
   <div class="row">
     <nav class="col-lg-2 d-lg-block sidebar collapse">
-      <div class="mt-3">
-        <ul class="nav flex-column">
+      <div class="mt-5">
+        <ul class="nav flex-column" id="sidebar_nav">
           <% if user_signed_in? %>
-            <li class="nav-item mt-3">
+            <li class="nav-item mt-1 ms-4">
               <%= link_to user_path(current_user), class:"text-decoration-none" do %>
                 <div><%= image_tag current_user.get_profile_image, class:"top_profile_image" %></div>
-                <h5 class="text-break mt-2 sidebar-li"><%= current_user.name %></h5>
+                <h5 class="text-break mt-2 text-light sidebar-name"><%= current_user.name %></h5>
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "みんなのトピック", topics_path, class:"sidebar-li" %>
+              <%= link_to topics_path, class:"sidebar-li #{'active' if request.path == topics_path}" do %>
+                <i class="fa-solid fa-comments"></i>
+                みんなのトピック
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "トピックタグ", tags_path, class:"sidebar-li" %>
+              <%= link_to tags_path, class:"sidebar-li #{'active' if request.path == tags_path}" do %>
+                <i class="fa-solid fa-tags me-1"></i>
+                トピックタグ
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "カレンダー", events_path, class:"sidebar-li" %>
+              <%= link_to events_path, class:"sidebar-li #{'active' if request.path == events_path}" do %>
+                <i class="bi bi-calendar-week-fill me-1"></i>
+                カレンダー
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "お知り合い", acquaintances_path, class:"sidebar-li" %>
+              <%= link_to acquaintances_path, class:"sidebar-li #{'active' if request.path == acquaintances_path}" do %>
+                <i class="fa-solid fa-people-group"></i>
+                お知り合い
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "プロフィール", user_path(current_user), class:"sidebar-li" %>
+              <%= link_to user_path(current_user), class:"sidebar-li #{'active' if request.path == user_path(current_user)}" do %>
+                <i class="fa-solid fa-address-card me-1"></i>
+                プロフィール
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "お気に入りトピック", favorite_topics_topics_path, class:"sidebar-li" %>
+              <%= link_to favorite_topics_topics_path, class:"sidebar-li #{'active' if request.path == favorite_topics_topics_path}" do %>
+                <i class="bi bi-bookmark-heart-fill me-1"></i>
+                お気に入りトピック
+              <% end %>
             </li>
             <!--モーダルボタン-->
             <li class="nav-item">
-              <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="sidebar-li">
+              <a data-bs-toggle="modal" data-bs-target="#new_topic" class="sidebar-li">
+                <i class="bi bi-chat-left-text-fill me-1"></i>
                 トピック投稿
               </a>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか"}, class:"sidebar-li" %>
+              <%= link_to destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか"}, class:"sidebar-li" do %>
+                <i class="fa-solid fa-door-open me-1"></i>
+                ログアウト
+              <% end %>
             </li>
           <% else %>
-            <li class="nav-item">
+            <li class="nav-item mt-1 ms-4">
               <h5 class="fw-bold text-light">管理者</h5>
             </li>
             <li class="nav-item">
-              <%= link_to "みんなのトピック", admin_path, class:"sidebar-li" %>
+              <%= link_to admin_path, class:"sidebar-li #{'active' if request.path == admin_path}" do %>
+                <i class="fa-solid fa-comments me-1"></i>
+                みんなのトピック
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "トピックタグ", admin_tags_path, class:"sidebar-li" %>
+              <%= link_to admin_tags_path, class:"sidebar-li #{'active' if request.path == admin_tags_path}" do %>
+                <i class="fa-solid fa-tags me-1"></i>
+                トピックタグ
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ユーザー一覧", admin_users_path, class:"sidebar-li" %>
+              <%= link_to admin_users_path, class:"sidebar-li #{'active' if request.path == admin_users_path}" do %>
+                <i class="fa-solid fa-users me-1"></i>
+                ユーザー一覧
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"sidebar-li" %>
+              <%= link_to destroy_admin_session_path, method: :delete, class:"sidebar-li" do %>
+                <i class="fa-solid fa-door-open me-1"></i>
+                ログアウト
+              <% end %>
             </li>
           <% end %>
         </ul>
@@ -59,4 +93,3 @@
     </nav>
   </div>
 </div>
-

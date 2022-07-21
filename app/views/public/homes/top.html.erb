@@ -1,17 +1,66 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 text-center">
-      <h1>Converce</h1>
+    <div class="col-5 d-none d-md-block align-self-end">
+      <%=image_tag "top_image.png", class:"img-fluid" %>
+    </div>
+    <div class="col-md-7 col-12 text-center">
+      <%= image_tag "top_logo.png", class:"img-fluid" %>
+      <h2 class="fw-bold mb-3">ー いつまでも、<br class="d-lg-none">絶え間ない会話を ー</h2>
+      <div class="col-xl-8 offset-xl-2 col-12">
+      <div><%= link_to "今すぐ登録", new_user_registration_path, class:"btn btn-outline-primary mb-2 w-50" %></div>
+      <div><%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-success mb-2 w-50" %></div>
+      <div><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-outline-secondary mb-4 w-50" %></div>
+      </div>
     </div>
   </div>
+  <hr style="height:4px"></hr>
+
+  <div class="row mt-4 mb-sm-0 mb-3 text-center">
+    <h1 class="fw-bold text-center"><u><i>Converce</i></u></h1>
+    <br></br>
+    <p class="h5">会話が苦手なあなたに、話題（Conversation piece）を提供するサービスです</p>
+    <p></p>
+  </div>
+
   <div class="row">
-    <div class="col-8 offset-2 text-center">
-      <div><%= link_to "今すぐ登録", new_user_registration_path, class:"btn btn-primary btn-lg mb-2 w-25" %></div>
-      <div><%= link_to "ログイン", new_user_session_path, class:"btn btn-success btn-lg mb-2 w-25" %></div>
-      <div><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-secondary btn-lg mb-5 w-25" %></div>
+    <div class="col-md-5 offset-md-1 col-12 align-self-center">
+      <p class="h3 fw-bold">みんなで話題を投稿</p>
+      <p class="mb-0">
+        雑学や時事ネタ、趣味の話など、日々の会話の中で使用できそうなトピックをみんなで共有しましょう <br>
+        タグを付けたり、キーワードで検索したりすることもできるため、あなたのお望みのトピックも見つけやすいです
+      </p>
+    </div>
+    <div class="col-md-5 col-12 mb-sm-0 mb-4">
+      <%=image_tag "about_1.png", class:"img-fluid" %>
     </div>
   </div>
+
   <div class="row">
-    <span class="text-center">About</span>
+    <div class="col-5 d-none d-md-block">
+      <%=image_tag "about_2.png", class:"img-fluid" %>
+    </div>
+    <div class="col-md-5 offset-md-1 col-12 align-self-center">
+      <p class="h3 fw-bold">お知り合いを登録</p>
+      <p>
+        あなたがよくお話しするお知り合いの情報を登録しましょう <br>
+        お知り合いとの関係性、性格、好きなことを考慮して、活用できると思ったトピックをストックしておくことができます
+      </p>
+    </div>
+       <div class="col-12 d-md-none mb-4">
+      <%=image_tag "about_2.png", class:"img-fluid" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5 offset-md-1 col-12 align-self-center">
+      <p class="h3 fw-bold">スケジュールを管理</p>
+      <p class="mb-0">
+        カレンダーにイベントを登録することができます <br>
+        各イベントは、日時だけでなく場所やお会いする相手も登録できるため、いつ、どこでどんな話題が使えるのかを考えることができます
+      </p>
+    </div>
+    <div class="col-md-5 col-12">
+      <%=image_tag "about_3.png", class:"img-fluid" %>
+    </div>
   </div>
 </div>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <!--Bootstrap5をCDNで導入（yarnは本番環境で動作しにくいため）-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,27 +13,30 @@
   </head>
 
   <body>
-    <% if user_signed_in? || admin_signed_in? %>
-      <header class="fixed-top">
-        <%= render "layouts/header" %>
-      </header>
-      <main>
-        <div class="container">
-          <div class="row">
+    <header class="fixed-top">
+      <%= render "layouts/header" %>
+      <%= render "layouts/flash" %>
+    </header>
+    <main>
+      <div class="container">
+        <div class="row">
+          <% if user_signed_in? || admin_signed_in? %>
             <%= render "layouts/sidebar"%>
             <div class="col-lg-10 offset-lg-2 col-12 my-5 py-5">
-              <!--モーダルの中身-->
-              <%= render "public/topics/new_modal" %>
               <%= yield %>
             </div>
-          </div>
+          <% else %>
+            <div class="col-12 my-5 py-5">
+              <%= yield %>
+            </div>
+          <% end %>
+          <!--モーダルの中身-->
+          <%= render "public/topics/new_modal" %>
+          <%= render "public/homes/terms_of_use" %>
+          <%= render "public/homes/user_policy" %>
         </div>
-      </main>
-    <% else %>
-      <main>
-        <%= yield %>
-      </main>
-    <% end %>
+      </div>
+    </main>
     <!--footerは画面最下部に固定-->
     <footer class="fixed-bottom">
       <%= render "layouts/footer" %>

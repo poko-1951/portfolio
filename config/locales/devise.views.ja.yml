@@ -32,6 +32,13 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+      admin:
+        current_password: "現在のパスワード"
+        name: 名前
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "次回から自動的にログイン"
     models:
       user: "ユーザ"
   devise:
@@ -86,8 +93,8 @@ ja:
       new:
         sign_up: "アカウント登録"
     sessions:
-      signed_in: 'ログインしました。'
-      signed_out: 'ログアウトしました。'
+      signed_in: 'ログインしました'
+      signed_out: 'ログアウトしました'
       new:
         sign_in: "ログイン"
     shared:

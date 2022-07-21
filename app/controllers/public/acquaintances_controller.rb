@@ -29,7 +29,7 @@ class Public::AcquaintancesController < ApplicationController
   private
 
   def acquaintance_params
-    params.require(:acquaintance).permit(:name, :relationship, :character, :like)
+    params.require(:acquaintance).permit(:name, :relationship, :character, :like, :acquaintance_image)
   end
 
   def set_acquaintance

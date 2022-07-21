@@ -10,6 +10,7 @@ import "channels"
 import "jquery"
 // カレンダー
 import "packs/calendar/calendar"
+import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()
 Turbolinks.start()
