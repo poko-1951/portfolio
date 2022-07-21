@@ -7,7 +7,7 @@
             <li class="nav-item mt-1 ms-4">
               <%= link_to user_path(current_user), class:"text-decoration-none" do %>
                 <div><%= image_tag current_user.get_profile_image, class:"top_profile_image" %></div>
-                <h5 class="text-break mt-0 ms-0 sidebar-li"><%= current_user.name %></h5>
+                <h5 class="text-break mt-2 text-light sidebar-name"><%= current_user.name %></h5>
               <% end %>
             </li>
             <li class="nav-item">

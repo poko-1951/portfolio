@@ -30,6 +30,10 @@
             <%= f.label :like, "好きなこと" %>
             <%= f.text_field :like, class:"form-control", required: true %>
           </div>
+          <div class="form-group mb-2">
+            <%= f.label :acquaintance_image, "プロフィール画像" %>
+            <%= f.file_field :acquaintance_image, class:"form-control" %>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>

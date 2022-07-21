@@ -13,7 +13,7 @@
     <div class="col-sm-4 col-12">
       <div class="row mt-4">
         <div class="d-flex align-items-center">
-          <h1 class="text-break"><%= @acquaintance.name %> さん</h1>
+          <h1 class="text-break fw-bold"><%= @acquaintance.name %></h1>&nbsp;<h3 class="align-self-end">さん</h3>
           <% if @acquaintance == current_user %>
             <%= render "public/users/modal", user: @acquaintance %>
           <% end %>
@@ -33,15 +33,15 @@
     <div class="col-sm-4 col-12 mt-sm-0 mt-4">
       <table class="table">
         <tr>
-          <th scope="row">関係性</th>
+          <th scope="row" width="35%">関係性</th>
           <td><%= @acquaintance.relationship %></td>
         </tr>
         <tr>
-          <th scope="row">性格</th>
+          <th scope="row" width="35%">性格</th>
           <td><%= @acquaintance.character %></td>
         </tr>
         <tr>
-          <th scope="row">好きなこと</th>
+          <th scope="row" width="35%">好きなこと</th>
           <td><%= @acquaintance.like %></td>
         </tr>
       </table>
