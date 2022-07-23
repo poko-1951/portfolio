@@ -68,6 +68,7 @@ gem "kaminari"
 gem 'dotenv-rails'
 gem "ransack"
 gem "devise-i18n"
+gem 'rinku'
 
 group :production do
   gem 'mysql2'
