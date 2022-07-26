@@ -4,7 +4,7 @@ class Public::TopicsController < ApplicationController
 
 
   def index
-    @topics = Topic.all
+    @topics = Topic.all.reverse
     if params[:sort] == "shuffle"
       @topics = @topics.shuffle
     end
@@ -57,20 +57,20 @@ class Public::TopicsController < ApplicationController
       topic = Topic.find(stock.topic_id)
       @topics << topic
     end
+    @topics.reverse
   end
 
   def tag_search
     @tag=Tag.find(params[:tag_id])
-    @topics = @tag.topics
+    @topics = @tag.topics.reverse
     if params[:sort] == "shuffle"
       @topics = @topics.shuffle
     end
   end
 
   def word_search
-
     search = Topic.ransack(params[:q])
-    @results = search.result
+    @results = search.result.reverse
     @title_or_content_cont = params[:q][:title_or_content_cont] # シャッフルのために必要
     @tags_name_cont = params[:q][:tags_name_cont] # シャッフルのために必要
     if params[:q][:sort] == "shuffle"

@@ -3,6 +3,7 @@
     <i class="fa-solid fa-list-ul"></i> 新着順
   <% end %>
   |
+  <!--sortパラメータを送り、コントローラで判別させる-->
   <%= link_to topics_path(sort: "shuffle"), class:"ms-2 text-decoration-none topic_sort" do %>
     <i class="fa-solid fa-shuffle"></i> シャッフル
   <% end %>
