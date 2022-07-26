@@ -35,7 +35,7 @@
       <div class="h6">内容を見る <i class="fa-solid fa-arrow-down-wide-short"></i></div>
     </a>
     <div class="collapse mt-sm-3 ms-sm-4" id="collapse_<%= topic.id %>">
-      <div><%= link_to topic.content, topic_path(topic), class:"text-decoration-none topic_content" %></div>
+      <div><%= link_to safe_join(topic.content.split("\n"),tag(:br)), topic_path(topic), class:"text-decoration-none topic_content" %></div>
       <div class="text-end mt-2">
         <%= link_to topic_path(topic), class:"text-decoration-none topic_comment me-4" do %>
           <i class="fa-solid fa-message"></i> コメント(<%= topic.comments.count %>)
