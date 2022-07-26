@@ -34,7 +34,7 @@
         <% @event.acquaintances.each do |acquaintance| %>
           <tr>
             <td class="mb-3">
-              <%= image_tag acquaintance.get_acquaintance_image, class:"event_profile_image" %>
+              <%= link_to image_tag(acquaintance.get_acquaintance_image,  class:"event_profile_image"), acquaintance_path(acquaintance) %>
               <%= link_to acquaintance.name, acquaintance_path(acquaintance), class:"text-decoration-none h4 fw-bold acquaintance_name" %> さん
             </td>
           </tr>
