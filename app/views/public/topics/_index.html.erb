@@ -6,7 +6,7 @@
       </div>
       <div class="col-lg-10 col-8">
         <div class="row d-flex align-items-center">
-          <div class="col-lg-3 col-8 h2 text-break"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark" %></div>
+          <div class="col-lg-3 col-8 h3 text-break"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark" %></div>
           <div class="col-lg-5 col-10">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
           <% if topic.user == current_user %>
             <div class="col-lg-1 col-5 mb-lg-0 mb-2"><%= render "public/topics/edit_modal", topic: topic, url: topic_path(topic) %></div>
@@ -21,8 +21,8 @@
         <div class="row ms-lg-2">
           <div class="d-flex flex-wrap col-12">
             <% topic.tags.each do |tag| %>
-              <div class="btn btn-info btn-sm rounded-pill me-2 mb-1 topic_tag">
-                <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"text-decoration-none text-dark" %>
+              <div class="me-4 mb-1 topic_tag">
+                <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"tag-design shadow-sm text-light" %>
               </div>
             <% end %>
           </div>

@@ -174,7 +174,7 @@ footer{
   background-color: #cfe6f7;
 }
 .topic_tag:hover {
-  background-color: #cfe6f7;
+  opacity: 0.6;
 }
 
 .topic_content, .topic_comment, .topic_sort {
@@ -258,4 +258,51 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
   background-color: red;
   color: #000000;
   opacity: 0.7;
+}
+
+.tag-design {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 1em;
+  background-color: #d9a55a;
+  border-radius: 0 3px 3px 0;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.tag-design:hover {
+  color: black;
+}
+
+.tag-design::before {
+  position: absolute;
+  top: 0;
+  left: -15px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-color: transparent #d9a55a transparent transparent;
+  border-style: solid;
+  border-width: 15px 15px 15px 0;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.tag-design::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 2;
+  display: block;
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  background-color: #fff;
+  border-radius: 100%;
 }
