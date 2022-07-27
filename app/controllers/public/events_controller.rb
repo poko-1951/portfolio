@@ -4,8 +4,6 @@ class Public::EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
-    # acquaintance = Acquaintance.find_by(id: params[:event][:acquaintance_id])
-    # @event.acquaintances << acquaintance
     if @event.valid?
       @event.save
       params[:event][:acquaintance_ids].reject(&:blank?).each do |ac|
@@ -17,10 +15,8 @@ class Public::EventsController < ApplicationController
         format.js  #create.js.erbを探してその中の処理を実行する
       end
     else
-      respond_to do |format|
-        format.js {render partial: "error" }
-        #登録にエラーが起きたときはerror.js.erbを実行する
-      end
+      flash[:alert] = '終了日時が開始日時を上回っています。正しく記入してください。'
+      redirect_to events_path
     end
   end
 
@@ -34,18 +30,21 @@ class Public::EventsController < ApplicationController
 
   def update
     if @event.valid?
-      @event.update(event_params)
-      registered_acquaintances = @event.acquaintances.pluck(:id)
-      new_acquaintances = params[:event][:acquaintance_ids].reject(&:blank?) - registered_acquaintances
-      destroy_acquaintances = registered_acquaintances -  params[:event][:acquaintance_ids].reject(&:blank?)
-      new_acquaintances.each do |new|
-        acquaintance = Acquaintance.find_by(id: new)
-        @event.acquaintances << acquaintance
-      end
-      destroy_acquaintances.each do |destroy|
-        acquaintance_id = Acquaintance.find_by(id: destroy)
-        destroy_schedule = Schedule.find_by(acquaintance_id: acquaintance_id, event_id: @event.id)
-        destroy_schedule.destroy
+      if @event.update(event_params)
+        registered_acquaintances = @event.acquaintances.pluck(:id)
+        new_acquaintances = params[:event][:acquaintance_ids].reject(&:blank?) - registered_acquaintances
+        destroy_acquaintances = registered_acquaintances -  params[:event][:acquaintance_ids].reject(&:blank?)
+        new_acquaintances.each do |new|
+          acquaintance = Acquaintance.find_by(id: new)
+          @event.acquaintances << acquaintance
+        end
+        destroy_acquaintances.each do |destroy|
+          acquaintance_id = Acquaintance.find_by(id: destroy)
+          destroy_schedule = Schedule.find_by(acquaintance_id: acquaintance_id, event_id: @event.id)
+          destroy_schedule.destroy
+        end
+      else
+        flash[:alert] = '終了日時が開始日時を上回っています。正しく記入してください。'
       end
     end
     redirect_to event_path(@event)
