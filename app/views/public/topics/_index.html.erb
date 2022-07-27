@@ -21,8 +21,8 @@
         <div class="row ms-lg-2">
           <div class="d-flex flex-wrap col-12">
             <% topic.tags.each do |tag| %>
-              <div class="btn btn-info btn-sm rounded-pill me-2 mb-1 topic_tag">
-                <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"text-decoration-none text-dark" %>
+              <div class="me-4 mb-1 topic_tag">
+                <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"tag-design shadow-sm text-light" %>
               </div>
             <% end %>
           </div>
