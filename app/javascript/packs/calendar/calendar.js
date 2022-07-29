@@ -42,7 +42,11 @@ document.addEventListener('turbolinks:load', function() {
       const month = (info.date.getMonth() + 1);
       const day   = info.date.getDate();
 
-      // 本日の日付に書き換えている
+      // クリックした日付に書き換えている
+      $('#event_start_1i').val(year);
+      $('#event_end_1i').val(year);
+      $('#event_start_2i').val(month);
+      $('#event_end_2i').val(month);
       $('#event_start_3i').val(day);
       $('#event_end_3i').val(day + 1);
 
