@@ -28,10 +28,10 @@
   <div class="col-lg-10 col-12 mt-sm-3 ms-sm-5">
     <%= Rinku.auto_link(safe_join(@topic.content.split("\n"),tag(:br)), :all, 'target="_blank"').html_safe %>
   </div>
-  <div class="d-flex flex-wrap mt-3">
+  <div class="d-flex flex-wrap mt-3 ms-3">
     <% @topic.tags.each do |tag| %>
-      <div class="btn btn-outline-info btn-sm rounded-pill me-2 topic_tag">
-        <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"text-decoration-none text-dark" %>
+      <div class="me-4 topic_tag">
+        <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"tag-design shadow-sm text-light" %>
       </div>
     <% end %>
   </div>

@@ -13,7 +13,8 @@
     <div class="col-sm-4 col-12">
       <div class="row mt-4">
         <div class="d-flex align-items-center">
-          <h1 class="text-break fw-bold"><%= @acquaintance.name %></h1>&nbsp;<h3 class="align-self-end">さん</h3>
+          <div class="col-sm-9 col-8 h1 text-break fw-bold"><%= @acquaintance.name %></div>
+          <div class="col-sm-3 col-3 h4 align-self-end">さん</div>
           <% if @acquaintance == current_user %>
             <%= render "public/users/modal", user: @acquaintance %>
           <% end %>

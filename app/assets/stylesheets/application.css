@@ -73,6 +73,7 @@ footer{
   height: 80px;
   border-radius: 20px;
   object-fit: cover;
+  background-color: #fff;
 }
 
 .sidebar {
@@ -124,6 +125,7 @@ footer{
   height:150px;
   width:auto;
   object-fit: cover;
+  background-color: #fff;
 }
 
 .card-body {
@@ -150,6 +152,7 @@ footer{
   width: 200px;
   height: 200px;
   object-fit: cover;
+  background-color: #fff;
 }
 
 .topic_profile_image {
@@ -157,6 +160,7 @@ footer{
   height: 100px;
   border-radius: 20px;
   object-fit: cover;
+  background-color: #fff;
 }
 
 .top_profile_image:hover, .topic_profile_image:hover {
@@ -215,6 +219,7 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
   width: 70px;
   height: 70px;
   object-fit: cover;
+  background-color: #fff;
 }
 
 .event_profile_image:hover, .comment_profile_image:hover {
