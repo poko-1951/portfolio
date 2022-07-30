@@ -8,8 +8,8 @@ RSpec.describe User, type: :system do
         context "正常" do
           it "作成完了" do
             visit new_user_registration_path
-            fill_in "アカウント名", with: "test_user"
-            fill_in "メールアドレス", with: "test1@example.com"
+            fill_in "アカウント名", with: "test_sign_upuser"
+            fill_in "メールアドレス", with: "test_sign_up@example.com"
             fill_in "パスワード（6桁以上）", with: "password"
             fill_in "確認用パスワード", with: "password"
             click_button "登録する"
