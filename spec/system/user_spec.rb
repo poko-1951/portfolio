@@ -32,6 +32,17 @@ RSpec.describe User, type: :system do
          end
         end
       end
+
+      describe "ゲストログイン" do
+        context "正常" do
+         it "ログイン完了" do
+          visit root_path
+          find('#guest_login').click
+          expect(current_path).to eq topics_path
+          expect(page).to have_content 'ログアウト'
+         end
+        end
+      end
     end
 
     describe "ログイン後" do
