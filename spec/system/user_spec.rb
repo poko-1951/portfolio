@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :system do
 
   describe "User CRUD" do
+    let!(:user) { create(:user) }
     describe "ログイン前" do
       describe "ユーザー新規登録" do
         context "正常" do
@@ -20,7 +21,6 @@ RSpec.describe User, type: :system do
       end
 
       describe "ユーザーログイン" do
-        let!(:user) { create(:user) }
         context "正常" do
          it "ログイン完了" do
           visit new_user_session_path
@@ -35,7 +35,6 @@ RSpec.describe User, type: :system do
     end
 
     describe "ログイン後" do
-      let!(:user) { create(:user) }
       describe "ユーザー編集" do
         context "正常" do
           it "編集完了" do
