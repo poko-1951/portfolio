@@ -39,6 +39,8 @@ RSpec.describe Topic, type: :system do
         it "投稿が表示されている" do
           expect(page).to have_content topic.title
           expect(page).to have_content other_topic.title
+          expect(page).to have_link topic.tags.find(1).name
+          expect(page).to have_link other_topic.tags.find(2).name
         end
         it "詳細画面へのリンクが正しい" do
           find('a', text: topic.title).click
@@ -81,19 +83,20 @@ RSpec.describe Topic, type: :system do
           find(".fa-pen-to-square").click
         end
         it "成功" do
-          fill_in "タイトル", with: Faker::Lorem.characters(number: 10)
-          fill_in "内容", with: Faker::Lorem.paragraph
-          fill_in "タグ(半角スペースで複数個登録できます)", with: Faker::Lorem.sentence
-          click_button '登録'
-          
+          find(".edit_topic_title").set("edit_topic_title")
+          find(".edit_topic_button").click
+          expect(page).to have_content "edit_topic_title"
         end
         it "失敗" do
+          find(".edit_topic_title").set(" ")
+          find(".edit_topic_button").click
+          expect(page).to have_content topic.title
         end
       end
       context "削除", js: true do
         it "成功" do
           find(".fa-trash-can").click
-          expect { 
+          expect {
             page.accept_confirm
             expect(current_path).to eq topics_path # 先に記述することでパスできる
           }.to change(Topic.all, :count).by(-1)
