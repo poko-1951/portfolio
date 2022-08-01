@@ -42,7 +42,7 @@ class Public::TopicsController < ApplicationController
       destroy_tagging = Tagging.find_by(tag_id: tag_id, topic_id: @topic.id)
       destroy_tagging.destroy
     end
-    redirect_to topics_path
+    redirect_to request.referer
   end
 
   def destroy
