@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe Acquaintance, type: :system do
   describe "Acquaintance" do
     let(:user) { create(:user) }
-    # let!(:topic) { create(:topic, user: user) }
+    let!(:topic) { create(:topic, user: user) }
     let!(:acquaintance) { create(:acquaintance, user: user) }
+    let!(:stock) { create(:stock, user: user, topic: topic, acquaintance: acquaintance) }
 
     before do
       visit new_user_session_path
@@ -64,6 +65,9 @@ RSpec.describe Acquaintance, type: :system do
         end
         it "パンくずリストのリンクが正しい" do
           expect(page).to have_link "お知り合い", href: acquaintances_path
+        end
+        it "ストックトピックが表示されている" do
+          expect(page).to have_content acquaintance.topics.find(1).title
         end
       end
       context "編集" do
