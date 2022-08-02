@@ -46,6 +46,8 @@ RSpec.describe Topic, type: :system do
           find('a', text: topic.title).click
           expect(page).to have_link topic.content
           expect(page).to have_link other_topic.content
+          click_link topic.content
+          expect(current_path).to eq topic_path(topic)
         end
       end
     end
