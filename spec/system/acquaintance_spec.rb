@@ -33,8 +33,8 @@ RSpec.describe Acquaintance, type: :system do
           expect(page).to have_content acquaintance.like
         end
         it "詳細画面へのリンクが正しい" do
-          expect(page).to have_link acquaintance.name
-          expect(page).to have_link acquaintance.like
+          expect(page).to have_link acquaintance.name, href: acquaintance_path(acquaintance)
+          expect(page).to have_link acquaintance.like, href: acquaintance_path(acquaintance)
           click_link acquaintance.name
           expect(current_path).to eq acquaintance_path(acquaintance)
         end
@@ -42,7 +42,26 @@ RSpec.describe Acquaintance, type: :system do
     end
 
     describe "お知り合い詳細のテスト" do
-      
+      before do
+        visit acquaintance_path(acquaintance)
+      end
+
+      context "表示確認" do
+        it "お名前と情報が表示されている" do
+          expect(page).to have_content acquaintance.name
+          expect(page).to have_content acquaintance.relationship
+          expect(page).to have_content acquaintance.character
+          expect(page).to have_content acquaintance.like
+        end
+        it "編集ボタンと削除ボタンが表示されている" do
+          expect(page).to have_css ".fa-pen-to-square"
+          expect(page).to have_css ".fa-trash-can"
+        end
+        it "パンくずリストのリンクが正しい" do
+          expect(page).to have_link "お知り合い", href: acquaintances_path
+        end
+      end
+
     end
   end
 end
