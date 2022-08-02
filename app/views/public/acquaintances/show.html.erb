@@ -25,7 +25,7 @@
       <div class="row mt-2">
         <div class="col-3"><%= render "public/acquaintances/edit_modal" %></div>
         <div class="col-3">
-          <%= link_to acquaintance_path(@acquaintance), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" do %>
+          <%= link_to acquaintance_path(@acquaintance), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill acquaintance_delete_button" do %>
             <i class="fa-solid fa-trash-can"></i>
           <% end %>
         </div>
