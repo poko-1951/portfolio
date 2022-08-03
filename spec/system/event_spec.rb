@@ -23,9 +23,10 @@ RSpec.describe Event, type: :system do
       it "イベント登録" do
         first(".fc-daygrid-day-frame").click
         fill_in "予定", with: "event"
+        find( "#event_acquaintance_ids_#{ acquaintance.id }" ).click
         expect {
           find(".event_post_button").click
-        }.to change(Event.all, :count).by(1)
+        }.to change(Event.all, :count).by(1) and change(Schedule.all, :count).by(1)
       end
     end
 
