@@ -22,7 +22,6 @@ RSpec.describe Event, type: :system do
 
       context "表示確認" do
         it "URLが正しいか" do
-          byebug
           expect(current_path).to eq events_path
         end
       end
