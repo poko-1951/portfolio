@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 2022_07_04_015640) do
     t.string "title", null: false
     t.string "content", default: "未設定", null: false
     t.string "place", default: "未設定", null: false
-    t.datetime "start", null: false
-    t.datetime "end", null: false
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_events_on_user_id"

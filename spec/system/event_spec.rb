@@ -6,7 +6,7 @@ RSpec.describe Event, type: :system do
     let!(:topic) { create(:topic, user: user) }
     let!(:acquaintance) { create(:acquaintance, user: user) }
     let!(:stock) { create(:stock, user: user, topic: topic, acquaintance: acquaintance) }
-    # let!(:event) { create(:event, user: user, end: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)) }
+    # let!(:event) { create(:event, user: user) }
 
     before do
       visit new_user_session_path
