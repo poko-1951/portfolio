@@ -86,10 +86,6 @@ RSpec.describe Event, type: :system do
         it "成功" do
           fill_in "予定", with: "event"
           find(".edit_event_button").click
-          # expect {
-          #   find(".edit_event_button").click
-          #   event.reload
-          # }.to change{ event }
           expect(page).to have_content "event"
           expect(current_path).to eq event_path(event)
         end

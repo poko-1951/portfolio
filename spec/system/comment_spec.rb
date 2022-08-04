@@ -40,9 +40,14 @@ RSpec.describe Comment, type: :system do
         end
       end
     end
-
-    describe "コメント削除のテスト" do
-
+    
+    describe "コメント一覧のテスト" do
+      context "表示確認" do
+        it "正常" do
+          expect(page).to have_content comment.comment
+          expect(page).to have_link comment.user.name, href: user_path(user)
+        end
+      end
     end
   end
 end
