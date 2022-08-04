@@ -104,6 +104,7 @@ RSpec.describe Event, type: :system do
           find(".fa-trash-can").click
           expect {
             page.accept_confirm
+            sleep(2)
             expect(current_path).to eq events_path # 先に記述することでパスできる
           }.to change(Event.all, :count).by(-1)
         end

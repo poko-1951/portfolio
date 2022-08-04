@@ -1,6 +1,6 @@
 <!--モーダルボタン-->
 <!--turbolinksにより最初の投稿では画面の暗転が戻らないことがあるため、JSで制御する-->
-<button type="button" class="btn btn-outline-secondary rounded-pill" onclick="$('#comment_modal').modal('show')" >
+<button type="button" class="btn btn-outline-secondary rounded-pill comment_post_modal" onclick="$('#comment_modal').modal('show')" >
   <i class="fa-solid fa-message"></i> コメント
 </button>
 
@@ -22,7 +22,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
           <!--onclickにより、クリックした時にモーダルを閉じるようにして、非同期通信に対応させている（そのままだとモーダルが閉じないため）。さらに、if文で空かどうかをチェックしている-->
-          <%= f.submit "コメントする", class:"btn btn-outline-success rounded-pill", onclick:"if ($('.comment_text_area').val()!==''){$('#comment_modal').modal('hide')}" %>
+          <%= f.submit "コメントする", class:"btn btn-outline-success rounded-pill comment_post_button", onclick:"if ($('.comment_text_area').val()!==''){$('#comment_modal').modal('hide')}" %>
         </div>
       <% end %>
     </div>

@@ -86,7 +86,6 @@ RSpec.describe User, type: :system do
         context "みんなのトピックに遷移" do
           it "アイコンをクリックする" do
             find('#header_logo').click
-            # click_link "#header_logo"
             expect(current_path).to eq topics_path
           end
         end
@@ -129,6 +128,7 @@ RSpec.describe User, type: :system do
           it "ボタンをクリックして退会する" do
             expect {
               click_link "退会する"
+              sleep(2)
             }.to change(User.all, :count).by(-1)
             expect(current_path).to eq root_path
           end
