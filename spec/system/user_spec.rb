@@ -78,6 +78,20 @@ RSpec.describe User, type: :system do
         click_button "ログイン"
       end
 
+      describe "ヘッダーアイコン" do
+        before do
+          visit user_path(user)
+        end
+
+        context "みんなのトピックに遷移" do
+          it "アイコンをクリックする" do
+            find('#header_logo').click
+            # click_link "#header_logo"
+            expect(current_path).to eq topics_path
+          end
+        end
+      end
+
       describe "ユーザー編集" do
         context "正常" do
           it "編集完了" do
@@ -90,11 +104,39 @@ RSpec.describe User, type: :system do
           end
         end
       end
+
       describe "ログアウト" do
         context "正常" do
           it "トップページに遷移" do
             find('#log_out').click
             expect(current_path).to eq root_path
+          end
+        end
+      end
+
+      describe "退会" do
+        before do
+          visit confirm_user_path(user)
+        end
+
+        context "表示確認" do
+          it "退会ボタンが表示されているか" do
+            expect(page).to have_link "退会する", href: withdrawal_user_path(user)
+            expect(page).to have_link "退会しない", href: user_path(user)
+          end
+        end
+        context "退会する" do
+          it "ボタンをクリックして退会する" do
+            expect {
+              click_link "退会する"
+            }.to change(User.all, :count).by(-1)
+            expect(current_path).to eq root_path
+          end
+        end
+        context "退会しない" do
+          it "退会せずにユーザープロフィール画面に戻る" do
+            click_link "退会しない"
+            expect(current_path).to eq user_path(user)
           end
         end
       end

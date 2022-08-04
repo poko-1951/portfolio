@@ -99,9 +99,6 @@ RSpec.describe Topic, type: :system do
         it "成功" do
           find(".fa-trash-can").click
           expect {
-            page.accept_confirm
-            expect(current_path).to eq topics_path # 先に記述することでパスできる
-          }.to change(Topic.all, :count).by(-1)
         end
       end
     end

@@ -3,7 +3,7 @@
     <!--ヘッダー-->
     <% if user_signed_in? %>
       <!--userがサインイン状態-->
-      <%= link_to topics_path, class: "navbar-brand" do %>
+      <%= link_to topics_path, class: "navbar-brand", id:"header_logo" do %>
         <%=image_tag "header_logo.png", height:"45px" %>
       <% end %>
       <!--ハンバーガーメニュー-->
