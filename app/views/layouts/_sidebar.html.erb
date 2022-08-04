@@ -41,7 +41,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to favorite_topics_topics_path, class:"sidebar-li #{'active' if request.path == favorite_topics_topics_path}" do %>
+              <%= link_to favorite_topics_topics_path, class:"sidebar-li #{'active' if request.path == favorite_topics_topics_path} sidebar_favorite" do %>
                 <i class="bi bi-bookmark-heart-fill me-1"></i>
                 お気に入りトピック
               <% end %>

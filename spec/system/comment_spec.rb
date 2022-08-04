@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Comment, type: :system do
+RSpec.describe Commen, type: :system do
 
   describe "Comment" do
     let(:user) { create(:user) }
@@ -40,7 +40,7 @@ RSpec.describe Comment, type: :system do
         end
       end
     end
-    
+
     describe "コメント一覧のテスト" do
       context "表示確認" do
         it "正常" do
