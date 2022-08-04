@@ -5,8 +5,8 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.string :title,    null: false
       t.string :content,  null: false, default: "未設定"
       t.string :place,    null: false, default: "未設定"
-      t.datetime :start,  null: false
-      t.datetime :end,    null: false
+      t.datetime :start_at,  null: false
+      t.datetime :end_at,    null: false
 
       t.timestamps
     end

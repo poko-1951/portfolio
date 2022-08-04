@@ -51,7 +51,7 @@ class Public::EventsController < ApplicationController
   end
 
   def move_update
-    @event.update(start: params[:update_start], end: params[:update_end])
+    @event.update(start_at: params[:update_start], end_at: params[:update_end])
   end
 
   def destroy
@@ -62,7 +62,7 @@ class Public::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :start, :end, :content, :place)
+    params.require(:event).permit(:title, :start_at, :end_at, :content, :place)
   end
 
   def set_event

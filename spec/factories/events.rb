@@ -20,21 +20,12 @@
 #
 #  user_id  (user_id => users.id)
 #
-class Event < ApplicationRecord
-  belongs_to :user
-  has_many   :schedules,     dependent: :destroy
-  has_many   :acquaintances, through: :schedules
-
-  validates :title,   presence: true
-  validates :content, presence: true
-  validates :place,   presence: true
-  validate  :start_end_check
-
-  #時間の矛盾を防ぐ
-  def start_end_check
-    if self.start_at.present? && self.end_at.present?
-      errors.add(:end_at) if self.start_at >= self.end_at
-    end
+FactoryBot.define do
+  factory :event do
+    title   { Faker::Lorem.characters(number: 10) }
+    content { Faker::Lorem.paragraph }
+    place   { Faker::Lorem.characters(number: 10) }
+    start_at   { Faker::Time.between(from: DateTime.now - 1, to: DateTime.now) }
+    end_at     { Faker::Time.between(from: DateTime.now, to: DateTime.now + 1) }
   end
-
 end

@@ -43,12 +43,12 @@ document.addEventListener('turbolinks:load', function() {
       const day   = info.date.getDate();
 
       // クリックした日付に書き換えている
-      $('#event_start_1i').val(year);
-      $('#event_end_1i').val(year);
-      $('#event_start_2i').val(month);
-      $('#event_end_2i').val(month);
-      $('#event_start_3i').val(day);
-      $('#event_end_3i').val(day + 1);
+      $('#event_start_at_1i').val(year);
+      $('#event_end_at_1i').val(year);
+      $('#event_start_at_2i').val(month);
+      $('#event_end_at_2i').val(month);
+      $('#event_start_at_3i').val(day);
+      $('#event_end_at_3i').val(day + 1);
 
       //Bootstrapでモーダルを表示させる
       $('#modal_event').modal('show');

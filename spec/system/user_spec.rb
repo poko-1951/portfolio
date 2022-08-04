@@ -4,7 +4,7 @@ RSpec.describe User, type: :system do
 
   describe "User CRUD" do
     let(:user) { create(:user) }
-    
+
     describe "ログイン前" do
       describe "ユーザー新規登録" do
         context "成功" do
@@ -16,7 +16,7 @@ RSpec.describe User, type: :system do
             fill_in "確認用パスワード", with: "password"
             click_button "登録する"
             expect(current_path).to eq topics_path
-            expect(page).to have_content 'ログアウト'
+            expect(page).to have_link 'ログアウト', href: destroy_user_session_path
           end
         end
 
@@ -71,13 +71,16 @@ RSpec.describe User, type: :system do
     end
 
     describe "ログイン後" do
+      before do
+        visit new_user_session_path
+        fill_in "メールアドレス", with: user.email
+        fill_in "パスワード", with: user.password
+        click_button "ログイン"
+      end
+
       describe "ユーザー編集" do
         context "正常" do
           it "編集完了" do
-            visit new_user_session_path
-            fill_in "メールアドレス", with: user.email
-            fill_in "パスワード", with: user.password
-            click_button "ログイン"
             visit user_path(user)
             expect(page).to have_content user.name
             find('.user_edit_modal').click
@@ -87,9 +90,17 @@ RSpec.describe User, type: :system do
           end
         end
       end
+      describe "ログアウト" do
+        context "正常" do
+          it "トップページに遷移" do
+            find('#log_out').click
+            expect(current_path).to eq root_path
+          end
+        end
+      end
     end
   end
-  
+
   describe "フッターチェック" do
     context "正常に表示できるか" do
       before do
