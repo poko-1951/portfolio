@@ -72,7 +72,7 @@ RSpec.describe Topic, type: :system do
           expect(page).to have_link "♡" # お気に入り
         end
         it "パンくずリストのリンクが正しい" do
-          expect(page).to have_link "みんなのトピック"
+          expect(page).to have_link "みんなのトピック", href: topics_path
         end
         it "他ユーザのトピックの場合には編集ボタンと削除ボタンが表示されていない" do
           visit topic_path(other_topic)

@@ -16,7 +16,7 @@
         <div class="modal-body">
           <div class="form-group">
             <%= f.label :title, "予定"%>
-            <%= f.text_field :title, class:'form-control mb-3', required: true %>
+            <%= f.text_field :title, class:'form-control mb-3 edit_event_title', required: true %>
           </div>
           <div class="form-group">
             <%= f.label :start_at,"開始時刻" %>
@@ -41,7 +41,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
-          <%= f.submit "更新", class: "btn btn-outline-success rounded-pill" %>
+          <%= f.submit "更新", class: "btn btn-outline-success rounded-pill edit_event_button" %>
         </div>
       <% end %>
     </div>
