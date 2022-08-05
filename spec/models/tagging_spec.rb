@@ -6,7 +6,7 @@ RSpec.describe 'Taggingモデルのテスト', type: :model do
   let(:tag) { create(:tag) }
 
   describe 'バリデーションテスト' do
-    it "topicの保存が有効" do
+    it "taggingの保存が有効" do
       tagging = FactoryBot.build(:tagging, topic: topic, tag: tag)
       expect(tagging.valid?).to eq(true)
     end

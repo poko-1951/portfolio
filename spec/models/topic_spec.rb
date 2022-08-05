@@ -51,9 +51,7 @@ RSpec.describe 'Topicモデルのテスト', type: :model do
         end
         it "Topicの削除に伴う削除が有効" do
           FactoryBot.create(:stock, user: user, topic: topic, acquaintance: acquaintance)
-          expect { topic.destroy
-
-          }.to change(Stock, :count).by(-1)
+          expect { topic.destroy }.to change(Stock, :count).by(-1)
         end
       end
       context 'Tagモデルとの関係' do
