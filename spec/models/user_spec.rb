@@ -6,12 +6,16 @@ RSpec.describe 'Userモデルのテスト', type: :model do
   let(:acquaintance) { create(:acquaintance, user: user) }
 
   describe 'バリデーションテスト' do
-    it "userの保存が有効かどうか" do
+    it "userの保存が有効" do
       expect(user.valid?).to eq(true)
     end
     context "nameカラム" do
       it "Not null制限" do
         user = FactoryBot.build(:user, name: nil)
+        expect(user.valid?).to eq(false)
+      end
+      it "空でないこと" do
+        user = FactoryBot.build(:user, name: " ")
         expect(user.valid?).to eq(false)
       end
       it "30文字以内であること" do
