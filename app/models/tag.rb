@@ -10,6 +10,6 @@
 class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :topics,   through: :taggings
-  
-  validates :name, presence: true
+
+  validates :name, presence: true, length: { maximum: 255 }
 end

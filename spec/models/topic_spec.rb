@@ -37,7 +37,7 @@ RSpec.describe 'Topicモデルのテスト', type: :model do
     describe 'アソシエーションテスト' do
       context 'Userモデルとの関係' do
         it "N:1関係" do
-        expect(Topic.reflect_on_association(:user).macro).to eq :belongs_to
+          expect(Topic.reflect_on_association(:user).macro).to eq :belongs_to
         end
       end
       context 'Acquaintanceモデルとの関係' do
