@@ -91,6 +91,7 @@ RSpec.describe Acquaintance, type: :system do
           find(".acquaintance_delete_button").click
           expect {
             page.accept_confirm
+            sleep(2)
             expect(current_path).to eq acquaintances_path # 先に記述することでパスできる
           }.to change(Acquaintance.all, :count).by(-1)
         end

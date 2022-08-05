@@ -3,7 +3,7 @@
     <!--ヘッダー-->
     <% if user_signed_in? %>
       <!--userがサインイン状態-->
-      <%= link_to topics_path, class: "navbar-brand" do %>
+      <%= link_to topics_path, class: "navbar-brand", id:"header_logo" do %>
         <%=image_tag "header_logo.png", height:"45px" %>
       <% end %>
       <!--ハンバーガーメニュー-->
@@ -18,9 +18,9 @@
       <div class="col-lg-7 offset-lg-2 col-12 mt-1 d-none d-lg-block">
         <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
           <div class="input-group">
-            <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control" %>
-            <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control" %>
-            <%= button_tag type: "submit", class:"btn btn-secondary" do %>
+            <%= f.search_field :title_or_content_cont, placeholder:"トピック", class:"form-control word_search_topic" %>
+            <%= f.search_field :tags_name_cont, placeholder:"タグ", class:"form-control word_search_tag" %>
+            <%= button_tag type: "submit", class:"btn btn-secondary word_search_button" do %>
               <i class="fa-solid fa-magnifying-glass"></i>
             <% end %>
           </div>

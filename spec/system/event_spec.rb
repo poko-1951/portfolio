@@ -86,10 +86,6 @@ RSpec.describe Event, type: :system do
         it "成功" do
           fill_in "予定", with: "event"
           find(".edit_event_button").click
-          # expect {
-          #   find(".edit_event_button").click
-          #   event.reload
-          # }.to change{ event }
           expect(page).to have_content "event"
           expect(current_path).to eq event_path(event)
         end
@@ -104,6 +100,7 @@ RSpec.describe Event, type: :system do
           find(".fa-trash-can").click
           expect {
             page.accept_confirm
+            sleep(2)
             expect(current_path).to eq events_path # 先に記述することでパスできる
           }.to change(Event.all, :count).by(-1)
         end

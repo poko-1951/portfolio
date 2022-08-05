@@ -84,10 +84,11 @@ RSpec.describe Topic, type: :system do
         before do
           find(".fa-pen-to-square").click
         end
+
         it "成功" do
           find(".edit_topic_title").set("edit_topic_title")
           find(".edit_topic_button").click
-          expect(page).to have_content "edit_topic_title"
+          expect(user.topics.first.title).to eq "edit_topic_title"
         end
         it "失敗" do
           find(".edit_topic_title").set(" ")
@@ -100,6 +101,7 @@ RSpec.describe Topic, type: :system do
           find(".fa-trash-can").click
           expect {
             page.accept_confirm
+            sleep(2)
             expect(current_path).to eq topics_path # 先に記述することでパスできる
           }.to change(Topic.all, :count).by(-1)
         end
