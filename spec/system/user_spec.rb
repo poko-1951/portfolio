@@ -14,6 +14,7 @@ RSpec.describe User, type: :system do
             fill_in "メールアドレス", with: "test_sign_up@example.com"
             fill_in "パスワード（6桁以上）", with: "password"
             fill_in "確認用パスワード", with: "password"
+            attach_file "プロフィール画像", "spec/fixtures/images/no_image.jpeg"
             click_button "登録する"
             expect(current_path).to eq topics_path
             expect(page).to have_link 'ログアウト', href: destroy_user_session_path

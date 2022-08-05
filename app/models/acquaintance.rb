@@ -28,10 +28,10 @@ class Acquaintance < ApplicationRecord
 
   has_one_attached :acquaintance_image
 
-  validates :name,          presence: true
-  validates :relationship,  presence: true
-  validates :character,     presence: true
-  validates :like,          presence: true
+  validates :name,          presence: true, length: { maximum: 255 }
+  validates :relationship,  presence: true, length: { maximum: 255 }
+  validates :character,     presence: true, length: { maximum: 255 }
+  validates :like,          presence: true, length: { maximum: 255 }
 
   def get_acquaintance_image
     unless acquaintance_image.attached?
