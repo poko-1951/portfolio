@@ -25,9 +25,11 @@ class Event < ApplicationRecord
   has_many   :schedules,     dependent: :destroy
   has_many   :acquaintances, through: :schedules
 
-  validates :title,   presence: true
-  validates :content, presence: true
-  validates :place,   presence: true
+  validates :title,   presence: true, length: { maximum: 255 }
+  validates :content, presence: true, length: { maximum: 255 }
+  validates :place,   presence: true, length: { maximum: 255 }
+  validates :start_at,   presence: true
+  validates :end_at,   presence: true
   validate  :start_end_check
 
   #時間の矛盾を防ぐ
