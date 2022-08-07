@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Eventモデルのテスト', type: :model do
+RSpec.describe "Eventモデルのテスト", type: :model do
   let(:user) { create(:user) }
   let(:acquaintance) { create(:acquaintance, user: user) }
   let(:event) { create(:event, user: user) }
 
-  describe 'バリデーションテスト' do
+  describe "バリデーションテスト" do
     it "eventの保存が有効" do
       expect(event.valid?).to eq(true)
     end
@@ -77,20 +77,20 @@ RSpec.describe 'Eventモデルのテスト', type: :model do
     end
   end
 
-  describe 'アソシエーションテスト' do
-    context 'Userモデルとの関係' do
+  describe "アソシエーションテスト" do
+    context "Userモデルとの関係" do
       it "N:1関係" do
         expect(Event.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
-    context 'Acquaintanceモデルとの関係' do
+    context "Acquaintanceモデルとの関係" do
       it "N:N関係" do
         expect(Event.reflect_on_association(:acquaintances).macro).to eq :has_many
       end
     end
-    context 'Scheduleモデルとの関係' do
+    context "Scheduleモデルとの関係" do
       it "1:N関係" do
-      expect(Event.reflect_on_association(:schedules).macro).to eq :has_many
+        expect(Event.reflect_on_association(:schedules).macro).to eq :has_many
       end
       it "Eventの削除に伴う削除が有効" do
         FactoryBot.create(:schedule, event: event, acquaintance: acquaintance)

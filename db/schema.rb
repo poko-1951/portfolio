@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2022_07_04_015640) do
-
   create_table "acquaintances", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false

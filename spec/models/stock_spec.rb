@@ -1,18 +1,18 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Stockモデルのテスト', type: :model do
+RSpec.describe "Stockモデルのテスト", type: :model do
   let(:user) { create(:user) }
   let(:topic) { create(:topic, user: user) }
   let(:acquaintance) { create(:acquaintance, user: user) }
 
-  describe 'バリデーションテスト' do
+  describe "バリデーションテスト" do
     it "stockの保存が有効" do
       stock = FactoryBot.build(:stock, user: user, topic: topic, acquaintance: acquaintance)
       expect(stock.valid?).to eq(true)
     end
   end
 
-  describe 'アソシエーションテスト' do
+  describe "アソシエーションテスト" do
     context "Userモデルとの関係" do
       it "N:1関係" do
         expect(Stock.reflect_on_association(:user).macro).to eq :belongs_to

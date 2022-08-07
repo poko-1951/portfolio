@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :system do
-
   describe "User CRUD" do
     let(:user) { create(:user) }
 
@@ -17,7 +16,7 @@ RSpec.describe User, type: :system do
             attach_file "プロフィール画像", "spec/fixtures/images/no_image.jpeg"
             click_button "登録する"
             expect(current_path).to eq topics_path
-            expect(page).to have_link 'ログアウト', href: destroy_user_session_path
+            expect(page).to have_link "ログアウト", href: destroy_user_session_path
           end
         end
 
@@ -38,35 +37,34 @@ RSpec.describe User, type: :system do
 
       describe "ユーザーログイン" do
         context "成功" do
-         it "ログイン完了" do
-          visit new_user_session_path
-          fill_in "メールアドレス", with: user.email
-          fill_in "パスワード", with: user.password
-          click_button "ログイン"
-          expect(current_path).to eq topics_path
-          expect(page).to have_content 'ログアウト'
-         end
+          it "ログイン完了" do
+            visit new_user_session_path
+            fill_in "メールアドレス", with: user.email
+            fill_in "パスワード", with: user.password
+            click_button "ログイン"
+            expect(current_path).to eq topics_path
+            expect(page).to have_content "ログアウト"
+          end
         end
         context "失敗" do
-         it "ログイン失敗" do
-          visit new_user_session_path
-          fill_in "メールアドレス", with: " "
-          fill_in "パスワード", with: " "
-          click_button "ログイン"
-          expect(current_path).to eq new_user_session_path
-         end
+          it "ログイン失敗" do
+            visit new_user_session_path
+            fill_in "メールアドレス", with: " "
+            fill_in "パスワード", with: " "
+            click_button "ログイン"
+            expect(current_path).to eq new_user_session_path
+          end
         end
-
       end
 
       describe "ゲストログイン" do
         context "成功" do
-         it "ログイン完了" do
-          visit root_path
-          find('#guest_login').click
-          expect(current_path).to eq topics_path
-          expect(page).to have_content 'ログアウト'
-         end
+          it "ログイン完了" do
+            visit root_path
+            find("#guest_login").click
+            expect(current_path).to eq topics_path
+            expect(page).to have_content "ログアウト"
+          end
         end
       end
     end
@@ -86,7 +84,7 @@ RSpec.describe User, type: :system do
 
         context "アイコンをクリック" do
           it "みんなのトピックに遷移" do
-            find('#header_logo').click
+            find("#header_logo").click
             expect(current_path).to eq topics_path
           end
         end
@@ -97,7 +95,7 @@ RSpec.describe User, type: :system do
           it "編集完了" do
             visit user_path(user)
             expect(page).to have_content user.name
-            find('.user_edit_modal').click
+            find(".user_edit_modal").click
             fill_in "アカウント名", with: "user1"
             click_button "更新"
             expect(page).to have_content "user1"
@@ -108,7 +106,7 @@ RSpec.describe User, type: :system do
       describe "ログアウト" do
         context "正常" do
           it "トップページに遷移" do
-            find('#log_out').click
+            find("#log_out").click
             expect(current_path).to eq root_path
           end
         end
@@ -148,11 +146,11 @@ RSpec.describe User, type: :system do
         visit root_path
       end
       it "利用規約" do
-        find('.terms_of_use').click
+        find(".terms_of_use").click
         expect(page).to have_content "第1条（適用）"
       end
       it "プライバシーポリシー" do
-        find('.user_policy').click
+        find(".user_policy").click
         expect(page).to have_content "第1条（個人情報）"
       end
     end

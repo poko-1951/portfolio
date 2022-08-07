@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Word_search", type: :system do
   let(:user) { create(:user) }
@@ -28,20 +28,20 @@ RSpec.describe "Word_search", type: :system do
         expect(page).to_not have_content other_topic.title
       end
     end
-   context "トピックの中身だけで検索" do
-      it "該当あり" do
-        find(".word_search_topic").set(topic.content)
-        find(".word_search_button").click
-        expect(page).to have_content topic.content
-        expect(page).to_not have_content other_topic.content
-      end
-      it "該当なし" do
-        find(".word_search_topic").set(Faker::Lorem.paragraph)
-        find(".word_search_button").click
-        expect(page).to_not have_content topic.content
-        expect(page).to_not have_content other_topic.content
-      end
-    end
+    context "トピックの中身だけで検索" do
+       it "該当あり" do
+         find(".word_search_topic").set(topic.content)
+         find(".word_search_button").click
+         expect(page).to have_content topic.content
+         expect(page).to_not have_content other_topic.content
+       end
+       it "該当なし" do
+         find(".word_search_topic").set(Faker::Lorem.paragraph)
+         find(".word_search_button").click
+         expect(page).to_not have_content topic.content
+         expect(page).to_not have_content other_topic.content
+       end
+     end
     context "タグだけで検索" do
       it "該当あり" do
         find(".word_search_tag").set(topic.tags.first.name)
