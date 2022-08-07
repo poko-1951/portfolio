@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, except:[:index]
+  before_action :authenticate_user!, except: [:index]
   before_action :set_user, only: [:show, :update, :confirm, :withdrawal]
 
   def index
@@ -30,13 +30,11 @@ class Public::UsersController < ApplicationController
   end
 
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  def user_params
-    params.require(:user).permit(:name, :profile_image)
-  end
-
+    def user_params
+      params.require(:user).permit(:name, :profile_image)
+    end
 end

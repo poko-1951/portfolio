@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Tagモデルのテスト', type: :model do
+RSpec.describe "Tagモデルのテスト", type: :model do
   let(:user) { create(:user) }
   let(:topic) { create(:topic, user: user) }
   let(:acquaintance) { create(:acquaintance, user: user) }
 
-  describe 'バリデーションテスト' do
+  describe "バリデーションテスト" do
     it "tagの保存が有効" do
       tag = FactoryBot.build(:tag)
       expect(tag.valid?).to eq(true)
@@ -26,8 +26,8 @@ RSpec.describe 'Tagモデルのテスト', type: :model do
     end
   end
 
-  describe 'アソシエーションテスト' do
-    context 'Taggingモデルとの関係' do
+  describe "アソシエーションテスト" do
+    context "Taggingモデルとの関係" do
       it "1:N関係" do
         expect(Tag.reflect_on_association(:taggings).macro).to eq :has_many
       end
@@ -39,7 +39,7 @@ RSpec.describe 'Tagモデルのテスト', type: :model do
         }.to change(Tag, :count).by(-1)
       end
     end
-    context 'Tagモデルとの関係' do
+    context "Tagモデルとの関係" do
       it "N:N関係" do
         expect(Tag.reflect_on_association(:topics).macro).to eq :has_many
       end

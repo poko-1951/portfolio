@@ -15,12 +15,12 @@ class Public::StocksController < ApplicationController
     stock.destroy
     # redirect_to topic_path(@topic)
   end
-  
+
   # 特定のお相手にストックする（外すことも可能）
   def update
     registered_acquaintances = @topic.acquaintances.pluck(:id).map!(&:to_s)
     new_acquaintances = params[:stock][:acquaintance_ids].reject(&:blank?) - registered_acquaintances
-    destroy_acquaintances = registered_acquaintances -  params[:stock][:acquaintance_ids].reject(&:blank?)
+    destroy_acquaintances = registered_acquaintances - params[:stock][:acquaintance_ids].reject(&:blank?)
     new_acquaintances.each do |new|
       stock = current_user.stocks.new(acquaintance_id: new, topic_id: @topic.id)
       stock.save
@@ -34,13 +34,11 @@ class Public::StocksController < ApplicationController
   end
 
   private
+    def comment_params
+      params.require(:comment).permit(:comment)
+    end
 
-  def comment_params
-    params.require(:comment).permit(:comment)
-  end
-
-  def set_topic
-    @topic = Topic.find(params[:topic_id])
-  end
-
+    def set_topic
+      @topic = Topic.find(params[:topic_id])
+    end
 end

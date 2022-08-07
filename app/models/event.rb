@@ -32,11 +32,10 @@ class Event < ApplicationRecord
   validates :end_at,   presence: true
   validate  :start_end_check
 
-  #時間の矛盾を防ぐ
+  # 時間の矛盾を防ぐ
   def start_end_check
     if self.start_at.present? && self.end_at.present?
       errors.add(:end_at) if self.start_at >= self.end_at
     end
   end
-
 end

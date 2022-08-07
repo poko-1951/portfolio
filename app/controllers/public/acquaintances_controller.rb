@@ -27,12 +27,11 @@ class Public::AcquaintancesController < ApplicationController
   end
 
   private
+    def acquaintance_params
+      params.require(:acquaintance).permit(:name, :relationship, :character, :like, :acquaintance_image)
+    end
 
-  def acquaintance_params
-    params.require(:acquaintance).permit(:name, :relationship, :character, :like, :acquaintance_image)
-  end
-
-  def set_acquaintance
-    @acquaintance = Acquaintance.find(params[:id])
-  end
+    def set_acquaintance
+      @acquaintance = Acquaintance.find(params[:id])
+    end
 end

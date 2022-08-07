@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Event, type: :system do
   describe "Event" do
@@ -24,7 +24,7 @@ RSpec.describe Event, type: :system do
       it "イベント登録" do
         first(".fc-daygrid-day-frame").click
         fill_in "予定", with: "event"
-        find( "#event_acquaintance_ids_#{ acquaintance.id }" ).click
+        find("#event_acquaintance_ids_#{ acquaintance.id }").click
         expect {
           find(".event_post_button").click
         }.to change(Event.all, :count).by(1) and change(Schedule.all, :count).by(1)
@@ -59,8 +59,8 @@ RSpec.describe Event, type: :system do
       context "表示確認" do
         it "イベント詳細が表示されている" do
           expect(page).to have_content event.title
-          expect(page).to have_content event.start_at.strftime('%Y/%m/%d %H:%M')
-          expect(page).to have_content event.end_at.strftime('%Y/%m/%d %H:%M')
+          expect(page).to have_content event.start_at.strftime("%Y/%m/%d %H:%M")
+          expect(page).to have_content event.end_at.strftime("%Y/%m/%d %H:%M")
           expect(page).to have_content event.content
           expect(page).to have_content event.place
         end

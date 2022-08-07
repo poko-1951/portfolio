@@ -30,9 +30,9 @@ class User < ApplicationRecord
   has_many :comments,      dependent: :destroy
 
   has_one_attached :profile_image
-  
+
   validates :name, presence: true, length: { maximum: 30 }
-  
+
 
   def get_profile_image
     unless profile_image.attached?
@@ -41,17 +41,16 @@ class User < ApplicationRecord
     end
     profile_image
   end
-  
+
   # is_deletedがfalseならtrueを返すようにしている
   def active_for_authentication?
     super && (is_deleted == false)
   end
 
   def self.guest
-    find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com') do |user|
+    find_or_create_by!(name: "ゲストユーザー", email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "ゲストユーザー"
     end
   end
-
 end

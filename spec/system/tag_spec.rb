@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Tag, type: :system do
-
   describe "Tag" do
     let(:user) { create(:user) }
     let!(:topic) { create(:topic, user: user) }

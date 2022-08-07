@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Userモデルのテスト', type: :model do
+RSpec.describe "Userモデルのテスト", type: :model do
   let(:user) { create(:user) }
   let(:topic) { create(:topic, user: user) }
   let(:acquaintance) { create(:acquaintance, user: user) }
 
-  describe 'バリデーションテスト' do
+  describe "バリデーションテスト" do
     it "userの保存が有効" do
       expect(user.valid?).to eq(true)
     end
@@ -32,8 +32,8 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         user = FactoryBot.build(:user, email: Faker::Lorem.characters(number: 10))
         expect(user.valid?).to eq(false)
       end
-      it "メールアドレスの形式になっていること" do
-        user_1 = FactoryBot.create(:user, email: "validate@email")
+      it "メールドレスが一意であること" do
+        FactoryBot.create(:user, email: "validate@email")
         user_2 = FactoryBot.build(:user, email: "validate@email")
         expect(user_2.valid?).to eq(false)
       end
@@ -50,8 +50,8 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
   end
 
-  describe 'アソシエーションテスト' do
-    context 'Topicモデルとの関係' do
+  describe "アソシエーションテスト" do
+    context "Topicモデルとの関係" do
       it "1:N関係" do
         expect(User.reflect_on_association(:topics).macro).to eq :has_many
       end
@@ -60,7 +60,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect { user.destroy }.to change(Topic, :count).by(-1)
       end
     end
-    context 'Acquaintanceモデルとの関係' do
+    context "Acquaintanceモデルとの関係" do
       it "1:N関係" do
         expect(User.reflect_on_association(:acquaintances).macro).to eq :has_many
       end
@@ -69,7 +69,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect { user.destroy }.to change(Acquaintance, :count).by(-1)
       end
     end
-    context 'Stockモデルとの関係' do
+    context "Stockモデルとの関係" do
       it "1:N関係" do
         expect(User.reflect_on_association(:stocks).macro).to eq :has_many
       end
@@ -78,7 +78,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect { user.destroy }.to change(Stock, :count).by(-1)
       end
     end
-    context 'Eventsモデルとの関係' do
+    context "Eventsモデルとの関係" do
       it "1:N関係" do
         expect(User.reflect_on_association(:events).macro).to eq :has_many
       end
@@ -87,7 +87,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect { user.destroy }.to change(Event, :count).by(-1)
       end
     end
-    context 'Commentモデルとの関係' do
+    context "Commentモデルとの関係" do
       it "1:N関係" do
         expect(User.reflect_on_association(:comments).macro).to eq :has_many
       end
