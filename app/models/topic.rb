@@ -23,7 +23,6 @@ class Topic < ApplicationRecord
   has_many   :taggings,      dependent: :destroy
   has_many   :comments,      dependent: :destroy
   has_many   :tags,          through: :taggings
-  has_many   :events,        through: :schedules
   has_many   :acquaintances, through: :stocks
 
   validates :title,   presence: true

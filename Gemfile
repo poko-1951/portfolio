@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
@@ -36,6 +36,7 @@ group :development, :test do
   gem "webdrivers"
   gem "factory_bot_rails"
   gem "faker"
+  gem "pry-rails"
 end
 
 group :development do
@@ -51,6 +52,12 @@ group :development do
   gem "binding_of_caller"
   gem "pry-rails"
   gem "annotate"
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-minitest', require: false
+  gem 'rubocop-packaging', require: false
+  gem 'rubocop-rspec'
 end
 
 group :test do
@@ -70,6 +77,7 @@ gem 'dotenv-rails'
 gem "ransack"
 gem "devise-i18n"
 gem 'rinku'
+gem "net-smtp"
 
 group :production do
   gem 'mysql2'

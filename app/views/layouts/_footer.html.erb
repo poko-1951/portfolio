@@ -1,10 +1,10 @@
 <div class="container align-self-center my-1">
   <div class="row">
     <div class="col-12 text-end text-light d-none d-lg-block">
-      <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="footer_text me-3">
+      <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="footer_text me-3 terms_of_use">
         <i class="fa-solid fa-file-lines me-1"></i>利用規約
       </a>
-      <a data-bs-toggle="modal" data-bs-target="#user_policy" class="footer_text me-3">
+      <a data-bs-toggle="modal" data-bs-target="#user_policy" class="footer_text me-3 user_policy">
         <i class="fa-solid fa-user-lock"></i>プライバシーポリシー
       </a>
       <span>Copyright © 2022 Converce</span>
@@ -46,7 +46,7 @@
           <p class="mb-0 footer_icon_text">ログアウト</p>
         <% end %>
       <% else %>
-        <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="footer_text">
+        <a data-bs-toggle="modal" data-bs-target="#terms_of_use" class="footer_text" id="terms_of_use">
           <i class="fa-solid fa-file-lines"></i>
           <p class="mb-0 footer_icon_text">利用規約</p>
         </a>

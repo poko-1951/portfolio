@@ -4,9 +4,9 @@
 #
 #  id         :integer          not null, primary key
 #  content    :string           default("未設定"), not null
-#  end        :datetime         not null
+#  end_at     :datetime         not null
 #  place      :string           default("未設定"), not null
-#  start      :datetime         not null
+#  start_at   :datetime         not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -25,15 +25,17 @@ class Event < ApplicationRecord
   has_many   :schedules,     dependent: :destroy
   has_many   :acquaintances, through: :schedules
 
-  validates :title,   presence: true
-  validates :content, presence: true
-  validates :place,   presence: true
+  validates :title,   presence: true, length: { maximum: 255 }
+  validates :content, presence: true, length: { maximum: 255 }
+  validates :place,   presence: true, length: { maximum: 255 }
+  validates :start_at,   presence: true
+  validates :end_at,   presence: true
   validate  :start_end_check
 
   #時間の矛盾を防ぐ
   def start_end_check
-    if self.start.present? && self.end.present?
-      errors.add(:end) if self.start >= self.end
+    if self.start_at.present? && self.end_at.present?
+      errors.add(:end_at) if self.start_at >= self.end_at
     end
   end
 

@@ -7,7 +7,7 @@
       </div>
       <%= form_with model: Topic.new, url: topics_path do |f| %>
         <div class="modal-body">
-          <div class="form-group mb-2">
+          <div class="form-group mb-2 title_form">
             <%= f.label :title, "タイトル" %>
             <%= f.text_field :title, class:"form-control", required: true %>
           </div>

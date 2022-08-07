@@ -1,5 +1,5 @@
 <!--モーダルボタン-->
-<button type="button" class="btn btn-outline-success rounded-pill" data-bs-toggle="modal" data-bs-target="#edit_acquaintance">
+<button type="button" class="btn btn-outline-success rounded-pill acquaintance_edit_modal" data-bs-toggle="modal" data-bs-target="#edit_acquaintance">
    <i class="fa-solid fa-pen-to-square"></i>
 </button>
 
@@ -16,7 +16,7 @@
         <div class="modal-body text-start">
           <div class="form-group mb-2">
             <%= f.label :name, "お名前" %>
-            <%= f.text_field :name, class:"form-control", required: true %>
+            <%= f.text_field :name, class:"form-control acquaintance_edit_name", required: true %>
           </div>
           <div class="form-group mb-2">
             <%= f.label :relationship, "関係性" %>
@@ -37,7 +37,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">閉じる</button>
-          <%= f.submit "更新", class:"btn btn-outline-success rounded-pill"%>
+          <%= f.submit "更新", class:"btn btn-outline-success rounded-pill acquaintance_edit_button"%>
         </div>
       <% end %>
     </div>
