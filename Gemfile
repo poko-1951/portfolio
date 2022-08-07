@@ -78,6 +78,8 @@ gem "ransack"
 gem "devise-i18n"
 gem 'rinku'
 gem "net-smtp"
+gem "net-pop"
+gem "net-imap"
 
 group :production do
   gem 'mysql2'
