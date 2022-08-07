@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions:      "public/sessions"
 }
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
   # ゲストログイン
   devise_scope :user do
-    post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
+    post "users/guest_sign_in" => "public/sessions#guest_sign_in"
   end
 
   # user側のルーティング
@@ -42,11 +42,10 @@ Rails.application.routes.draw do
         patch "move_update" => "events#move_update"
       end
     end
-
   end
   # admin側のルーティング
   namespace :admin do
-    get '/' => "homes#top"
+    get "/" => "homes#top"
 
     resources :users, only: [:index, :show, :update] do
       member do
@@ -67,7 +66,6 @@ Rails.application.routes.draw do
         get "destroy_index" => "tags#destroy_index"
       end
     end
-
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

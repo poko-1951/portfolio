@@ -13,13 +13,11 @@ class Public::CommentsController < ApplicationController
   end
 
   private
+    def comment_params
+      params.require(:comment).permit(:comment)
+    end
 
-  def comment_params
-    params.require(:comment).permit(:comment)
-  end
-
-  def set_topic
-    @topic = Topic.find(params[:topic_id])
-  end
-
+    def set_topic
+      @topic = Topic.find(params[:topic_id])
+    end
 end

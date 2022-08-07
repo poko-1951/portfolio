@@ -35,5 +35,4 @@ class Topic < ApplicationRecord
   def stocked_by?(user)
     stocks.exists?(user_id: user.id, acquaintance_id: nil)
   end
-
 end

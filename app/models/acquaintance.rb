@@ -40,5 +40,4 @@ class Acquaintance < ApplicationRecord
     end
     acquaintance_image
   end
-
 end

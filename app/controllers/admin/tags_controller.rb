@@ -15,9 +15,7 @@ class Admin::TagsController < ApplicationController
   end
 
   private
-
-  def set_tags
-    @tags = Tag.all.order(:name)
-  end
-
+    def set_tags
+      @tags = Tag.all.order(:name)
+    end
 end

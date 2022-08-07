@@ -1,12 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Acquaintanceモデルのテスト', type: :model do
+RSpec.describe "Acquaintanceモデルのテスト", type: :model do
   let(:user) { create(:user) }
   let(:topic) { create(:topic, user: user) }
   let(:acquaintance) { create(:acquaintance, user: user) }
   let(:event) { create(:event, user: user) }
 
-  describe 'バリデーションテスト' do
+  describe "バリデーションテスト" do
     it "acquaintanceの保存が有効" do
       expect(acquaintance.valid?).to eq(true)
     end
@@ -68,32 +68,32 @@ RSpec.describe 'Acquaintanceモデルのテスト', type: :model do
     end
   end
 
-  describe 'アソシエーションテスト' do
-    context 'Userモデルとの関係' do
+  describe "アソシエーションテスト" do
+    context "Userモデルとの関係" do
       it "N:1関係" do
         expect(Acquaintance.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
-    context 'Topicモデルとの関係' do
+    context "Topicモデルとの関係" do
       it "N:N関係" do
         expect(Acquaintance.reflect_on_association(:topics).macro).to eq :has_many
       end
     end
-    context 'Stockモデルとの関係' do
+    context "Stockモデルとの関係" do
       it "1:N関係" do
-      expect(Acquaintance.reflect_on_association(:stocks).macro).to eq :has_many
+        expect(Acquaintance.reflect_on_association(:stocks).macro).to eq :has_many
       end
       it "Acquaintanceの削除に伴う削除が有効" do
         FactoryBot.create(:stock, user: user, topic: topic, acquaintance: acquaintance)
         expect { acquaintance.destroy }.to change(Stock, :count).by(-1)
       end
     end
-    context 'Eventモデルとの関係' do
+    context "Eventモデルとの関係" do
       it "N:N関係" do
         expect(Acquaintance.reflect_on_association(:events).macro).to eq :has_many
       end
     end
-    context 'Scheduleモデルとの関係' do
+    context "Scheduleモデルとの関係" do
       it "1:N関係" do
         expect(Acquaintance.reflect_on_association(:schedules).macro).to eq :has_many
       end
@@ -103,6 +103,4 @@ RSpec.describe 'Acquaintanceモデルのテスト', type: :model do
       end
     end
   end
-
-
 end

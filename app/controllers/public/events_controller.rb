@@ -12,10 +12,10 @@ class Public::EventsController < ApplicationController
       end
       respond_to do |format|
         format.html { redirect_to events_path }
-        format.js  #create.js.erbを探してその中の処理を実行する
+        format.js  # create.js.erbを探してその中の処理を実行する
       end
     else
-      flash[:alert] = '終了日時が開始日時を上回っています。正しく記入してください。'
+      flash[:alert] = "終了日時が開始日時を上回っています。正しく記入してください。"
       redirect_to events_path
     end
   end
@@ -33,7 +33,7 @@ class Public::EventsController < ApplicationController
       if @event.update(event_params)
         registered_acquaintances = @event.acquaintances.pluck(:id)
         new_acquaintances = params[:event][:acquaintance_ids].reject(&:blank?) - registered_acquaintances
-        destroy_acquaintances = registered_acquaintances -  params[:event][:acquaintance_ids].reject(&:blank?)
+        destroy_acquaintances = registered_acquaintances - params[:event][:acquaintance_ids].reject(&:blank?)
         new_acquaintances.each do |new|
           acquaintance = Acquaintance.find_by(id: new)
           @event.acquaintances << acquaintance
@@ -44,7 +44,7 @@ class Public::EventsController < ApplicationController
           destroy_schedule.destroy
         end
       else
-        flash[:alert] = '終了日時が開始日時を上回っています。正しく記入してください。'
+        flash[:alert] = "終了日時が開始日時を上回っています。正しく記入してください。"
       end
     end
     redirect_to event_path(@event)
@@ -60,12 +60,11 @@ class Public::EventsController < ApplicationController
   end
 
   private
+    def event_params
+      params.require(:event).permit(:title, :start_at, :end_at, :content, :place)
+    end
 
-  def event_params
-    params.require(:event).permit(:title, :start_at, :end_at, :content, :place)
-  end
-
-  def set_event
-    @event = Event.find(params[:id])
-  end
+    def set_event
+      @event = Event.find(params[:id])
+    end
 end

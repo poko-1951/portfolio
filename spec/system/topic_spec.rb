@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Topic, type: :system do
-
   describe "Topic" do
     let(:user) { create(:user) }
     let!(:topic) { create(:topic, user: user) }
@@ -22,7 +21,7 @@ RSpec.describe Topic, type: :system do
         fill_in "タイトル", with: Faker::Lorem.characters(number: 10)
         fill_in "内容", with: Faker::Lorem.paragraph
         fill_in "タグ(半角スペースで複数個登録できます)", with: Faker::Lorem.sentence
-        expect { click_button '登録' }.to change(Topic, :count).by(1)
+        expect { click_button "登録" }.to change(Topic, :count).by(1)
         expect(current_path).to eq topics_path
       end
     end
@@ -43,7 +42,7 @@ RSpec.describe Topic, type: :system do
           expect(page).to have_link other_topic.tags.find(2).name
         end
         it "詳細画面へのリンクが正しい" do
-          find('a', text: topic.title).click
+          find("a", text: topic.title).click
           expect(page).to have_link topic.content
           expect(page).to have_link other_topic.content
           click_link topic.content
