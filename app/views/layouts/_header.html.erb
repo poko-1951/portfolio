@@ -149,10 +149,23 @@
                 お気に入りトピック
               <% end %>
             </li>
+            <li class="nav-item my-2">
+              <%= link_to notifications_path, class:"sidebar-li #{'active' if request.path == notifications_path}" do %>
+                <% if unchecked_notifications.any? %>
+                  <span class="fa-stack me-2" style="height:24px; width:22px;">
+                    <i class="fa-solid fa-bell fa-stack-2x ms-0" style="width:16px;"></i>
+                    <i class="fa-solid fa-circle fa-stack-1x n-circle mx-0"></i>
+                  </span>
+                <% else %>
+                  <i class="fa-solid fa-bell me-3"></i>
+                <% end%>
+                通知
+              <% end %>
+            </li>
             <!--モーダルボタン-->
             <li class="nav-item">
               <a type="button" data-bs-toggle="modal" data-bs-target="#new_topic" class="sidebar-li">
-                <i class="bi bi-chat-left-text-fill me-1"></i>
+                <i class="bi bi-chat-left-text-fill me-2"></i>
                 トピック投稿
               </a>
             </li>
