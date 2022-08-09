@@ -311,3 +311,11 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
   background-color: #fff;
   border-radius: 100%;
 }
+
+.n-circle {
+  position: absolute;
+  padding-left: 0.4rem;
+  padding-top: 0.3rem;
+  font-size: 13px;
+  color: #efa04c;
+}

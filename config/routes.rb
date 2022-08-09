@@ -42,6 +42,8 @@ Rails.application.routes.draw do
         patch "move_update" => "events#move_update"
       end
     end
+
+    resources :notifications, only: [:index]
   end
   # admin側のルーティング
   namespace :admin do

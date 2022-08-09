@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_015640) do
+ActiveRecord::Schema.define(version: 2022_08_09_050355) do
+
   create_table "acquaintances", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
@@ -82,6 +83,21 @@ ActiveRecord::Schema.define(version: 2022_07_04_015640) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "topic_id"
+    t.integer "comment_id"
+    t.string "action", default: " ", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["topic_id"], name: "index_notifications_on_topic_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "schedules", force: :cascade do |t|

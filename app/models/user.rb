@@ -28,11 +28,12 @@ class User < ApplicationRecord
   has_many :acquaintances, dependent: :destroy
   has_many :events,        dependent: :destroy
   has_many :comments,      dependent: :destroy
+  has_many :active_notifications,  class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   has_one_attached :profile_image
 
   validates :name, presence: true, length: { maximum: 30 }
-
 
   def get_profile_image
     unless profile_image.attached?
@@ -53,4 +54,6 @@ class User < ApplicationRecord
       user.name = "ゲストユーザー"
     end
   end
+
+
 end

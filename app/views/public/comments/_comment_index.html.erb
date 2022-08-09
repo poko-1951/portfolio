@@ -14,5 +14,7 @@
         <% end %>
       </div>
     <% end %>
-    <div class="h6 mt-2 ms-3 text-break"><%= comment.comment %></div>
+    <div class="h6 mt-3 ms-5 text-break">
+      <%= Rinku.auto_link(safe_join(comment.comment.split("\n"),tag(:br)), :all, 'target="_blank"').html_safe %>
+    </div>
   <% end %>
