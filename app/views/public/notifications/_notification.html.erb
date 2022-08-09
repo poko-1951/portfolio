@@ -1,25 +1,35 @@
 <% topic = notification.topic %>
 <% visitor = notification.visitor %>
 <% action = notification.action %>
-<div class="text-dark">
+<div>
   <% if action == "comment" %>
-    <%= visitor.name %>さんが
+    <%= link_to user_path(visitor), class:"text-decoration-none text-dark" do %>
+      <%= image_tag(notification.visitor.get_profile_image, class:"comment_profile_image") %>
+      <span class="fw-bold"><%= visitor.name %></span>
+    <% end %>
+    さんが
     <% if topic.user != current_user %>
-      <%= link_to "#{topic.user.name}さんの投稿", topic_path(topic.id) %>
+      <%= link_to "#{topic.user.name}さんの投稿", topic_path(topic.id), class:"text-decoration-none" %>
     <% else %>
-      <%= link_to "あなたの投稿", topic_path(topic.id) %>
+      <%= link_to "あなたの投稿", topic_path(topic.id), class:"text-decoration-none" %>
     <% end %>
     にコメントしました
-    <div class="notification-comment ms-4">
-      <%= Rinku.auto_link(safe_join(notification.comment.comment.split("\n"),tag(:br)), :all, 'target="_blank"').html_safe %>
+    <div class="row">
+      <div class="col-4 ms-4 mt-1">
+        <%= Rinku.auto_link(safe_join(notification.comment.comment.split("\n"),tag(:br)), :all, 'target="_blank"').html_safe %>
+      </div>
+      <div class="col-4 align-self-end">
+        <%= notification.comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </div>
     </div>
   <% elsif action == "favorite" %>
-    <%= visitor.name %>さんが
-    <%= link_to "あなたの投稿", topic_path(topic.id) %>
+    <%= link_to user_path(visitor), class:"text-decoration-none text-dark" do %>
+      <%= image_tag(notification.visitor.get_profile_image, class:"comment_profile_image") %>
+      <span class="fw-bold"><%= visitor.name %></span>
+    <% end %>
+    さんが
+    <%= link_to "あなたの投稿", topic_path(topic.id), class:"text-decoration-none" %>
     にいいねしました
-  <% elsif action == "follow" %>
-    <%= link_to "#{visitor.name}", user_path(visitor.id) %>さんが
-    あなたをフォローしました
   <% end %>
 </div>
 <hr>

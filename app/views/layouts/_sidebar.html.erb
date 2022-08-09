@@ -47,7 +47,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to notifications_path, class:"sidebar-li #{'active' if request.path == favorite_topics_topics_path} sidebar_favorite" do %>
+              <%= link_to notifications_path, class:"sidebar-li #{'active' if request.path == notifications_path}" do %>
                 <i class="bi bi-bookmark-heart-fill me-1"></i>
                 通知
               <% end %>

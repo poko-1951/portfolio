@@ -42,7 +42,7 @@ class Topic < ApplicationRecord
     # すでに「お気に入り登録」されているか検索
     favorited_self = Notification.where(["visitor_id = ? and visited_id = ? and topic_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
     # お気に入り登録されていない場合のみ、通知を作成
-    if favorited_self.blank?
+    if favorited_self.blank? && user_id != current_user.id
       notification = current_user.active_notifications.new(
         topic_id: id,
         visited_id: user_id,
@@ -64,7 +64,7 @@ class Topic < ApplicationRecord
       save_notification_comment(current_user, comment_id, temp_id['user_id'])
     end
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
-    save_notification_comment(current_user, comment_id, user_id) if temp_ids.blank?
+    save_notification_comment(current_user, comment_id, user_id) if temp_ids.blank? && user_id != current_user.id
   end
 
   def save_notification_comment(current_user, comment_id, visited_id)
