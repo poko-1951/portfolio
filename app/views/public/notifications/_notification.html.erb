@@ -3,33 +3,41 @@
 <% action = notification.action %>
 <div>
   <% if action == "comment" %>
-    <%= link_to user_path(visitor), class:"text-decoration-none text-dark" do %>
-      <%= image_tag(notification.visitor.get_profile_image, class:"comment_profile_image") %>
-      <span class="fw-bold"><%= visitor.name %></span>
-    <% end %>
-    さんが
-    <% if topic.user != current_user %>
-      <%= link_to "#{topic.user.name}さんの投稿", topic_path(topic.id), class:"text-decoration-none" %>
-    <% else %>
-      <%= link_to "あなたの投稿", topic_path(topic.id), class:"text-decoration-none" %>
-    <% end %>
-    にコメントしました
     <div class="row">
-      <div class="col-4 ms-4 mt-1">
+      <div class="col-sm-2 col-3 pe-0 text-center align-self-center">
+        <%= link_to image_tag(notification.visitor.get_profile_image, class:"comment_profile_image"), user_path(visitor) %>
+      </div>
+      <div class="col-sm-8 col-8 ps-0 text-break align-self-center">
+        <span class="fw-bold"><%= visitor.name %></span>
+        さんが
+        <% if topic.user != current_user %>
+          <%= link_to "#{topic.user.name}さんの投稿", topic_path(topic.id), class:"text-decoration-none" %>
+        <% else %>
+          <%= link_to "あなたの投稿", topic_path(topic.id), class:"text-decoration-none" %>
+        <% end %>
+        にコメントしました
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 col-12 offset-1 mt-1">
         <%= Rinku.auto_link(safe_join(notification.comment.comment.split("\n"),tag(:br)), :all, 'target="_blank"').html_safe %>
       </div>
-      <div class="col-4 align-self-end">
+      <div class="col-sm-4 col-11 offset-1 mt-1 align-self-end">
         <%= notification.comment.created_at.strftime('%Y/%m/%d %H:%M') %>
       </div>
     </div>
   <% elsif action == "favorite" %>
-    <%= link_to user_path(visitor), class:"text-decoration-none text-dark" do %>
-      <%= image_tag(notification.visitor.get_profile_image, class:"comment_profile_image") %>
-      <span class="fw-bold"><%= visitor.name %></span>
-    <% end %>
-    さんが
-    <%= link_to "あなたの投稿", topic_path(topic.id), class:"text-decoration-none" %>
-    にいいねしました
+    <div class="row">
+      <div class="col-sm-2 col-3 pe-0 text-center align-self-center">
+        <%= link_to image_tag(notification.visitor.get_profile_image, class:"comment_profile_image"), user_path(visitor) %>
+      </div>
+      <div class="col-sm-8 col-8 ps-0 text-break align-self-center">
+        <span class="fw-bold"><%= visitor.name %></span>
+        さんが
+        <%= link_to "あなたの投稿", topic_path(topic.id), class:"text-decoration-none" %>
+        にいいねしました
+      </div>
+    </div>
   <% end %>
 </div>
 <hr>
