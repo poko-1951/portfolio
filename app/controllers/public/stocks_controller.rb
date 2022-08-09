@@ -6,14 +6,14 @@ class Public::StocksController < ApplicationController
   def create
     stock = current_user.stocks.new(topic_id: @topic.id, acquaintance_id: nil)
     stock.save
-    # redirect_to topic_path(@topic)
+    @topic.create_notification_favorite(current_user)
+    render "create.js.erb"
   end
 
   # 特定せずにストックしたものを外す
   def destroy
     stock = current_user.stocks.find_by(topic_id: @topic.id, acquaintance_id: nil)
     stock.destroy
-    # redirect_to topic_path(@topic)
   end
 
   # 特定のお相手にストックする（外すことも可能）
