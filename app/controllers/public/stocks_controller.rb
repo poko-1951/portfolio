@@ -7,7 +7,6 @@ class Public::StocksController < ApplicationController
     stock = current_user.stocks.new(topic_id: @topic.id, acquaintance_id: nil)
     stock.save
     @topic.create_notification_favorite(current_user)
-    render "create.js.erb"
   end
 
   # 特定せずにストックしたものを外す

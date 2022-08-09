@@ -19,11 +19,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-5 col-12 offset-1 mt-1">
+      <div class="col-sm-4 col-12 offset-1 mt-1">
         <%= Rinku.auto_link(safe_join(notification.comment.comment.split("\n"),tag(:br)), :all, 'target="_blank"').html_safe %>
       </div>
       <div class="col-sm-4 col-11 offset-1 mt-1 align-self-end">
-        <%= notification.comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+        <%= time_ago_in_words(notification.created_at).upcase + "前" %>
       </div>
     </div>
   <% elsif action == "favorite" %>
@@ -36,6 +36,7 @@
         さんが
         <%= link_to "あなたの投稿", topic_path(topic.id), class:"text-decoration-none" %>
         にいいねしました
+        <div class="ms-2 mt-1"><%= time_ago_in_words(notification.created_at).upcase + "前" %></div>
       </div>
     </div>
   <% end %>
