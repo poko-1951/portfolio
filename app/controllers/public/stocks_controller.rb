@@ -17,18 +17,8 @@ class Public::StocksController < ApplicationController
 
   # 特定のお相手にストックする（外すことも可能）
   def update
-    registered_acquaintances = @topic.acquaintances.pluck(:id).map!(&:to_s)
-    new_acquaintances = params[:stock][:acquaintance_ids].reject(&:blank?) - registered_acquaintances
-    destroy_acquaintances = registered_acquaintances - params[:stock][:acquaintance_ids].reject(&:blank?)
-    new_acquaintances.each do |new|
-      stock = current_user.stocks.new(acquaintance_id: new, topic_id: @topic.id)
-      stock.save
-    end
-    destroy_acquaintances.each do |destroy|
-      acquaintance_id = Acquaintance.find_by(id: destroy)
-      destroy_schedule = Stock.find_by(acquaintance_id: acquaintance_id, topic_id: @topic.id)
-      destroy_schedule.destroy
-    end
+    input_stock_acquaintances = params[:stock][:acquaintance_ids].reject(&:blank?)
+    @topic.update_stock(input_stock_acquaintances, current_user)
     redirect_to topic_path(@topic)
   end
 

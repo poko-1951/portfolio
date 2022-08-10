@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
     reset_session # 残っているsessionをこの時点で削除
-    # flash[:notice] = "退会処理を実行しました"
+    flash[:notice] = "退会処理が完了しました"
     redirect_to root_path
   end
 

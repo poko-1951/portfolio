@@ -6,8 +6,8 @@ class Public::EventsController < ApplicationController
     @event = current_user.events.new(event_params)
     if @event.valid?
       @event.save
-      params[:event][:acquaintance_ids].reject(&:blank?).each do |ac|
-        acquaintance = Acquaintance.find_by(id: ac)
+      params[:event][:acquaintance_ids].reject(&:blank?).each do |acquaintance|
+        acquaintance = Acquaintance.find_by(id: acquaintance)
         @event.acquaintances << acquaintance
       end
       respond_to do |format|
@@ -29,23 +29,11 @@ class Public::EventsController < ApplicationController
   end
 
   def update
-    if @event.valid?
-      if @event.update(event_params)
-        registered_acquaintances = @event.acquaintances.pluck(:id)
-        new_acquaintances = params[:event][:acquaintance_ids].reject(&:blank?) - registered_acquaintances
-        destroy_acquaintances = registered_acquaintances - params[:event][:acquaintance_ids].reject(&:blank?)
-        new_acquaintances.each do |new|
-          acquaintance = Acquaintance.find_by(id: new)
-          @event.acquaintances << acquaintance
-        end
-        destroy_acquaintances.each do |destroy|
-          acquaintance_id = Acquaintance.find_by(id: destroy)
-          destroy_schedule = Schedule.find_by(acquaintance_id: acquaintance_id, event_id: @event.id)
-          destroy_schedule.destroy
-        end
-      else
-        flash[:alert] = "終了日時が開始日時を上回っています。正しく記入してください。"
-      end
+    if @event.valid? && @event.update(event_params)
+      input_acquaintances = params[:event][:acquaintance_ids].reject(&:blank?)
+      @event.update_acquaintance(input_acquaintances)
+    else
+      flash[:alert] = "終了日時が開始日時を上回っています。正しく記入してください。"
     end
     redirect_to event_path(@event)
   end

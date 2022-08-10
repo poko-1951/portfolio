@@ -35,7 +35,7 @@
         <span class="fw-bold"><%= visitor.name %></span>
         さんが
         <%= link_to "あなたの投稿", topic_path(topic.id), class:"text-decoration-none" %>
-        にいいねしました
+        をお気に入り登録しました
         <div class="ms-2 mt-1"><%= time_ago_in_words(notification.created_at).upcase + "前" %></div>
       </div>
     </div>
