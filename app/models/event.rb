@@ -38,4 +38,22 @@ class Event < ApplicationRecord
       errors.add(:end_at) if self.start_at >= self.end_at
     end
   end
+
+  # イベントにおけるお相手の更新
+  def update_acquaintance(input_acquaintances)
+    registered_acquaintances = acquaintances.pluck(:id)
+    new_acquaintances = input_acquaintances - registered_acquaintances
+    destroy_acquaintances = registered_acquaintances - input_acquaintances
+    # お相手を追加
+    new_acquaintances.each do |acquaintance|
+      acquaintance = Acquaintance.find_by(id: acquaintance)
+      acquaintances << acquaintance
+    end
+    # お相手を除外
+    destroy_acquaintances.each do |acquaintance|
+      acquaintance_id = Acquaintance.find_by(id: acquaintance)
+      destroy_schedule = Schedule.find_by(acquaintance_id: acquaintance_id, event_id: id)
+      destroy_schedule.destroy
+    end
+  end
 end

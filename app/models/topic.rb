@@ -115,12 +115,12 @@ class Topic < ApplicationRecord
     registered_acquaintances = acquaintances.pluck(:id).map!(&:to_s)
     new_stock_acquaintances = input_stock_acquaintances - registered_acquaintances
     destroy_stock_acquaintances = registered_acquaintances - input_stock_acquaintances
-
+    # ストックにお知り合いを追加
     new_stock_acquaintances.each do |acquaintance|
       stock = current_user.stocks.new(acquaintance_id: acquaintance, topic_id: id)
       stock.save
     end
-
+    # ストックからお知り合いを除外
     destroy_stock_acquaintances.each do |acquaintance|
       acquaintance_id = Acquaintance.find_by(id: acquaintance)
       destroy_schedule = Stock.find_by(acquaintance_id: acquaintance_id, topic_id: id)
