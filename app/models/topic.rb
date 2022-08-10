@@ -22,17 +22,19 @@ class Topic < ApplicationRecord
   has_many   :stocks,        dependent: :destroy
   has_many   :taggings,      dependent: :destroy
   has_many   :comments,      dependent: :destroy
-  has_many   :tags,          through: :taggings
-  has_many   :acquaintances, through: :stocks
-  has_many   :notifications,   dependent: :destroy
+  has_many   :tags,          through:   :taggings
+  has_many   :acquaintances, through:   :stocks
+  has_many   :notifications, dependent: :destroy
 
   validates :title,   presence: true
   validates :content, presence: true
 
+  # タグ検索
   def self.tag_search(search_tag)
     Topic.where(tag_id: search_tag)
   end
 
+  # すでにストックしているか
   def stocked_by?(user)
     stocks.exists?(user_id: user.id, acquaintance_id: nil)
   end
@@ -81,4 +83,31 @@ class Topic < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
+  # 新しいタグの作成
+  def create_tags(input_tags)
+    input_tags.each do |tag|
+      new_tag = Tag.find_or_create_by(name: tag) # タグモデルに存在していれば、そのタグを使用し、なければ新規登録する
+      tags << new_tag # 登録するトピックのtagにインプットする（中間テーブルにも反映される）
+    end
+  end
+  
+  # タグのアップデート
+  def update_tags(input_tags)
+    registered_tags = tags.pluck(:name).map!(&:to_s)
+    new_tags = input_tags - registered_tags # 追加されたタグ
+    destroy_tags = registered_tags - input_tags # 削除されたタグ
+    
+    new_tags.each do |tag| # 新しいタグをモデルに追加
+      new_tag = Tag.find_or_create_by(name: tag)
+      tags << new_tag
+    end
+    
+    destroy_tags.each do |tag| # 削除されたタグを中間テーブルから削除
+      tag_id = Tag.find_by(name: tag)
+      destroy_tagging = Tagging.find_by(tag_id: tag_id, topic_id: id)
+      destroy_tagging.destroy
+    end
+  end
+
 end
