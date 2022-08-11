@@ -5,7 +5,7 @@ module ApplicationHelper
       site: '- いつまでも、絶え間ない会話を -',
       title: 'Convrce',
       reverse: true,
-      separator: '|',
+      separator: ' ',
       description: '『Converce』は会話が苦手なあなたに、話題(Conversation piece)を提供するサービスです。',
       keywords: '会話,話題,苦手,思い浮かばない,気まずい,conversation piece, converce',
       canonical: request.original_url,
