@@ -71,15 +71,29 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# user登録関連
 gem "devise"
-gem "kaminari"
-gem "dotenv-rails"
-gem "ransack"
 gem "devise-i18n"
+
+# ページネーション 
+gem "kaminari"
+
+# 環境
+gem "dotenv-rails"
+
+# 検索
+gem "ransack"
+
+# リンク有効化
 gem "rinku"
+
+# メール関連
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+# SEO
+gem "meta-tags"
 
 group :production do
   gem "mysql2"
