@@ -1,6 +1,15 @@
-<p>以下の</p>
-<ul>
-  <li>
-    <%= @topic.title %>
-  </li>
-</ul>
+<p>登録されたイベントのご予定日が近づいて参りましたので、ご連絡いたします。</p>
+<h2><%= @event.title %></h2>
+<p>
+  <span>●開始予定日時：<%= @event.start_at.strftime('%Y/%m/%d %H:%M') %></span><br>
+  <span>●終了予定日時：<%= @event.end_at.strftime('%Y/%m/%d %H:%M') %></span>
+</p>
+<p>
+  ●内容<br>
+  <%= @event.content %>
+</p>
+<p>
+  ●場所<br>
+  <%= @event.place %>
+</p>
+<p>Converce</p>

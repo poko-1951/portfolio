@@ -1,10 +1,9 @@
 class RemaindEventMailer < ApplicationMailer
-  def creation_email(topic)
-    @topic = topic
+  def creation_email(event)
+    @event = event
     mail(
-      subject: "イベントリマインダー",
-      to: "user@example.com",
-      from: "task@example.com"
+      subject: "【Converce】イベントリマインダー",
+      to: event.user.email,
     )
   end
 end
