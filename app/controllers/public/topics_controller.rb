@@ -13,6 +13,7 @@ class Public::TopicsController < ApplicationController
     input_tags = tag_params[:name].split # 入力タグを配列に変換する
     @topic.create_tags(input_tags)
     @topic.save
+    RemaindEventMailer.creation_email(@topic).deliver_now
     redirect_to topics_path
   end
 
