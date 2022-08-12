@@ -19,7 +19,7 @@
 #  index_notifications_on_visited_id  (visited_id)
 #  index_notifications_on_visitor_id  (visitor_id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Notification, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"

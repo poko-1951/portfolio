@@ -96,7 +96,7 @@ gem "net-imap"
 gem "meta-tags"
 
 # crontab管理
-gem 'whenever', require: false
+gem "whenever", require: false
 
 group :production do
   gem "mysql2"

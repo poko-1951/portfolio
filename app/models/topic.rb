@@ -42,13 +42,13 @@ class Topic < ApplicationRecord
   # お気に入り登録通知
   def create_notification_favorite(current_user)
     # すでに「お気に入り登録」されているか検索
-    favorited_self = Notification.where(["visitor_id = ? and visited_id = ? and topic_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
+    favorited_self = Notification.where(["visitor_id = ? and visited_id = ? and topic_id = ? and action = ? ", current_user.id, user_id, id, "favorite"])
     # お気に入り登録されていない場合のみ、通知を作成
     if favorited_self.blank? && user_id != current_user.id
       notification = current_user.active_notifications.new(
         topic_id: id,
         visited_id: user_id,
-        action: 'favorite'
+        action: "favorite"
       )
       # 自分の投稿をお気に入り登録する場合は、通知済みとする
       if notification.visitor_id == notification.visited_id
@@ -63,7 +63,7 @@ class Topic < ApplicationRecord
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Comment.select(:user_id).where(topic_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
-      save_notification_comment(current_user, comment_id, temp_id['user_id'])
+      save_notification_comment(current_user, comment_id, temp_id["user_id"])
     end
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
     save_notification_comment(current_user, comment_id, user_id) if temp_ids.blank? && user_id != current_user.id
@@ -75,7 +75,7 @@ class Topic < ApplicationRecord
       topic_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
-      action: 'comment'
+      action: "comment"
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     if notification.visitor_id == notification.visited_id
@@ -127,5 +127,4 @@ class Topic < ApplicationRecord
       destroy_schedule.destroy
     end
   end
-
 end
