@@ -16,7 +16,7 @@ module Portfolio
     config.i18n.default_locale = :ja
 
     # リマインダーメール
-    config.paths.add 'lib', eager_load: true
+    config.paths.add "lib", eager_load: true
 
     # Configuration for the application, engines, and railties goes here.
     #
