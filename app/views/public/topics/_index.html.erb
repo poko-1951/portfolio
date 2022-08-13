@@ -1,49 +1,52 @@
-<% topics.each do |topic| %>
-  <div class="container topic shadow py-3 my-2">
-    <div class="row">
-      <div class="col-lg-2 col-4 text-center">
-        <%= link_to image_tag(topic.user.get_profile_image, class:"topic_profile_image"), user_path(topic.user) %>
-      </div>
-      <div class="col-lg-10 col-8">
-        <div class="row d-flex align-items-center">
-          <div class="col-lg-3 col-8 h3 text-break"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark topic_user_name" %></div>
-          <div class="col-lg-5 col-10">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
-          <% if topic.user == current_user %>
-            <div class="col-lg-1 col-5 mb-lg-0 mb-2"><%= render "public/topics/edit_modal", topic: topic, url: topic_path(topic) %></div>
-            <div class="col-lg-1 col-5 mb-lg-0 mb-2">
-              <%= link_to topic_path(topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" do %>
-                <i class="fa-solid fa-trash-can"></i>
-              <% end %>
-            </div>
-          <% end %>
+<div class="jscroll-div">
+  <% topics.each do |topic| %>
+    <div class="container topic shadow py-3 my-2">
+      <div class="row">
+        <div class="col-lg-2 col-4 text-center">
+          <%= link_to image_tag(topic.user.get_profile_image, class:"topic_profile_image"), user_path(topic.user) %>
         </div>
-        <!--タグ一覧-->
-        <div class="row ms-lg-2">
-          <div class="d-flex flex-wrap col-12">
-            <% topic.tags.each do |tag| %>
-              <div class="me-4 mb-1 topic_tag">
-                <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"tag-design shadow-sm text-light tag_name" %>
+        <div class="col-lg-10 col-8">
+          <div class="row d-flex align-items-center">
+            <div class="col-lg-3 col-8 h3 text-break"><%= link_to topic.user.name, user_path(topic.user), class:"text-decoration-none text-dark topic_user_name" %></div>
+            <div class="col-lg-5 col-10">最終更新：<%= topic.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
+            <% if topic.user == current_user %>
+              <div class="col-lg-1 col-5 mb-lg-0 mb-2"><%= render "public/topics/edit_modal", topic: topic, url: topic_path(topic) %></div>
+              <div class="col-lg-1 col-5 mb-lg-0 mb-2">
+                <%= link_to topic_path(topic), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-outline-danger rounded-pill" do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                <% end %>
               </div>
             <% end %>
           </div>
+          <!--タグ一覧-->
+          <div class="row ms-lg-2">
+            <div class="d-flex flex-wrap col-12">
+              <% topic.tags.each do |tag| %>
+                <div class="me-4 mb-1 topic_tag">
+                  <%= link_to tag.name, tag_search_topics_path(tag_id: tag.id), class:"tag-design shadow-sm text-light tag_name" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--投稿のタイトルと内容-->
+      <a onclick="$('#collapse_<%= topic.id %>').collapse('toggle')" class="mt-3 ms-4 text-decoration-none text-dark">
+        <div class="h3 fw-bold"><%= topic.title %></div>
+        <div class="h6">内容を見る <i class="fa-solid fa-arrow-down-wide-short"></i></div>
+      </a>
+      <div class="collapse mt-sm-3 ms-sm-4" id="collapse_<%= topic.id %>">
+        <div><%= link_to safe_join(topic.content.split("\n"),tag(:br)), topic_path(topic), class:"text-decoration-none topic_content" %></div>
+        <div class="text-end mt-2">
+          <%= link_to topic_path(topic), class:"text-decoration-none topic_comment me-4" do %>
+            <i class="fa-solid fa-message"></i> コメント(<%= topic.comments.count %>)
+          <% end %>
+          <%= link_to topic_path(topic), class:"text-decoration-none topic_comment" do %>
+            <i class="fa-solid fa-folder-open"></i> ストック(<%= topic.stocks.count %>)
+          <% end %>
         </div>
       </div>
     </div>
-    <!--投稿のタイトルと内容-->
-    <a onclick="$('#collapse_<%= topic.id %>').collapse('toggle')" class="mt-3 ms-4 text-decoration-none text-dark">
-      <div class="h3 fw-bold"><%= topic.title %></div>
-      <div class="h6">内容を見る <i class="fa-solid fa-arrow-down-wide-short"></i></div>
-    </a>
-    <div class="collapse mt-sm-3 ms-sm-4" id="collapse_<%= topic.id %>">
-      <div><%= link_to safe_join(topic.content.split("\n"),tag(:br)), topic_path(topic), class:"text-decoration-none topic_content" %></div>
-      <div class="text-end mt-2">
-        <%= link_to topic_path(topic), class:"text-decoration-none topic_comment me-4" do %>
-          <i class="fa-solid fa-message"></i> コメント(<%= topic.comments.count %>)
-        <% end %>
-        <%= link_to topic_path(topic), class:"text-decoration-none topic_comment" do %>
-          <i class="fa-solid fa-folder-open"></i> ストック(<%= topic.stocks.count %>)
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+  <%= paginate topics %>
+</div>

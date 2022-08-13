@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @topics = Topic.where(user_id: @user.id)
+    @topics = Topic.where(user_id: @user.id).page(params[:page]).per(5)
   end
 
   def edit
