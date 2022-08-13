@@ -26,7 +26,7 @@
 <!--ユーザーの投稿トピック-->
 <h5 class="fw-bold mt-4">【投稿したトピック】</h5>
 <% if @user.topics.present? %>
-  <%= render "public/topics/index", topics: @user.topics %>
+  <%= render "public/topics/index", topics: @topics %>
 <% else %>
   投稿したトピックはありません
 <% end %>

@@ -319,3 +319,8 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
   font-size: 13px;
   color: #efa04c;
 }
+
+/*無限スクロール*/
+.pagination {
+  display: none;
+}
