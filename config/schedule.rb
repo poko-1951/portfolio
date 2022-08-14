@@ -22,7 +22,7 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, "log/cron.log"
-every 5.minute do
+every 1.day, at: '00:00' do # UTC時刻で00:00なので日本時刻09:00
   begin
     runner "Batch::RemaindEvent.remaind_event"
   rescue => e
