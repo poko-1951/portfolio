@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @topics = Topic.where(user_id: @user.id)
+    @topics = Topic.where(user_id: @user.id).page(params[:page]).per(5)
   end
 
   def edit
@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
     reset_session # 残っているsessionをこの時点で削除
-    # flash[:notice] = "退会処理を実行しました"
+    flash[:notice] = "退会処理が完了しました"
     redirect_to root_path
   end
 
@@ -35,6 +35,6 @@ class Public::UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :profile_image)
+      params.require(:user).permit(:name, :email, :profile_image)
     end
 end
