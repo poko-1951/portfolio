@@ -4,7 +4,7 @@ class Public::TopicsController < ApplicationController
 
 
   def index
-    @topics = Topic.order(updateed_at: "DESC").page(params[:page]).per(5)
+    @topics = Topic.order(updated_at: "DESC").page(params[:page]).per(5)
     @topics.order!('random()').page(params[:page]).per(5) if params[:sort] == "shuffle"
   end
 
@@ -42,18 +42,18 @@ class Public::TopicsController < ApplicationController
       @topics << topic
     end
     @topics = Topic.where(id: @topics.map{ |topic| topic.id })
-    @topics = @topics.order(updateed_at: "DESC").page(params[:page]).per(5)
+    @topics = @topics.order(updated_at: "DESC").page(params[:page]).per(5)
   end
 
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @topics = @tag.topics.order(updateed_at: "DESC").page(params[:page]).per(5)
+    @topics = @tag.topics.order(updated_at: "DESC").page(params[:page]).per(5)
     @topics.order!('random()').page(params[:page]).per(5) if params[:sort] == "shuffle"
   end
 
   def word_search
     search = Topic.ransack(params[:q])
-    @results = search.result.order(updateed_at: "DESC").page(params[:page]).per(5)
+    @results = search.result.order(updated_at: "DESC").page(params[:page]).per(5)
     # @title_or_content_cont = params[:q][:title_or_content_cont] # シャッフルのために必要
     # @tags_name_cont = params[:q][:tags_name_cont] # シャッフルのために必要
     @topics.order!('random()').page(params[:page]).per(5) if params[:sort] == "shuffle"
