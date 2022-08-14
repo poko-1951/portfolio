@@ -22,7 +22,7 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, "log/cron.log"
-every 10.minute do
+every 5.minute do
   begin
     runner "Batch::RemaindEvent.remaind_event"
   rescue => e
