@@ -9,35 +9,45 @@
         <div class="form-group mb-3">
           <div class="d-flex align-items-center">
             <span class="badge bg-danger me-1">必須</span>
-            <%= f.label :name, "アカウント名（30文字以下）" %>
+            <%= f.label :name, "アカウント名（30文字以下）", class:"fw-bold" %>
           </div>
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control mt-1", required: true %>
         </div>
         <div class="form-group mb-3">
           <div class="d-flex align-items-center">
             <span class="badge bg-danger me-1">必須</span>
-            <%= f.label :email %>
+            <%= f.label :email, class:"fw-bold" %>
           </div>
           <%= f.email_field :email, autocomplete: "email", class:"form-control mt-1", required: true %>
         </div>
         <div class="form-group mb-3">
           <div class="d-flex align-items-center">
             <span class="badge bg-danger me-1">必須</span>
-            <%= f.label :password, "パスワード（6桁以上）" %>
+            <%= f.label :password, "パスワード（6桁以上）", class:"fw-bold" %>
           </div>
           <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1", required: true %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <div class="d-flex align-items-center">
             <span class="badge bg-danger me-1">必須</span>
-            <%= f.label :password_confirmation %>
+            <%= f.label :password_confirmation, class:"fw-bold" %>
           </div>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-1 mb-3", required: true %>
+        </div>
+        <div class="form-group mb-3">
+          <div class="d-flex align-items-center mb-1">
+            <span class="badge bg-danger me-1">必須</span>
+            <%= f.label :email_receiving_activation, "リマインダーメールの受信(プロフィールの編集から変更できます)", class:"fw-bold" %>
+          </div>
+          <%= f.radio_button :email_receiving_activation, "true", checked: true, class:"form-check-input ms-3" %>
+          <%= f.label :email_receiving_activation, '受け取る', value: "true", class:"me-3" %>
+          <%= f.radio_button :email_receiving_activation, "false", class:"form-check-input" %>
+          <%= f.label :email_receiving_activation, '受け取らない', value: "false" %>
         </div>
         <div class="form-group">
           <div class="d-flex align-items-center">
             <span class="badge bg-primary me-1">任意</span>
-            <%= f.label :profile_image, "プロフィール画像" %>
+            <%= f.label :profile_image, "プロフィール画像", class:"fw-bold" %>
           </div>
           <%= f.file_field :profile_image, accept: "image/*", class:"form-control mt-1 mb-3" %>
         </div>
