@@ -8,31 +8,38 @@
   <div class="modal-dialog modal-dialog-centered" >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">編集</h5>
+        <h5 class="modal-title" id="exampleModalLabel">プロフィール編集</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </button>
       </div>
       <%= form_with model: user, url: url do |f| %>
         <div class="modal-body text-start">
-          <div class="form-group">
+          <div class="form-group mb-3">
             <%= f.label :name, "アカウント名" %>
             <%= f.text_field :name, class:"form-control", required: true %>
           </div>
-          <div class="form-group">
+          <div class="form-group mb-3">
             <%= f.label :email, "メールアドレス" %>
             <%= f.email_field :email, class:"form-control", required: true %>
           </div>
-          <div class="form-group mt-3">
+          <div class="form-group mb-3">
+            <%= f.label :email_receiving_activation, "リマインダーメールの受信" %>
+            <%= f.radio_button :email_receiving_activation, "true", checked: true, class:"form-check-input ms-3" %>
+            <%= f.label :email_receiving_activation, '受け取る', value: "true", class:"me-3" %>
+            <%= f.radio_button :email_receiving_activation, "false", class:"form-check-input" %>
+            <%= f.label :email_receiving_activation, '受け取らない', value: "false" %>
+          </div>
+          <div class="form-group mb-3">
             <%= f.label :profile_image, "プロフィール画像" %>
             <%= f.file_field :profile_image, accept: "image/*", class:"form-control" %>
           </div>
           <% if admin_signed_in? %>
-            <div class="form-group mt-3">
+            <div class="form-group">
               <%= f.label :is_deleted, "アカウントの状態" %> <br>
-              <%= f.radio_button :is_deleted, "true", class:"form-input" %>
-              <%= f.label :is_deleted, '無効', value: "true", class:"me-3" %>
-              <%= f.radio_button :is_deleted, "false", class:"form-input" %>
-              <%= f.label :is_deleted, '有効', value: "false" %>
+              <%= f.radio_button :is_deleted, "false", class:"form-check-input" %>
+              <%= f.label :is_deleted, '有効', value: "false", class:"me-3" %>
+              <%= f.radio_button :is_deleted, "true", class:"form-check-input" %>
+              <%= f.label :is_deleted, '無効', value: "true" %>
             </div>
           <% end %>
         </div>
