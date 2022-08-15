@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :profile_image])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email_receiving_activation, :profile_image])
     end
 
     def set_search
