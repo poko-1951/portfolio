@@ -94,7 +94,7 @@ class Topic < ApplicationRecord
 
   # タグのアップデート
   def update_tags(input_tags)
-    registered_tags = tags.pluck(:name).map!(&:to_s)
+    registered_tags = tags.pluck(:name)
     new_tags = input_tags - registered_tags # 追加されたタグ
     destroy_tags = registered_tags - input_tags # 削除されたタグ
 
