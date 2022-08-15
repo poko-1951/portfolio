@@ -5,7 +5,7 @@
       <%= search_form_for(@q, url: word_search_topics_path) do |f| %>
         <%= f.hidden_field :title_or_content_cont, value: @title_or_content_cont %>
         <%= f.hidden_field :tags_name_cont, value: @tags_name_cont %>
-        <%= button_tag type: "submit", class:"word_search_button" do %>
+        <%= button_tag type: "submit", class:"order_button" do %>
           <i class="fa-solid fa-list-ul"></i> 新着順
         <% end %>
       <% end %>
@@ -16,7 +16,7 @@
         <%= f.hidden_field :title_or_content_cont, value: @title_or_content_cont %>
         <%= f.hidden_field :tags_name_cont, value: @tags_name_cont %>
         <%= f.hidden_field :sort, value: "shuffle" %>
-        <%= button_tag type: "submit", class:"word_search_button" do %>
+        <%= button_tag type: "submit", class:"order_button" do %>
           <i class="fa-solid fa-shuffle"></i> シャッフル
         <% end %>
       <% end %>

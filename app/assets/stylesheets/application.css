@@ -245,13 +245,13 @@ input[id^="event_acquaintance_ids_"], input[id^="stock_acquaintance_ids_"] {
   background-color: white;
 }
 
-.word_search_button {
+.order_button {
   border: none;
   outline: none;
   background: transparent;
 }
 
-.word_search_button:hover {
+.order_button:hover {
   color: #0d6efd;
 }
 
