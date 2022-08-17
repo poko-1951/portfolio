@@ -5,7 +5,9 @@ class Public::TopicsController < ApplicationController
 
   def index
     @topics = Topic.order(updated_at: "DESC").page(params[:page]).per(5)
-    @topics.order!('random()').page(params[:page]).per(5) if params[:sort] == "shuffle"
+    if params[:sort] == "shuffle"
+      @topics = Kaminari.paginate_array(@topics.shuffle).page(params[:page]).per(5)
+    end
   end
 
   def create
@@ -48,15 +50,19 @@ class Public::TopicsController < ApplicationController
   def tag_search
     @tag = Tag.find(params[:tag_id])
     @topics = @tag.topics.order(updated_at: "DESC").page(params[:page]).per(5)
-    @topics.order!('random()').page(params[:page]).per(5) if params[:sort] == "shuffle"
+    if params[:sort] == "shuffle"
+      @topics = Kaminari.paginate_array(@topics.shuffle).page(params[:page]).per(5)
+    end
   end
 
   def word_search
     search = Topic.ransack(params[:q])
     @results = search.result.order(updated_at: "DESC").page(params[:page]).per(5)
-    # @title_or_content_cont = params[:q][:title_or_content_cont] # シャッフルのために必要
-    # @tags_name_cont = params[:q][:tags_name_cont] # シャッフルのために必要
-    @topics.order!('random()').page(params[:page]).per(5) if params[:sort] == "shuffle"
+    @title_or_content_cont = params[:q][:title_or_content_cont] # シャッフルのために必要
+    @tags_name_cont = params[:q][:tags_name_cont] # シャッフルのために必要
+    if params[:q][:sort] == "shuffle"
+      @results = Kaminari.paginate_array(@results.shuffle).page(params[:page]).per(5)
+    end
   end
 
   private
