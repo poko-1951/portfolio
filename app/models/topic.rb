@@ -29,6 +29,9 @@ class Topic < ApplicationRecord
   validates :title,   presence: true
   validates :content, presence: true
 
+  # 無限スクロールのためのページネーション
+  scope :to_pagenate, -> (param, per = 5){ page(param).per(per) }
+
   # タグ検索
   def self.tag_search(search_tag)
     Topic.where(tag_id: search_tag)
@@ -127,4 +130,16 @@ class Topic < ApplicationRecord
       destroy_schedule.destroy
     end
   end
+
+  # シャッフル
+  def self.shuffle(topics, sort, page, per = 5)
+    if sort == "shuffle"
+      topics = Kaminari.paginate_array(topics.shuffle).page(page).per(per)
+    end
+    return topics
+  end
+
+  # def to_pagenate(page, per = 5)
+  #   self.page(page).per(per)
+  # end
 end
