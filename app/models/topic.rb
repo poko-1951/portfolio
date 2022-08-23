@@ -30,7 +30,8 @@ class Topic < ApplicationRecord
   validates :content, presence: true
 
   # 無限スクロールのためのページネーション
-  scope :to_pagenate, -> (param, per = 5){ page(param).per(per) }
+  scope :to_pagenate, -> (param, per = 5){ order(updated_at: "DESC").page(param).per(per) }
+  scope :to_includes, -> { includes([{user:[:profile_image_attachment]}, :taggings, :tags]) }
 
   # タグ検索
   def self.tag_search(search_tag)
@@ -139,7 +140,4 @@ class Topic < ApplicationRecord
     return topics
   end
 
-  # def to_pagenate(page, per = 5)
-  #   self.page(page).per(per)
-  # end
 end
