@@ -4,7 +4,7 @@ class Public::TopicsController < ApplicationController
 
 
   def index
-    @topics = Topic.order(updated_at: "DESC").to_pagenate(params[:page])
+    @topics = Topic.to_includes.to_pagenate(params[:page])
     # シャッフル
     @topics = Topic.shuffle(@topics, params[:sort], params[:page])
   end
@@ -43,19 +43,19 @@ class Public::TopicsController < ApplicationController
       @topics << topic
     end
     @topics = Topic.where(id: @topics.map{ |topic| topic.id })
-    @topics = @topics.order(updated_at: "DESC").to_pagenate(params[:page])
+    @topics = @topics.to_pagenate(params[:page])
   end
 
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @topics = @tag.topics.order(updated_at: "DESC").to_pagenate(params[:page])
+    @topics = @tag.topics.to_includes.to_pagenate(params[:page])
     # シャッフル
     @topics = Topic.shuffle(@topics, params[:sort], params[:page])
   end
 
   def word_search
     search = Topic.ransack(params[:q])
-    @results = search.result.order(updated_at: "DESC").to_pagenate(params[:page])
+    @results = search.result.to_includes.to_pagenate(params[:page])
     @title_or_content_cont = params[:q][:title_or_content_cont] # シャッフルのために必要
     @tags_name_cont = params[:q][:tags_name_cont] # シャッフルのために必要
     # シャッフル
