@@ -13,7 +13,7 @@ class Public::AcquaintancesController < ApplicationController
   end
 
   def show
-    @topics = @acquaintance.topics.order(updated_at: "DESC").page(params[:page]).per(5)
+    @topics = @acquaintance.topics.to_includes.to_pagenate(params[:page])
   end
 
   def update

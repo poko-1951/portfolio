@@ -4,9 +4,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 import moment from "moment"
 
 document.addEventListener('turbolinks:load', function() {
-  var calendarEl = document.getElementById('calendar');
+  const calendarEl = document.getElementById('calendar');
 
-  var calendar = new Calendar(calendarEl, {
+  let calendar = new Calendar(calendarEl, {
     plugins: [ dayGridPlugin, interactionPlugin ],
 
     events: '/events.json',
